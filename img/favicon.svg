@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Nền tròn với gradient -->
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:0.1"/>
+    </radialGradient>
+    
+    <!-- Gradient cho sách -->
+    <linearGradient id="bookGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D62828"/>
+      <stop offset="100%" style="stop-color:#C41E3A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Nền tròn -->
+  <circle cx="12" cy="12" r="11.5" fill="url(#bgGradient)" stroke="#FFD700" stroke-width="0.5"/>
+  
+  <!-- Hoa sen stylized ở phía sau -->
+  <path d="M12 4c-3 0-6 2-6 4s3 4 6 4 6-2 6-4-3-4-6-4z" 
+        fill="#FFC0CB" opacity="0.6"/>
+  
+  <!-- Cuốn sách mở -->
+  <path d="M7 8c0 0 2-1 5-1s5 1 5 1v8c0 0-2-1-5-1s-5 1-5 1z" 
+        fill="url(#bookGradient)" stroke="#FFD700" stroke-width="0.5"/>
+  <path d="M12 7v8" stroke="#FFD700" stroke-width="0.3"/>
+  
+  <!-- Ngôi sao trung tâm -->
+  <path d="M12 9l1 2 2.5.5-2 1.5.5 2.5L12 14l-2 1.5.5-2.5-2-1.5 2.5-.5z" 
+        fill="#FFD700" stroke="#C41E3A" stroke-width="0.2"/>
+  
+  <!-- Chi tiết trang sách -->
+  <path d="M8 9h1.5M8 10h1M8 11h1.5M14.5 9H16M15 10H16M14.5 11H16" 
+        stroke="#FFD700" stroke-width="0.3"/>
+  
+  <!-- Họa tiết trang trí -->
+  <circle cx="12" cy="4" r="0.3" fill="#FFD700"/>
+  <circle cx="12" cy="20" r="0.3" fill="#FFD700"/>
+  <circle cx="4" cy="12" r="0.3" fill="#FFD700"/>
+  <circle cx="20" cy="12" r="0.3" fill="#FFD700"/>
+</svg>

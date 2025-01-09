@@ -31,7 +31,6 @@ html {
 	margin: 0px
 }
 body{
-	font-family: "Mulish";
 	font-size: 15px;
 	line-height: 30px;
 	letter-spacing: 1px;
@@ -82,10 +81,17 @@ img.svg{
 	clear:both;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h4, h5, h6{
 	font-weight:500;
 	line-height: 1.4;
-	font-family: "Poppins";
+	font-family: "Xanh mono";
+	color: #000;
+}
+
+h3{
+	font-weight:500;
+	line-height: 1.2;
+	font-family: "Montagu Slab";
 	color: #000;
 }
 
@@ -133,7 +139,7 @@ h6 { font-size: 16px; }
     width: 50%;
     height: 100%;
     z-index: -1;
-    background-color: #fff;
+    background-color: #da251d;
     -webkit-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
@@ -163,7 +169,7 @@ h6 { font-size: 16px; }
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    background-color: #000;
+    background-color: #ffff00;
     -webkit-animation: lineheight 1000ms ease-in-out 0s forwards;
     -o-animation: lineheight 1000ms ease-in-out 0s forwards;
     animation: lineheight 1000ms ease-in-out 0s forwards;
@@ -175,7 +181,7 @@ h6 { font-size: 16px; }
     top: 0;
     width: 1px;
     height: 100%;
-    background-color: #C8C8C8;
+    background-color: #da251d;
     -webkit-transform: translateY(-100%);
     -ms-transform: translateY(-100%);
     -o-transform: translateY(-100%);
@@ -285,7 +291,7 @@ h6 { font-size: 16px; }
 	text-decoration: none;
 	color: #fff;
 	font-family: "Poppins";
-	font-weight: 500;
+	font-weight: 900;
 	transition: all .3s ease;
 }
 .grax_tm_topbar .menu ul li.current a{color: #e54b4b;}
@@ -567,11 +573,10 @@ h6 { font-size: 16px; }
 	color: #ddd;
 	letter-spacing: 1.5px;
 	font-family: "Poppins";
-	font-size: 17px;
+	font-size: 25px;
 	font-weight: 500;
 	margin-bottom: 40px;
 	max-width: 400px;
-	font-style: italic;
 }
 .grax_tm_down{
 	position: absolute;
@@ -689,6 +694,7 @@ h6 { font-size: 16px; }
 	padding-left: 50px;
 }
 .grax_tm_about .right .text{
+	font-size: 22px;
 	width: 100%;
 	float: left;
 	padding-top: 27px;
@@ -721,8 +727,8 @@ h6 { font-size: 16px; }
 .grax_tm_about .right .list ul li span{
 	font-family: "Poppins";
 	font-weight: 600;
+	font-size: 17px;
 	color: #000;
-	font-style: italic;
 }
 .grax_tm_about .right .list ul li .svg{
 	width: 15px;
@@ -1827,7 +1833,7 @@ body.modal{
     width: 1px;
 	bottom: 25px;
     right: -25px;
-    background-color: rgba(0,0,0,.08);
+    background-color: rgb(255, 0, 0);
     z-index: 10;
     transition: all .3s ease;
 }
@@ -1839,7 +1845,7 @@ body.modal{
 	position: absolute;
     width: 1px;
 	height: auto;
-    background-color: rgba(0,0,0,.4);
+    background-color: rgb(255, 208, 0);
 }
 
 .progressbar .text{
