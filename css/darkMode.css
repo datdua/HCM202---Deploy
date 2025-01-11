@@ -29,11 +29,23 @@ body.dark ::placeholder { /* Most modern browsers support this now. */
 body.dark h3{
 	color: #fff;
 }
+body.dark h4{
+	color: #fff;
+}
+body.dark .accordion_header{
+	background: #e54b4b;
+}
+body.dark .accordion_header .icon{
+	color: #fff;
+}
 body.dark .grax_tm_topbar .logo .dark{display: none;}
 body.dark .grax_tm_topbar .logo .light{display: block;}
 body.dark .grax_tm_topbar.animate{
 	background-color: #000;
 	box-shadow: 0px 0px 10px rgb(255 255 255 / 10%);
+}
+body.dark .grax_tm_timeline h3{
+	color: #e54b4b;
 }
 body.dark .grax_tm_topbar .menu ul li a{
 	color: #fff;
@@ -43,6 +55,12 @@ body.dark .grax_tm_about{
 }
 body.dark .grax_tm_about .right .list ul li span{
 	color: #fff;
+}
+body.dark .grax_tm_title_holder1 span{
+	color:#ffff00;
+}
+body.dark .grax_tm_title_holder2 h5{
+	color:#e54b4b;
 }
 body.dark .grax_tm_about .right .list ul li .svg{
 	color: #fff;

@@ -704,3 +704,23 @@ function grax_tm_totop(){
 		return false;
 	});
 }
+
+// -----------------------------------------------------
+// ---------------   AI ChatBot    --------------
+// -----------------------------------------------------
+
+document.querySelectorAll('.highlight-text').forEach(element => {
+	element.addEventListener('click', () => {
+	  // Get the clicked text
+	  const text = element.textContent;
+	  
+	  // Open the chatbot if it's not already open
+	  const chatbotRoot = document.getElementById('chatbot-root');
+	  if (chatbotRoot) {
+		const event = new CustomEvent('openChatWithQuery', { 
+		  detail: { query: `Tell me more about ${text}` }
+		});
+		chatbotRoot.dispatchEvent(event);
+	  }
+	});
+  });
