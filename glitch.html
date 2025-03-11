@@ -1,613 +1,2076 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<!--[if lt IE 7]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
 
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" type="image/png" href="img/favicon.svg" />
 
-<link rel="icon" type="image/png" href="img/favicon.png" />
+	<meta name="description" content="Name of your web site" />
+	<meta name="author" content="Marketify" />
 
-<meta name="description" content="Name of your web site">
-<meta name="author" content="Marketify">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>CQ2 - GROUP2</title>
 
-<title>Grax | Home</title>
+	<!-- Magnific Popup CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- Magnific Popup JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 
-<!-- STYLES -->
-<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+	<!-- STYLES -->
+	<link href="https://fonts.googleapis.com/css2?family=Xanh+Mono" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap"
+		rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="css/plugins.css" />
-<link rel="stylesheet" type="text/css" href="css/colors.css" />
-<link rel="stylesheet" type="text/css" href="css/darkMode.css" />
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<!--[if lt IE 9]> <script type="text/javascript" src="js/modernizr.custom.js"></script> <![endif]-->
-<!-- /STYLES -->
-
+	<link rel="stylesheet" type="text/css" href="css/plugins.css" />
+	<link rel="stylesheet" type="text/css" href="css/colors.css" />
+	<link rel="stylesheet" type="text/css" href="css/darkMode.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/popup.css" />
+	<!--[if lt IE 9]>
+      <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <![endif]-->
+	<!-- /STYLES -->
+	<!-- /STYLES -->
+	<!-- Meta tags for module imports -->
+	<meta name="importmap-type" content="importmap">
+	<script type="importmap">
+{
+"imports": {
+	"@google/generative-ai": "https://esm.run/@google/generative-ai"
+  }
+}
+</script>
 </head>
 
-<body> <!-- FOR DARK MODE: Add class "dark" Example: <body class="dark"> -->
-	
+<body>
+	<!-- FOR DARK MODE: Add class "dark" Example: <body class="dark"> -->
+
 	<!-- PRELOADER -->
 	<div id="preloader">
 		<div class="loader_line"></div>
 	</div>
 	<!-- /PRELOADER -->
-	
-<!-- WRAPPER ALL -->
-<div class="grax_tm_all_wrap" data-magic-cursor="" data-color="crimson">
 
-	<!-- MAGIC CURSOR VALUES: "", hide -->
-	<!-- COLOR VALUES: blue, green, brown, pink, orange, black, white, purple, sky, cadetBlue, crimson, olive, red -->
-	
-	<!-- SETTINGS -->
-	<div class="grax_tm_settings">
-		<div class="icon">
-			<img class="svg" src="img/svg/setting.svg" alt="" />
-			<a class="link" href="#"></a>
-		</div>
-		<div class="wrapper">
-			<ul class="direction">
-				<li><a class="active light" href="#"><img class="svg" src="img/svg/weather.svg" alt=" /"></a></li>
-				<li><a class="dark" href="#"><img class="svg" src="img/svg/islam.svg" alt=" /"></a></li>
-			</ul>
-			<span class="title">Unlimited Colors</span>
-			<ul class="colors">
-				<li><a class="blue" href="#"></a></li>
-				<li><a class="green" href="#"></a></li>
-				<li><a class="brown" href="#"></a></li>
-				<li><a class="pink" href="#"></a></li>
-				<li><a class="orange" href="#"></a></li>
-				<li class="bl"><a class="black" href="#"></a></li>
-				<li class="wh"><a class="white" href="#"></a></li>
-				<li><a class="purple" href="#"></a></li>
-				<li><a class="sky" href="#"></a></li>
-				<li><a class="cadetBlue" href="#"></a></li>
-				<li><a class="crimson" href="#"></a></li>
-				<li><a class="olive" href="#"></a></li>
-				<li><a class="red" href="#"></a></li>
-			</ul>
-			<span class="title">Magic Cursor</span>
-			<ul class="cursor">
-				<li><a class="showme show" href="#"></a></li>
-				<li><a class="hide" href="#"><img class="svg" src="img/svg/arrow.svg" alt="" /></a></li>
-			</ul>
-		</div>
-	</div>
-	<!-- /SETTINGS -->
-	
-	<!-- MODALBOX NEWS -->
-	<div class="grax_tm_modalbox_news">
-		<div class="box_inner">
-			<div class="close">
-				<a href="#"><img class="svg" src="img/svg/cancel.svg" alt="" /></a>
+	<!-- BACKGROUND MUSIC -->
+	<audio id="background-music" loop>
+		<source src="music/Như Có Bác Hồ Trong Ngày Vui Đại Thắng - Tốp Ca Nhạc Viện TP HCM - Việt Nam Hồ Chí Minh.mp3"
+			type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+
+	<script>
+		// Play the background music
+		window.addEventListener('load', function () {
+			var audio = document.getElementById('background-music');
+			audio.play();
+		});
+	</script>
+	<!-- /BACKGROUND MUSIC -->
+
+	<!-- WRAPPER ALL -->
+	<div class="grax_tm_all_wrap" data-magic-cursor="" data-color="crimson">
+		<!-- MAGIC CURSOR VALUES: "", hide -->
+		<!-- COLOR VALUES: blue, green, brown, pink, orange, black, white, purple, sky, cadetBlue, crimson, olive, red -->
+
+		<!-- SETTINGS -->
+		<div class="grax_tm_settings">
+			<div class="icon">
+				<img class="svg" src="img/svg/setting.svg" alt="" />
+				<a class="link" href="#"></a>
 			</div>
-			<div class="description_wrap scrollable">
+			<div class="wrapper">
+				<ul class="direction">
+					<li>
+						<a class="active light" href="#"><img class="svg" src="img/svg/weather.svg" alt=" /" /></a>
+					</li>
+					<li>
+						<a class="dark" href="#"><img class="svg" src="img/svg/islam.svg" alt=" /" /></a>
+					</li>
+				</ul>
+				<span class="title">Màu Sắc</span>
+				<ul class="colors">
+					<li><a class="blue" href="#"></a></li>
+					<li><a class="green" href="#"></a></li>
+					<li><a class="brown" href="#"></a></li>
+					<li><a class="pink" href="#"></a></li>
+					<li><a class="orange" href="#"></a></li>
+					<li class="bl"><a class="black" href="#"></a></li>
+					<li class="wh"><a class="white" href="#"></a></li>
+					<li><a class="purple" href="#"></a></li>
+					<li><a class="sky" href="#"></a></li>
+					<li><a class="cadetBlue" href="#"></a></li>
+					<li><a class="crimson" href="#"></a></li>
+					<li><a class="olive" href="#"></a></li>
+					<li><a class="red" href="#"></a></li>
+				</ul>
+				<span class="title">Con Trỏ</span>
+				<ul class="cursor">
+					<li><a class="showme show" href="#"></a></li>
+					<li>
+						<a class="hide" href="#"><img class="svg" src="img/svg/arrow.svg" alt="" /></a>
+					</li>
+				</ul>
 			</div>
 		</div>
-	</div>
-	<!-- /MODALBOX NEWS -->
-	
-	<!-- TOPBAR -->
-	<div class="grax_tm_topbar">
-		<div class="container">
-			<div class="topbar_inner">
-				<div class="logo">
-					<a class="dark" href="#"><img src="img/logo/dark.png" alt="" /></a> 
-					<a class="light" href="#"><img src="img/logo/logo.png" alt="" /></a>  
+		<!-- /SETTINGS -->
+
+		<!-- MODALBOX NEWS -->
+		<div class="grax_tm_modalbox_news">
+			<div class="box_inner">
+				<div class="close">
+					<a href="#"><img class="svg" src="img/svg/cancel.svg" alt="" /></a>
 				</div>
-				<div class="menu">
-					<ul class="anchor_nav">
-						<li class="current"><a href="#home">Home</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#portfolio">Portfolio</a></li>
-						<li><a href="#news">News</a></li>
-						<li><a href="#contact">Contact</a></li>
-					</ul>
-				</div>
+				<div class="description_wrap scrollable"></div>
 			</div>
 		</div>
-	</div>
-	<!-- /TOPBAR -->
-	
-	<!-- MOBILE MENU -->
-	<div class="grax_tm_mobile_menu">
-		<div class="topbar_inner">
-			<div class="container bigger">
-				<div class="topbar_in">
+		<!-- /MODALBOX NEWS -->
+
+		<!-- TOPBAR -->
+		<div class="grax_tm_topbar">
+			<div class="container">
+				<div class="topbar_inner">
 					<div class="logo">
-						<a href="#"><img src="img/logo/dark.png" alt="" /></a>
+						<a class="dark" href="#"><img src="img/logo/logo.png" alt="Logo tối" /></a>
+						<a class="light" href="#"><img src="img/logo/logo.png" alt="Logo sáng" /></a>
 					</div>
-					<div class="my_trigger">
-						<div class="hamburger hamburger--collapse-r">
-							<div class="hamburger-box">
-								<div class="hamburger-inner"></div>
+					<div class="menu">
+						<ul class="anchor_nav">
+							<li class="current"><a href="#home">Trang Chủ</a></li>
+							<li><a href="#about">Giới Thiệu</a></li>
+							<li><a href="#news">Cơ Sở</a></li>
+							<li><a href="#formation">Quá Trình</a></li>
+							<li><a href="#legacy">Giá Trị</a></li>
+							<li><a href="#document">Tư Liệu</a></li>
+							<li><a href="#cq">CQ</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /TOPBAR -->
+
+		<!-- MOBILE MENU -->
+		<div class="grax_tm_mobile_menu">
+			<div class="topbar_inner">
+				<div class="container bigger">
+					<div class="topbar_in">
+						<div class="logo">
+							<a href="#"><img src="img/logo/dark.png" alt="" /></a>
+						</div>
+						<div class="my_trigger">
+							<div class="hamburger hamburger--collapse-r">
+								<div class="hamburger-box">
+									<div class="hamburger-inner"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="dropdown">
+				<div class="container">
+					<div class="dropdown_inner">
+						<ul class="anchor_nav">
+							<li><a href="#about">Giới Thiệu</a></li>
+							<li><a href="#news">Cơ Sở</a></li>
+							<li><a href="#formation">Quá Trình</a></li>
+							<li><a href="#legacy">Giá Trị</a></li>
+							<li><a href="#document">Tư Liệu</a></li>
+							<li><a href="#cq">CQ</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /MOBILE MENU -->
+
+		<!-- HERO -->
+		<div class="grax_tm_hero" id="home">
+			<div class="bg">
+				<a id="video" class="youtube-bg"
+					data-property="{videoURL:'https://www.youtube.com/watch?v=rG3aZznMIm8',containment:'#home', showControls:false, autoPlay:true, loop:true, mute:true, startAt:0, opacity:1, quality:'default'}"></a>
+				<div class="overlay"></div>
+			</div>
+			<div class="content">
+				<div class="container">
+					<div class="details" data-animation="toTop">
+						<!-- Animation Values: toTop, toRight, scale, rotate -->
+						<span class="fn_animation job">TƯ TƯỞNG</span>
+						<h3 class="fn_animation"
+							style="font-family: Arial, Helvetica, sans-serif; color: white; font-weight: 500; font-size: 72px;">
+							HỒ CHÍ MINH</h3>
+					</div>
+					<div class="grax_tm_down" data-skin="light">
+						<div class="line_wrapper">
+							<div class="line"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /HERO -->
+		<div style="width:100%;display:flex;flex-direction:column;gap:8px;min-height:635px;">
+			<iframe src="https://quizizz.com/join?gc=500173" style="flex:1;" frameBorder="0" allowfullscreen></iframe>
+		</div>
+		<!-- ABOUT -->
+		<div class="grax_tm_section" id="about">
+			<div class="grax_tm_about">
+				<div class="container">
+					<div class="about_inner">
+						<div class="left wow fadeInLeft" data-wow-duration="1.5s">
+							<div class="image parallax" data-relative-input="true">
+								<img src="img/placeholders/3-4.jpg" alt="" />
+								<div class="main layer"
+									data-img-url="https://tinhdoan.tayninh.gov.vn/wp-content/uploads/2020/11/119883456_721752095074929_901996236616693581_n.jpg"
+									data-depth="0.04"></div>
+							</div>
+						</div>
+						<div class="right wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
+							<div class="grax_tm_title_holder">
+								<h3>Tư Tưởng <span>Hồ CHí Minh</span></h3>
+							</div>
+							<div class="text">
+								<p>
+									Là một hệ thống quan điểm toàn diện và sâu sắc về những vấn đề cơ bản của <span
+										class="highlight-text" data-keyword="Cách Mạng Việt Nam">Cách Mạng Việt
+										Nam</span>, kết quả của sự vận dụng và phát triển sáng tạo <span
+										class="highlight-text" data-keyword="Chủ nghĩa Mác - Lênin"> chủ nghĩa Mác -
+										Lênin</span> vào điều kiện cụ thể của nước ta, kế thừa và phát triển các giá trị
+									truyền thống tốt đẹp của dân tộc, là tài sản tinh thần vô cùng to lớn và quý giá của
+									Đảng và dân tộc ta, mãi mãi soi đường cho sự nghiệp cách mạng của nhân dân ta giành
+									thắng lợi.
+								</p>
+								<!-- <span class="highlight-text" data-keyword="Độc lập dân tộc">Độc lập dân tộc</span>
+								<span class="highlight-text" data-keyword="tự do dân tộc">Tự do dân tộc</span>
+								<span class="highlight-text" data-keyword="tư tưởng Hồ Chí Minh gồm những nội dung nào">Tư tưởng Hồ Chí Minh</span> -->
+							</div>
+							<!-- <div class="list">
+								<ul>
+									<li>
+										<div class="list_inner">
+											<img class="svg" src="img/svg/checked.svg" alt="" />
+											<span>Phát Triển Web</span>
+										</div>
+									</li>
+									<li>
+										<div class="list_inner">
+											<img class="svg" src="img/svg/checked.svg" alt="" />
+											<span>Tối Ưu Hóa Công Cụ Tìm Kiếm</span>
+										</div>
+									</li>
+									<li>
+										<div class="list_inner">
+											<img class="svg" src="img/svg/checked.svg" alt="" />
+											<span>Tiếp Thị Truyền Thông Xã Hội</span>
+										</div>
+									</li>
+									<li>
+										<div class="list_inner">
+											<img class="svg" src="img/svg/checked.svg" alt="" />
+											<span>Tạo Nội Dung</span>
+										</div>
+									</li>
+								</ul>
+							</div> -->
+							<div class="grax_tm_button">
+								<a href="https://moet.gov.vn/content/vanban/Lists/VBDH/Attachments/2729/GT%20h%E1%BB%8Dc%20ph%E1%BA%A7n%20T%C6%B0%20t%C6%B0%E1%BB%9Fng%20HCM%20(K)%20Tr%20%C4%91%E1%BA%A7u-Tr68.pdf"
+									target="_blank">Giáo Trình Đầy Đủ</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="dropdown">
-			<div class="container">
-				<div class="dropdown_inner">
-					<ul class="anchor_nav">
-						<li><a href="#home">Home</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#portfolio">Portfolio</a></li>
-						<li><a href="#news">News</a></li>
-						<li><a href="#contact">Contact</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /MOBILE MENU -->
-	
-	<!-- HERO -->
-	<div class="grax_tm_hero" id="home">
-		<div class="bg">
-			<div class="glitch_wrap">
-				<div class="glitch"></div>
-			</div>
-			<div class="overlay"></div>
-		</div>
-		<div class="content">
-			<div class="container">
-				<div class="details" data-animation="rotate"> <!-- Animation Values: toTop, toRight, scale, rotate -->
-					<h3 class="fn_animation name">Alan Walker</h3>
-					<span class="fn_animation job">Web &amp; Mobile App Developer</span>
-				</div>
-				<div class="grax_tm_down" data-skin="light">
-					<div class="line_wrapper">
-						<div class="line"></div>
+		<!-- /ABOUT -->
+
+		<!-- NEWS -->
+		<div class="grax_tm_section" id="news">
+			<div class="grax_tm_news">
+				<div class="container">
+					<div class="grax_tm_title_holder">
+						<h3>Cơ Sở <span>Hình Thành</span></h3>
+					</div>
+					<div class="news_list">
+						<div class="grax_tm_title_holder1">
+							<h4 style="margin-bottom: 10px;">Cơ Sở <span>Khách Quan</span></h4>
+						</div>
+						<ul>
+							<li class="wow fadeInLeft" data-wow-duration="1.5s">
+								<div class="list_inner">
+									<div class="image">
+										<img src="img/placeholders/4-3.jpg" alt="" />
+										<div class="main" data-img-url="img/news/1.jpg"></div>
+										<a class="grax_tm_full_link" href="#"></a>
+									</div>
+									<div class="details">
+										<h3 class="title">
+											<a href="#">Bối Cảnh Lịch Sử Hình Thành Tư Tưởng Hồ Chí Minh</a>
+										</h3>
+										<!-- <p class="date">
+							Bởi <a href="#">Nguyễn Văn A</a>
+							<span>01 Tháng 1, 2022</span>
+						</p> -->
+									</div>
+									<div style="font-size: 20px;" class="description">
+										<p>
+											Bác sinh ngày 19/05/1890, trong lúc đất nước gặp nhiều biến động.
+											<span class="highlight-text" data-keyword="Triều đình Nguyễn">Triều đình
+												Nguyễn</span> dần đầu hàng Pháp và thừa nhận <span
+												class="highlight-text" data-keyword="Nền bảo hộ của Pháp">nền bảo
+												hộ</span> của chúng trên
+											toàn đất nước.
+										</p>
+										<blockquote>
+											Cuối TK XIX, các cuộc khởi nghĩa dưới khẩu hiệu <span class="highlight-text"
+												data-keyword="Khẩu hiệu Cần Vương">“Cần Vương”</span> dần thất bại =>
+											Hệ tư tưởng phong kiến lỗi thời trước các nhiệm vụ lịch sử.
+										</blockquote>
+										<blockquote>
+											Đầu TK XX các tầng lớp công nhân, tiểu tư sản và tư sản xuất hiện tạo tiền
+											đề bên trong cho phong trào yêu nước, giải phóng dân tộc. </blockquote>
+										<p>
+											Các trào lưu cải cách ở Nhật Bản, Trung Quốc tràn vào Việt Nam, phong trào
+											yêu nước cũng chuyển sang xu hướng dân chủ <span class="highlight-text"
+												data-keyword="Xu hướng dân chủ tư sản">tư sản</span>.
+										</p>
+										<p>
+											Các nhà yêu nước có tư tưởng tiến bộ tiêu biểu như: Phan Bội Châu, Phan Châu
+											Trinh, Hoàng Hoa Thám đã cố gắng vận động và tổ chức các cuộc đấu tranh yêu
+											nước theo mục tiêu, phương pháp mới nhưng còn nhiều lỗ hổng nên dần thất
+											bại.
+										</p>
+										<blockquote>Phong trào cứu nước của nhân dân ta muốn giành được thắng lợi phải
+											đi theo một con đường mới.</blockquote>
+										<div style="margin-top: 20px;" class="share">
+											<span>Chia sẻ:</span>
+											<ul class="social">
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/facebook.svg"
+															alt="" /></a>
+												</li>
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/twitter.svg"
+															alt="" /></a>
+												</li>
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/behance.svg"
+															alt="" /></a>
+												</li>
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/dribbble.svg"
+															alt="" /></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
+								<div class="list_inner">
+									<div class="image">
+										<img src="img/placeholders/4-3.jpg" alt="" />
+										<div class="main" data-img-url="img/news/2.jpg"></div>
+										<a class="grax_tm_full_link" href="#"></a>
+									</div>
+									<div class="details">
+										<h3 class="title">
+											<a href="#">Bối Cảnh Thời Đại Hình Thành Tư Tưởng Hồ Chí Minh</a>
+										</h3>
+										<!-- </div>
+						<p class="date">
+							Bởi <a href="#">Trần Thị B</a>
+							<span>22 Tháng 12, 2021</span>
+						</p>
+						</div> -->
+										<div style="font-size: 20px;" class="description">
+											<p>
+												Ở Việt Nam, việc cứu nước chìm trong bóng tối: “không có đường ra”.
+												Ngoài thế giới, chủ nghĩa tư bản chuyển sang giai đoạn độc quyền và xác
+												lập <span class="highlight-text"
+													data-keyword="Quyền thống trị của chủ nghĩa tư bản">quyền thống
+													trị</span> trên toàn thế giới. Chủ nghĩa đế quốc nổi lên và trở
+												thành kẻ thù chung của các <span class="highlight-text"
+													data-keyword="Dân tộc thuộc địa">dân tộc thuộc địa</span>.
+											</p>
+											<blockquote>
+												Các cuộc đấu tranh của công nhân các nước TBCN đầu XIX - cuối XX với
+												thành công rực rỡ của <span class="highlight-text"
+													data-keyword="Cách mạng tháng Mười Nga năm 1917"> “Cách mạng tháng
+													Mười Nga năm 1917”</span>, lật đổ nhà
+												nước Tư sản và thiết lập <span class="highlight-text"
+													data-keyword="Chính quyền Xô Viết">Chính quyền Xô Viết</span> ⇒ Thức
+												tỉnh các dân tộc
+												châu Á, mở ra thời đại giải phóng dân tộc.
+											</blockquote>
+											<blockquote>
+												Với thắng lợi này, Liên bang Cộng hòa xã hội chủ nghĩa Xô Viết ra đời
+												(1922) và tiếp đó là sự ra đời của <span class="highlight-text"
+													data-keyword="Quốc tế Cộng Sản (3-1919)">Quốc tế Cộng sản
+													(3-1919)</span> ⇒ Phong
+												trào công nhân trong các nước tư sản chủ nghĩa phương Tây và phong trào
+												giải phóng dân tộc ở các nước thuộc địa phương Đông càng có quan hệ mật
+												thiết với nhau hơn trong việc chống kẻ thù chung là <span
+													class="highlight-text" data-keyword="Chủ nghĩa đế quốc"> chủ nghĩa
+													đế quốc</span>.
+											</blockquote>
+											<div style="margin-top: 20px;" class="share">
+												<span>Chia sẻ:</span>
+												<ul class="social">
+													<li>
+														<a href="#"><img class="svg" src="img/svg/social/facebook.svg"
+																alt="" /></a>
+													</li>
+													<li>
+														<a href="#"><img class="svg" src="img/svg/social/twitter.svg"
+																alt="" /></a>
+													</li>
+													<li>
+														<a href="#"><img class="svg" src="img/svg/social/behance.svg"
+																alt="" /></a>
+													</li>
+													<li>
+														<a href="#"><img class="svg" src="img/svg/social/dribbble.svg"
+																alt="" /></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+							</li>
+							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".4s">
+								<div class="list_inner">
+									<div class="image">
+										<img src="img/placeholders/4-3.jpg" alt="" />
+										<div class="main" data-img-url="img/news/3.jpg"></div>
+										<a class="grax_tm_full_link" href="#"></a>
+									</div>
+									<div class="details">
+										<h3 class="title">
+											<a href="#">Những Tiền Đề, Tư Tưởng - Lý Luận</a>
+										</h3>
+										<!-- <p class="date">
+							Bởi <a href="#">Lê Văn C</a>
+							<span>05 Tháng 12, 2021</span>
+						</p> -->
+									</div>
+									<div style="font-size: 20px;" class="description">
+										<p style="font-weight: bold; font-size: 25px;">
+											Giá trị truyền thống tốt đẹp của của dân tộc Việt Nam
+										</p>
+										<blockquote>
+											Lịch sử dựng nước và giữ nước lâu đời đã hình thành nên truyền thống yêu
+											nước, kiên cường, bất khuất , là tinh thần tương thân tương ái, ý thức cố
+											kết cộng đồng,... hình thành nên tư tưởng Hồ Chí Minh.
+										</blockquote>
+										<blockquote>
+											Chủ nghĩa yêu nước là truyền thống, tư tưởng, tình cảm thiêng liêng cao quý
+											nhất, là cội nguồn của trí tuệ và lòng dũng cảm của người Việt, là chuẩn mực
+											đạo đức cơ bản của dân tộc Việt Nam. ⇒ Ý chí này thúc giục Bác Nguyễn Tất
+											Thành quyết chí ra đi tìm đường cứu nước
+										</blockquote>
+										<p style="font-weight: bold; font-size: 25px; margin-top: 40px;">
+											Tinh hoa văn hóa nhân loại
+										</p>
+										<blockquote>
+											Lịch sử dựng nước và giữ nước lâu đời đã hình thành nên truyền thống yêu
+											nước, kiên cường, bất khuất , là tinh thần tương thân tương ái, ý thức cố
+											kết cộng đồng,... hình thành nên tư tưởng Hồ Chí Minh.
+										</blockquote>
+										<blockquote>
+											Phương Đông: Bác chọn lọc các tư tưởng, học thuyết triết học cũng như các
+											mặt tích cực của Nho giáo từ những người đi trước và kể cả tôn giáo như Phật
+											giáo nếu có những điều thích hợp với điều kiện của nước ta.
+										</blockquote>
+										<blockquote>
+											Phương Tây: Bác sớm tiếp thu các tư tưởng ở Pháp, Mỹ. Người trực tiếp đọc và
+											tiếp thu các tư tưởng về tự do, bình đẳng, bác ái qua nhiều tác phẩm. Đồng
+											thời người còn tiếp thu từ các bản Tuyên ngôn nhân quyền và dân quyền của
+											Pháp, Tuyên ngôn độc lập 1776 của Mỹ.
+										</blockquote>
+										<p>⇒ Cho ta thấy Người tự biết làm giàu tri thức, trí tuệ của bản thân, vừa tiếp
+											thu, chọn lọc đề từ đó suy nghĩ lựa chọn, kế thừa, đổi mới, vận dụng và phát
+											triển. </p>
+										<p style="font-weight: bold; font-size: 25px; margin-top: 40px;">
+											Chủ nghĩa Mác - Lênin
+										</p>
+										<blockquote>
+											Là cơ sở thế giới quan và phương pháp luận của tư tưởng Hồ Chí Minh, bác
+											đã tiếp thu chủ nghĩa Mác - Lênin trên nền tảng chắt lọc, hấp thụ và một vốn
+											chính trị, hiểu biết phong phú được tích lũy qua thực tiễn hoạt động đấu
+											tranh vì mục tiêu cứu nước và giải phóng dân tộc, cùng với đó là một bản
+											lĩnh trí tuệ khi vận dụng vào Việt Nam.
+										</blockquote>
+										<p>⇒ Qua đó Bác hiểu được rằng chỉ có CNXH, CNCS mới giải phóng được các dân tộc
+											bị áp bức.</p>
+										<div style="margin-top: 20px;" class="share">
+											<span>Chia sẻ:</span>
+											<ul class="social">
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/facebook.svg"
+															alt="" /></a>
+												</li>
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/twitter.svg"
+															alt="" /></a>
+												</li>
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/behance.svg"
+															alt="" /></a>
+												</li>
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/dribbble.svg"
+															alt="" /></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div style="padding-top: 0px;" class="news_list">
+						<div class="grax_tm_title_holder1">
+							<h4 style="margin-bottom: 10px;">Nhân Tố <span>Chủ Quan</span></h4>
+						</div>
+						<ul>
+							<li class="wow fadeInLeft" data-wow-duration="1.5s">
+								<div class="list_inner">
+									<div class="image">
+										<img src="img/placeholders/4-3.jpg" alt="" />
+										<div class="main" data-img-url="img/news/5.jpg"></div>
+										<a class="grax_tm_full_link" href="#"></a>
+									</div>
+									<div class="details">
+										<h3 class="title">
+											<a href="#">Khả Năng Tư Duy Và Trí Tuệ Của Chủ Tịch Hồ Chí Minh </a>
+										</h3>
+										<!-- <p class="date">
+							Bởi <a href="#">Nguyễn Văn A</a>
+							<span>01 Tháng 1, 2022</span>
+						</p> -->
+									</div>
+									<div style="font-size: 20px;" class="description">
+										<blockquote>
+											Bác đã không ngừng quan sát, nhận xét thực tiễn, làm phồng thêm sự hiểu biết
+											để tạo nên những thành công trong các hoạt động của Người.
+										</blockquote>
+										<blockquote>
+											Các nhà yêu nước tiền bối cùng thời với Bác tuy họ có quan sát nhưng họ chưa
+											thấy được, nhận thức đúng được về sự thay đổi của dân tộc và thời đại. Trong
+											khi đó Bác đã khám phá ra các quy luật vận động xã hội, đời sống văn hóa và
+											khái quát chúng thành lý luận, rồi Bác đã đem những lý luận này chỉ đạo
+											<span class="highlight-text"
+												data-keyword="Các hoạt động thực tiễn được chỉ đạo bởi Bác Hồ">hoạt
+												động thực tiễn</span>.
+										</blockquote>
+										<p>
+											⇒ Lý luận của Bác mang giá trị khách quan, cách mạng và khoa học.
+										</p>
+										<div style="margin-top: 20px;" class="share">
+											<span>Chia sẻ:</span>
+											<ul class="social">
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/facebook.svg"
+															alt="" /></a>
+												</li>
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/twitter.svg"
+															alt="" /></a>
+												</li>
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/behance.svg"
+															alt="" /></a>
+												</li>
+												<li>
+													<a href="#"><img class="svg" src="img/svg/social/dribbble.svg"
+															alt="" /></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
+								<div class="list_inner">
+									<div class="image">
+										<img src="img/placeholders/4-3.jpg" alt="" />
+										<div class="main" data-img-url="img/news/6.jpg"></div>
+										<a class="grax_tm_full_link" href="#"></a>
+									</div>
+									<div class="details">
+										<h3 class="title">
+											<a href="#">Phẩm Chất Đạo Đức Và Năng Lực Hoạt Động Thực Tiễn</a>
+										</h3>
+										<!-- </div>
+						<p class="date">
+							Bởi <a href="#">Trần Thị B</a>
+							<span>22 Tháng 12, 2021</span>
+						</p>
+						</div> -->
+										<div style="font-size: 20px;" class="description">
+											<blockquote>
+												Phẩm chất, tài năng được thể hiện hết ở tư duy độc lập, tự chủ, sáng
+												tạo, cộng với đầu óc phê phán tinh gtường, sáng suốt trong việc nhận
+												xét, đánh giá các sự vật, sự vật chung quanh. Và chúng cũng được Bác
+												biểu hiện ở bản lĩnh kiên định, luôn tin vào nhân dân, khiêm tốn, bình
+												dị, ham học hỏi, nhạy bén với cái mới, có phương pháp biện chứng, có đầu
+												óc thực tiễn.
+											</blockquote>
+											<blockquote>
+												Đồng thời phẩm chất này còn biểu hiện qua sự khổ công học tập để chiếm
+												lĩnh đỉnh cao tri thức nhân loại, là 1 nhà yêu nước chân chính, <span
+													class="highlight-text"
+													data-keyword="Hình ảnh người chiến sĩ cộng sản">1 chiến
+													sĩ cộng sản nhiệt thành</span>, một trái tim yêu nước thương dân,
+												sẵn sàng hi
+												sinh vì độc lập tự do của Tổ quốc.
+											</blockquote>
+											<p>⇒ Tư tưởng Hồ Chí Minh đã trở thành tư tưởng Việt Nam hiện đại.</p>
+											<div style="margin-top: 20px;" class="share">
+												<span>Chia sẻ:</span>
+												<ul class="social">
+													<li>
+														<a href="#"><img class="svg" src="img/svg/social/facebook.svg"
+																alt="" /></a>
+													</li>
+													<li>
+														<a href="#"><img class="svg" src="img/svg/social/twitter.svg"
+																alt="" /></a>
+													</li>
+													<li>
+														<a href="#"><img class="svg" src="img/svg/social/behance.svg"
+																alt="" /></a>
+													</li>
+													<li>
+														<a href="#"><img class="svg" src="img/svg/social/dribbble.svg"
+																alt="" /></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+							</li>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- /HERO -->
-	
-	<!-- ABOUT -->
-	<div class="grax_tm_section" id="about">
-		<div class="grax_tm_about">
+		<!-- /NEWS -->
+
+		<!-- TIMELINE -->
+		<div class="grax_tm_section" id="formation">
+			<div class="timeline-section">
+				<div class="container">
+					<div class="grax_tm_title_holder">
+						<h3>Quá Trình <span>Hình Thành</span></h3>
+					</div>
+					<div class="grax_tm_timeline">
+						<div class="timeline-container">
+
+							<!-- Timeline Block 1 -->
+							<div class="timeline-block wow fadeInLeft" data-wow-duration="1.5s" data-popup="popup"
+								onclick="openPopup(this)">
+								<div class="timeline-dot"></div>
+								<div class="timeline-content">
+									<h3>Giai đoạn trước 1911</h3>
+									<span class="timeline-date">1890-1911</span>
+									<p>
+										Hình thành tư tưởng yêu nước và chí hướng cứu nước.
+									</p>
+								</div>
+							</div>
+
+							<!-- Timeline Block 2 -->
+							<div class="timeline-block wow fadeInLeft" data-wow-duration="1.5s" data-popup="popup-2"
+								onclick="openPopup(this)">
+								<div class="timeline-dot"></div>
+								<div class="timeline-content">
+									<h3>Giai Đoạn Đầu (1911-1920)</h3>
+									<span class="timeline-date">1911-1920</span>
+									<p>Tìm thấy con đường cứu nước, giải phóng dân tộc.</p>
+								</div>
+							</div>
+
+							<div class="timeline-block wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.2s"
+								data-popup="popup-3" onclick="openPopup(this)">
+								<div class="timeline-dot"></div>
+								<div class="timeline-content">
+									<h3>Giai Đoạn Hình Thành (1921-1930)</h3>
+									<span class="timeline-date">1921-1930</span>
+									<p>Hình thành cơ bản tư tưởng về cách mạng Việt Nam.</p>
+								</div>
+							</div>
+
+							<div class="timeline-block wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.4s"
+								data-popup="popup-4" onclick="openPopup(this)">
+								<div class="timeline-dot"></div>
+								<div class="timeline-content">
+									<h3>Giai Đoạn Hoàn Thiện (1930-1945)</h3>
+									<span class="timeline-date">1930-1945</span>
+									<p>Vượt qua thử thách, kiên trì giữ vững lập trường cách mạng.</p>
+								</div>
+							</div>
+
+							<div class="timeline-block wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.6s"
+								data-popup="popup-5" onclick="openPopup(this)">
+								<div class="timeline-dot"></div>
+								<div class="timeline-content">
+									<h3>Giai Đoạn Phát Triển (1945-1969)</h3>
+									<span class="timeline-date">1945-1969</span>
+									<p>Tư tưởng HCM tiếp tục phát triển, hoàn thiện.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Popup Modal 1 -->
+		<div id="popup" class="popup">
+			<div class="popup-content">
+				<span class="close-btn" onclick="closePopup()">&times;</span>
+				<h2 class="popup-title">Giai đoạn trước 1911: Hình thành tư tưởng yêu nước</h2>
+				<div class="popup-description">
+					<p>Chủ tịch Hồ Chí Minh sinh ngày 19-5-1890 trong một gia đình nhà nho yêu nước tại Nghệ An. Người
+						được thừa hưởng và hun đúc những phẩm chất cao đẹp từ truyền thống gia đình, đồng thời tiếp thu
+						được những tư tưởng tiến bộ của thời đại.</p>
+
+					<h3>Những yếu tố ảnh hưởng đến tư tưởng của Người:</h3>
+					<ul>
+						<img src="https://lh5.googleusercontent.com/proxy/nDovq9K07EkNf3Ct6GijIoyYMwQej-3sXWoktIBX7BveToH1-n8Warw1bM4JKY0_yA-luwrx3IIIsAa0U4DlSWzTFI3Y8dCsA2wYsRp9K6nzuORzVuGU8UQ4mg"
+							alt="Hồ Chí Minh 1945" style="width: 100%; margin-bottom: 20px;">
+						<li><strong>Gia đình:</strong> Được tiếp thu tư tưởng, lối sống, đức tính cao quý từ cha mẹ và
+							anh em trong gia đình nhà nho yêu nước</li>
+						<li><strong>Quê hương:</strong> Nghệ Tĩnh - vùng đất với bề dày lịch sử đấu tranh chống giặc
+							ngoại xâm và những tấm gương hào kiệt anh hùng</li>
+						<li><strong>Hoàn cảnh xã hội:</strong> Chứng kiến trực tiếp cảnh đồng bào bị thực dân áp bức và
+							sự yếu kém của bộ máy nhà nước phong kiến</li>
+						<li><strong>Bài học lịch sử:</strong> Nhận thức sâu sắc về những hạn chế và nguyên nhân thất bại
+							của các phong trào yêu nước đương thời</li>
+					</ul>
+
+					<h3>Quyết định mang tính bước ngoặt:</h3>
+					<p>Từ những trải nghiệm và quan sát thực tế, Người đã đi đến quyết định quan trọng:</p>
+					<ul>
+						<img src="https://cdn-images.vtv.vn/zoom/640_400/2017/11-1496627183837.jpg"
+							alt="Hồ Chí Minh 1945" style="width: 100%; margin-bottom: 20px;">
+						<li>Rời Tổ quốc để tìm hiểu thực chất về những khẩu hiệu Tự do, Bình đẳng, Bác ái mà thực dân
+							Pháp rêu rao</li>
+						<li>Tự mình khám phá và tìm ra con đường cách mạng mới cho dân tộc Việt Nam</li>
+						<li>Mang theo hoài bão sẽ trở về giúp đồng bào khi đã tìm được phương hướng đúng đắn để giải
+							phóng dân tộc</li>
+					</ul>
+
+					<p class="conclusion" style="font-size: 20px;">Giai đoạn này đã đặt nền móng quan trọng cho tư tưởng
+						cách mạng và con đường hoạt động sau này của Chủ tịch Hồ Chí Minh, thể hiện tinh thần yêu nước
+						sâu sắc và quyết tâm tìm ra con đường cứu nước đúng đắn của Người.</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Popup Modal 2 -->
+		<div id="popup-2" class="popup">
+			<div class="popup-content">
+				<span class="close-btn" onclick="closePopup()">&times;</span>
+				<h2 class="popup-title">Thời kỳ 1911 - 1920: Tìm thấy con đường cứu nước, giải phóng dân tộc</h2>
+				<div class="popup-description">
+					<div class="section">
+						<h3>Khởi đầu hành trình</h3>
+						<p>Năm 1911, với ý thức dân tộc sâu sắc và hoài bão cháy bỏng về việc tìm ra con đường cứu nước,
+							giải phóng dân tộc, Nguyễn Tất Thành (sau này là Hồ Chí Minh) đã quyết định rời <span
+								class="highlight-text" data-keyword="Vai trò của Bến cảng Nhà Rồng">bến cảng Nhà
+								Rồng</span> , bắt đầu hành trình sang phương Tây. Từ đây, Người không ngừng học hỏi, tìm
+							tòi và mày
+							mò để tìm ra giải pháp cho dân tộc mình.</p>
+					</div>
+
+					<div class="section">
+						<h3>Những trải nghiệm và nhận thức mới</h3>
+						<p>Trong những năm tháng bôn ba nơi xứ người, Bác đã chứng kiến không ít cảnh người lao động bị
+							bóc lột, áp bức. Người nhận ra rằng, ở bất cứ đâu, nhân dân lao động đều có chung khát vọng
+							thoát khỏi ách thống trị, giành lại tự do và nhân phẩm.</p>
+
+						<p>Những bài học từ các lý tưởng nhân văn như <em>"bốn bể đều là anh em"</em> và <em>"năm châu
+								họp làm một nhà"</em> đã thấm nhuần trong suy nghĩ của Người. Cùng với nỗi xót xa trước
+							cảnh vong nô của các dân tộc bị áp bức, Bác đã hình thành ý thức sâu sắc về sự cần thiết của
+							đoàn kết quốc tế – đoàn kết những người lao động và các dân tộc bị áp bức trên thế giới để
+							đấu tranh vì quyền lợi chung.</p>
+					</div>
+
+					<div class="section">
+						<h3>Quá trình học hỏi và hoạt động</h3>
+						<p>Mặc dù phải đối mặt với muôn vàn khó khăn và thử thách, Bác luôn kiên trì, chịu đựng và không
+							ngừng học hỏi. Người dành thời gian nghiên cứu tình hình các nước, suy ngẫm về những gì đã
+							thấy, đã nghe, và tích cực tham gia các diễn thuyết của những nhà tư tưởng lớn.</p>
+
+						<div class="highlight-box">
+							<p>Đặc biệt, năm 1919, Người đã gửi <strong><span class="highlight-text"
+										data-keyword="Bản Yêu Sách của nhân dân An Nam">"Bản Yêu Sách của nhân dân An
+										Nam"</span></strong> tới
+								<span class="highlight-text" data-keyword="Hội nghị Versailles">Hội nghị
+									Versailles</span>, nhằm tố cáo tội ác của thực dân Pháp, đồng thời kêu gọi sự chú ý
+								của nhân dân thế giới và chính quyền Pháp đối với tình hình Việt Nam và Đông Dương lúc
+								bấy giờ.
+							</p>
+						</div>
+					</div>
+
+					<div class="section">
+						<h3>Bước ngoặt tư tưởng</h3>
+						<p>Bước ngoặt quan trọng trong tư tưởng của Bác diễn ra khi Người đọc được <strong><span
+									class="highlight-text" data-keyword="Luận cương
+							về vấn đề dân tộc và thuộc địa">"Luận cương về vấn đề dân tộc và thuộc địa"</span></strong> của Lênin. Ánh sáng
+							từ chủ nghĩa Lênin đã chỉ
+							ra con đường cứu nước – con đường giành độc lập cho dân tộc và tự do cho đồng bào. Đây chính
+							là câu trả lời mà Bác đã tìm kiếm bấy lâu nay.</p>
+					</div>
+
+					<div class="milestone-section">
+						<h3 style="color: #e54b4b;">Dấu mốc lịch sử</h3>
+						<p>Tháng 12 năm 1920, Nguyễn Ái Quốc biểu quyết tán thành việc gia nhập <span
+								class="highlight-text" data-keyword="Đệ Tam Quốc Tế">Đệ Tam Quốc tế (Quốc tế
+								Cộng sản)</span> và trở thành một trong những người sáng lập <span
+								class="highlight-text" data-keyword="Đảng Cộng sản Pháp">Đảng Cộng sản Pháp</span>.</p>
+						<div class="image-container">
+							<img src="https://file3.qdnd.vn/data/images/0/2021/05/29/phucthang/06-hcm01.jpg?w=400"
+								alt="Hồ Chí Minh 1945" class="centered-image">
+						</div>
+					</div>
+
+					<p class="conclusion" style="font-size: 20px;">
+						Sự kiện này không chỉ đánh dấu bước chuyển biến mang tính bước ngoặt trong tư tưởng của Nguyễn
+						Ái Quốc – từ chủ nghĩa yêu nước sang chủ nghĩa Mác-Lênin, từ giác ngộ dân tộc sang giác ngộ giai
+						cấp – mà còn khẳng định sự chuyển đổi của Người từ một người yêu nước thành một chiến sĩ cộng
+						sản kiên trung.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Popup Modal 3 -->
+		<div id="popup-3" class="popup">
+			<div class="popup-content">
+				<span class="close-btn" onclick="closePopup()">&times;</span>
+				<h2 class="popup-title">Thời kỳ 1921 - 1930: Hình thành cơ bản tư tưởng về cách mạng Việt Nam</h2>
+				<div class="popup-description">
+					<div class="timeline-section1">
+						<h3>Hành trình hoạt động</h3>
+						<div class="timeline">
+							<div class="timeline-item">
+								<span class="year">1921-1923:</span> Hoạt động tại Pháp
+							</div>
+							<div class="timeline-item">
+								<span class="year">1923-1924:</span> Hoạt động tại Liên Xô
+							</div>
+							<div class="timeline-item">
+								<span class="year">1924-1927:</span> Hoạt động tại Trung Quốc
+							</div>
+							<div class="timeline-item">
+								<span class="year">1928-1929:</span> Hoạt động tại Thái Lan
+							</div>
+						</div>
+					</div>
+
+					<div class="section" style="font-size: 20px;">
+						<p>Trong giai đoạn này, Hồ Chí Minh không chỉ tích cực tham gia các hoạt động thực tiễn mà còn
+							viết nhiều bài báo và tác phẩm mang tính lý luận sâu sắc. Người tố cáo tội ác của chủ nghĩa
+							thực dân và phân tích mối quan hệ giữa cách mạng giải phóng thuộc địa với cách mạng vô sản ở
+							chính quốc.</p>
+					</div>
+
+					<div class="theory-section">
+						<h3>Những tư tưởng cốt lõi</h3>
+
+						<div class="theory-item">
+							<h4>1. Bản chất của chủ nghĩa thực dân</h4>
+							<p>Chỉ rõ bản chất "ăn cướp" và "giết người" của chủ nghĩa thực dân, gây ra đau khổ và áp
+								bức cho các dân tộc thuộc địa.</p>
+						</div>
+
+						<div class="theory-item">
+							<h4>2. Con đường cách mạng</h4>
+							<p>Khẳng định cách mạng giải phóng dân tộc phải đi theo con đường cách mạng vô sản, là một
+								bộ phận của cách mạng vô sản thế giới.</p>
+						</div>
+
+						<div class="theory-item">
+							<h4>3. Mối quan hệ giữa các cuộc cách mạng</h4>
+							<p>Cách mạng thuộc địa và cách mạng vô sản có mối quan hệ khăng khít, hỗ trợ lẫn nhau nhưng
+								không phụ thuộc hoàn toàn.</p>
+						</div>
+
+						<div class="theory-item">
+							<h4>4. Tính chất của cách mạng thuộc địa</h4>
+							<p>Là cuộc "dân tộc cách mệnh" nhằm đánh đuổi giặc ngoại xâm, giành độc lập và tự do cho dân
+								tộc.</p>
+						</div>
+
+						<div class="theory-item">
+							<h4>5. Vai trò của nông dân</h4>
+							<p>Nhấn mạnh tầm quan trọng của việc lôi kéo tầng lớp nông dân và xây dựng khối liên minh
+								công – nông làm động lực chính.</p>
+						</div>
+
+						<div class="theory-item">
+							<h4>6. Vai trò của Đảng lãnh đạo</h4>
+							<p>Khẳng định sự cần thiết của một Đảng cách mạng theo chủ nghĩa Mác-Lênin, có tổ chức vững
+								mạnh và đội ngũ cán bộ tận tụy.</p>
+						</div>
+
+						<div class="theory-item">
+							<h4>7. Tầm quan trọng của quần chúng</h4>
+							<p>Xác định cách mạng là sự nghiệp của toàn thể quần chúng nhân dân, không phải của cá nhân
+								hay nhóm người.</p>
+						</div>
+					</div>
+
+					<p class="conclusion" style="font-size: 20px;">
+						Những tư tưởng cốt lõi này được Hồ Chí Minh truyền tải qua các tác phẩm, bài viết và đưa về
+						nước, trở thành "chất xúc tác" mạnh mẽ thúc đẩy phong trào dân tộc phát triển theo xu hướng mới,
+						phù hợp với yêu cầu của thời đại.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Popup Modal 4 -->
+		<div id="popup-4" class="popup">
+			<div class="popup-content">
+				<span class="close-btn" onclick="closePopup()">&times;</span>
+				<h2 class="popup-title">Thời kỳ 1930 - 1945: Vượt qua thử thách, kiên trì giữ vững lập trường cách mạng
+				</h2>
+				<div class="popup-description">
+					<div class="section">
+						<h3>Hội nghị lần thứ nhất Ban Chấp hành Trung ương lâm thời của Đảng (1930)</h3>
+						<p>Cuối những năm 20, đầu những năm 30, <span class="highlight-text"
+								data-keyword="Khuynh hướng “tả”">khuynh hướng “tả”</span> đã tác động trực tiếp đến cách
+							mạng
+							Việt Nam. Hội nghị Trung ương đã quyết định đổi tên Đảng thành Đảng Cộng sản Đông Dương, chỉ
+							trích và thủ tiêu các văn kiện Chánh Cương vắn tắt và Sách lược vắn tắt của Nguyễn Ái Quốc,
+							cho rằng chúng chỉ tập trung vào việc phản đế mà bỏ quên lợi ích giai cấp.</p>
+					</div>
+
+					<div class="section">
+						<h3>Quan điểm kiên định của Nguyễn Ái Quốc</h3>
+						<p>Nguyễn Ái Quốc bảo vệ quan điểm về mối quan hệ giữa giai cấp và dân tộc, cách mạng giải phóng
+							thuộc địa và cách mạng vô sản. Người phản đối khuynh hướng “tả” và những biệt phái trong
+							Đảng, khẳng định sự cần thiết của việc đặt nhiệm vụ giải phóng dân tộc lên hàng đầu.</p>
+					</div>
+
+					<div class="section">
+						<h3>Đại hội VII Quốc tế Cộng sản (1935)</h3>
+						<p>Đại hội này đã phê phán khuynh hướng “tả”, ủng hộ mở rộng mặt trận dân tộc thống nhất chống
+							phát xít và khôi phục các văn kiện do Nguyễn Ái Quốc soạn thảo. Từ đây, đường lối cách mạng
+							Việt Nam đã được điều chỉnh phù hợp với tình hình thực tiễn.</p>
+					</div>
+
+					<div class="section">
+						<h3>Mặt trận Dân chủ Đông Dương (1936 - 1939)</h3>
+						<p>Mặt trận được thành lập, ưu tiên nhiệm vụ giải phóng dân tộc. Hồ Chí Minh theo dõi sát tình
+							hình trong nước và chỉ đạo cách mạng, đồng thời đề nghị Quốc tế Cộng sản cho phép trở về quê
+							hương để lãnh đạo phong trào.</p>
+					</div>
+
+					<div class="section">
+						<h3>Ngày trở về và Hội nghị Trung ương lần thứ tám (1941)</h3>
+						<p>Ngày 28/1/1941, Hồ Chí Minh trở về Việt Nam sau 30 năm hoạt động ở nước ngoài. Tại Hội nghị
+							Trung ương lần thứ tám (tháng 5/1941), Đảng ta hoàn chỉnh chiến lược cách mạng, tập trung
+							vào giải phóng dân tộc, tạo tiền đề cho thắng lợi của <span class="highlight-text"
+								data-keyword="Cách mạng Tháng Tám 1945">Cách mạng Tháng Tám 1945</span>.</p>
+					</div>
+
+					<div class="milestone-section">
+						<h3 style="color: #e54b4b;">Tuyên ngôn Độc lập (1945)</h3>
+						<p>Ngày 2/9/1945, Hồ Chí Minh đọc <span class="highlight-text"
+								data-keyword="Tuyên ngôn Độc lập">Tuyên ngôn Độc lập</span> , tuyên bố sự ra đời của
+							nước Việt Nam Dân
+							chủ Cộng hòa, khẳng định:</p>
+						<blockquote>“Tất cả các dân tộc trên thế giới đều bình đẳng; dân tộc nào cũng có quyền sống,
+							quyền sung sướng và quyền tự do.”</blockquote>
+						<div class="video-container">
+							<iframe width="100%" height="450"
+								src="https://www.youtube.com/embed/SCPphVYDPDk?si=ZRE0Tc0KTe_4yWvq"
+								title="YouTube video player" frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						</div>
+					</div>
+
+					<div class="conclusion" style="font-size: 20px;">
+						<p>Sự ra đời của nước Việt Nam Dân chủ Cộng hòa đánh dấu thắng lợi của chủ nghĩa Mác - Lênin
+							được vận dụng sáng tạo tại Việt Nam và thành công của tư tưởng Hồ Chí Minh về độc lập dân
+							tộc gắn liền với chủ nghĩa xã hội.</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Popup Modal 5 -->
+		<div id="popup-5" class="popup">
+			<div class="popup-content">
+				<span class="close-btn" onclick="closePopup()">&times;</span>
+				<h2 class="popup-title">Thời kỳ 1945 - 1969: Tư tưởng Hồ Chí Minh tiếp tục phát triển và hoàn thiện</h2>
+				<div class="popup-description">
+
+					<div class="image-container">
+						<img src="https://baotanglichsu.vn/DataFiles/Uploaded/image/lam-thoi-1.jpg"
+							alt="Hồ Chí Minh 1945" class="centered-image">
+					</div>
+					<div class="section">
+						<h3>Khó khăn và thử thách</h3>
+						<p>Ngày 23 tháng 9 năm 1945, khi quân Pháp quay lại xâm lược Việt Nam, với âm mưu bóp chết nước
+							Việt Nam Dân chủ Cộng hòa còn non trẻ, đất nước lại rơi vào tình thế hiểm nghèo. Đứng trước
+							tình hình "ngàn cân treo sợi tóc", Chủ tịch Hồ Chí Minh, với tầm nhìn sâu rộng và khả năng
+							lãnh đạo tài ba, đã dũng cảm chèo lái con thuyền cách mạng Việt Nam vượt qua sóng gió, chiến
+							thắng các thử thách cam go, để đưa đất nước tiến lên phía trước.</p>
+					</div>
+
+					<div class="section">
+						<h3>Củng cố chính quyền và đối ngoại</h3>
+						<p>Trong thời kỳ này, Chủ tịch Hồ Chí Minh đã tập trung củng cố chính quyền non trẻ, đồng thời
+							đẩy lùi giặc đói, giặc dốt, khắc phục tình trạng thiếu hụt tài chính, duy trì sự ổn định cho
+							đất nước. Về mặt đối ngoại, Người đã vận dụng linh hoạt các chính sách "thêm bạn, bớt thù"
+							và "dĩ bất biến, ứng vạn biến", tranh thủ mọi thời gian và cơ hội để xây dựng lực lượng,
+							chuẩn bị cho cuộc kháng chiến lâu dài và gian khổ sắp tới.</p>
+					</div>
+
+					<div class="section">
+						<h3>Kháng chiến chống thực dân Pháp</h3>
+						<p>Ngày 19 tháng 12 năm 1946, Hồ Chí Minh phát động cuộc kháng chiến toàn quốc chống thực dân
+							Pháp. Từ thời điểm này, Bác Hồ trở thành linh hồn của cuộc kháng chiến. Người không chỉ chăm
+							lo xây dựng Đảng mà còn chống lại tệ quan liêu, mệnh lệnh hành chính, đồng thời xây dựng đạo
+							đức cách mạng và phát động phong trào thi đua ái quốc rộng khắp trong toàn dân.</p>
+					</div>
+
+					<div class="section">
+						<h3>Đại hội Đảng và kết quả kháng chiến</h3>
+						<p>Năm 1951, <span class="highlight-text"
+								data-keyword="Đại hội đại biểu toàn quốc lần thứ II">Đại hội đại biểu toàn quốc lần thứ
+								II</span> của Đảng Lao động Việt Nam được tổ chức, đánh
+							dấu một bước tiến quan trọng trong quá trình hoạt động công khai của Đảng. Đại hội này đã
+							đưa ra quyết định thành lập các đảng riêng tại Campuchia và Lào, kịp thời lãnh đạo các cuộc
+							cách mạng ở mỗi nước. Đồng thời, Đại hội cũng đề ra các chủ trương, đường lối, giải quyết
+							tốt các vấn đề quan hệ giai cấp, động viên toàn Đảng và toàn dân trong cuộc kháng chiến
+							chống thực dân Pháp và đế quốc Mỹ, đưa cách mạng Việt Nam tới thắng lợi.</p>
+					</div>
+
+					<div class="section">
+						<h3>Thắng lợi và hòa bình</h3>
+						<p>Năm 1954, dưới sự lãnh đạo tài tình của Đảng và Chủ tịch Hồ Chí Minh, cuộc kháng chiến chống
+							thực dân Pháp đã hoàn toàn thắng lợi. <span class="highlight-text"
+								data-keyword="Hiệp định Giơnevơ">Hiệp định Giơnevơ</span> được ký kết, miền Bắc hoàn
+							toàn độc
+							lập, nhưng đất nước bị chia cắt thành hai miền do âm mưu xâm lược của đế quốc Mỹ và tay sai
+							của chúng.</p>
+					</div>
+
+					<div class="section">
+						<h3>Xác định kẻ thù và nhiệm vụ cách mạng</h3>
+						<p>Dưới tình thế đất nước bị chia cắt, Bác Hồ và Đảng Cộng sản Việt Nam đã chủ trương xác định
+							kẻ thù mới, đưa ra nhiệm vụ cho cả hai miền Nam và Bắc. Miền Bắc được xác định là khu vực
+							cách mạng xã hội chủ nghĩa, đóng vai trò quyết định trong sự nghiệp phát triển của cách mạng
+							Việt Nam, hướng tới mục tiêu thống nhất đất nước. Miền Nam, với nhiệm vụ cách mạng dân tộc
+							dân chủ nhân dân, là nơi quyết định trực tiếp sự nghiệp giải phóng hoàn toàn, thực hiện hòa
+							bình và thống nhất đất nước.</p>
+					</div>
+
+					<div class="conclusion" style="font-size: 20px;">
+						<p style="font-size: 20px;">Tư tưởng Hồ Chí Minh, qua quá trình lãnh đạo đất nước, đã được bổ
+							sung và phát triển, hình thành hệ thống quan điểm lý luận vững chắc về cách mạng Việt Nam.
+							Những tư tưởng này bao gồm chủ nghĩa xã hội, Nhà nước của dân, do dân và vì dân, xây dựng
+							Đảng Cộng sản Việt Nam, cùng các quan điểm quan trọng khác, tạo nền tảng lý luận cho sự
+							nghiệp cách mạng và xây dựng chủ nghĩa xã hội ở Việt Nam.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			function openPopup(element) {
+				const popupId = element.getAttribute('data-popup'); // Get the popup ID from the data attribute
+				const popup = document.getElementById(popupId);
+				popup.style.display = 'block';
+				// Trigger reflow
+				void popup.offsetWidth;
+				popup.classList.add('active');
+				document.body.style.overflow = 'hidden';
+			}
+
+			function closePopup() {
+				const popups = document.querySelectorAll('.popup'); // Get all popups
+				popups.forEach(popup => {
+					popup.classList.remove('active');
+					setTimeout(() => {
+						popup.style.display = 'none';
+						document.body.style.overflow = 'auto';
+					}, 500); // Match with transition duration
+				});
+			}
+
+			// Close popup when clicking outside
+			window.onclick = function (event) {
+				const popups = document.querySelectorAll('.popup');
+				popups.forEach(popup => {
+					if (event.target == popup) {
+						closePopup();
+					}
+				});
+			}
+		</script>
+
+		<style>
+			.timeline-section {
+				padding: 80px 0;
+				position: relative;
+			}
+
+			.timeline-container {
+				position: relative;
+				top: 70px;
+			}
+
+			.timeline-container::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				height: 100%;
+				width: 4px;
+				background: #e54b4bbb;
+			}
+
+			.timeline-block {
+				position: relative;
+				margin: 40px 0;
+			}
+
+			.timeline-dot {
+				position: absolute;
+				left: 50%;
+				top: 0;
+				transform: translateX(-50%);
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background: #e54b4b;
+				border: 4px solid #fff;
+				box-shadow: 0 0 0 4px rgba(235, 37, 37, 0.2);
+			}
+
+			.timeline-content {
+				position: relative;
+				width: calc(50% - 50px);
+				background: #fff;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 3px 10px rgba(255, 2, 2, 0.404);
+				margin-left: calc(50% + 50px);
+			}
+
+			.timeline-block:nth-child(even) .timeline-content {
+				margin-left: 0;
+				margin-right: calc(50% + 50px);
+			}
+
+			.timeline-content h3 {
+				color: #e54b4b;
+				font-size: 20px;
+				margin-bottom: 10px;
+			}
+
+			.timeline-date {
+				display: block;
+				font-size: 14px;
+				color: #666;
+				margin-bottom: 10px;
+			}
+
+			.timeline-content p {
+				margin: 0;
+				line-height: 1.6;
+				color: #444;
+			}
+
+			@media screen and (max-width: 768px) {
+				.timeline-container::before {
+					left: 20px;
+				}
+
+				.timeline-dot {
+					left: 20px;
+				}
+
+				.timeline-content {
+					width: calc(100% - 70px);
+					margin-left: 70px;
+				}
+
+				.timeline-block:nth-child(even) .timeline-content {
+					margin-left: 70px;
+					margin-right: 0;
+				}
+			}
+		</style>
+
+		<!-- /TIMELINE 1 -->
+
+		<!-- TALK -->
+		<div class="grax_tm_section">
+			<div class="grax_tm_talk">
+				<div class="container">
+					<div class="talk_inner">
+						<div class="text wow fadeInLeft" data-wow-duration="1.5s">
+							<h3><span>Máu Đỏ Da Vàng - Tôi Là Người Việt Nam</span></h3>
+						</div>
+						<div class="button wow fadeInLeft anchor" data-wow-duration="1.5s" data-wow-delay=".2s">
+							<a href="#about">Hồ Chí Minh</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /TALK -->
+		<!-- ACCORDION SECTION -->
+
+		<div style="margin-top: 40px;" class="grax_tm_section" id="legacy">
+			<div style="margin-left: 345px; margin-bottom: 20px;" class="container grax_tm_title_holder">
+				<h3>Giá Trị Tư Tưởng <span>Hồ Chí Minh</span></h3>
+			</div>
 			<div class="container">
-				<div class="about_inner">
+				<div class="accordion_container">
+					<!-- Accordion Item 1 -->
+					<div class="accordion_item">
+						<div class="accordion_header">
+							<h4>I. Soi sáng con đường giải phóng và phát triển dân tộc</h4>
+							<span class="icon">+</span>
+						</div>
+						<div class="accordion_content">
+							<div style="font-size: 20px;" class="content_inner">
+								<p style="font-weight: bold;">Tài sản tinh thần vô giá của dân tộc Việt Nam</p>
+								<ul>
+									<li>Tư tưởng Hồ Chí Minh là sản phẩm của dân tộc và thời đại, trường tồn, bất diệt,
+										là tài sản vô giá của dân tộc. Trong đó chủ yếu là Mác-Lênin, mà con đáp ứng
+										nhiều vấn đề của thời đại, của sự nghiệp cách mạng Việt Nam và thế giới.</li>
+									<li>Tính sáng tạo của tư tưởng này được thể hiện ở chỗ: trung thành với những nguyên
+										lý phổ biến của chủ nghĩa Mác-Lênin. Bác đã mạnh dạn loại bỏ những gì không
+										thích hợp với điều kiện cụ thể của nước ta, dám đề xuất những vấn đề và giải
+										quyết một cách linh hoạt.</li>
+									<li>Ngày nay, tư tưởng đó bao gồm một hệ thống những quan điểm về chiến lược cách
+										mạng dân tộc dân chủ nhân dân, cách mạng xã hội chủ nghĩa ở nước ta,... Điều đó
+										đảm bảo cho tương lai, tiền đồ vẻ vang của dân tộc Việt Nam.</li>
+									<li>Tư tưởng Bác vừa phản ánh quy luật khách quan của sự nghiệp đấu tranh giải phóng
+										trong thời đại cách mạng vô sản, vừa phản ánh mối quan hệ khăng khít giữa mục
+										tiêu giải phóng dân tộc với mục tiêu giải phóng giai cấp và con người.</li>
+								</ul>
+								<p style="font-weight: bold;">Nền tảng tư tưởng và kim chỉ nam cho hành động của cách
+									mạng Việt Nam</p>
+								<blockquote>Tư tưởng Hồ Chí Minh soi đường cho Đảng ta và nhân dân ta trên con đường
+									thực hiện <span class="highlight-text"
+										data-keyword="Ý nghĩa mục tiêu dân giàu, nước mạnh, dân chủ, công bằng, văn minh">mục
+										tiêu dân giàu, nước mạnh, dân chủ, công bằng, văn minh</span>.</blockquote>
+								<blockquote>Trong suốt chặng đường hơn một nửa thế kỷ, tu tưởng này đã trở thành ngọn cờ
+									dẫn dắt cách mạng nước ta đi từ thắng lợi này đến thắng lợi khác.</blockquote>
+								<blockquote>Trong bối cảnh ngày nay, tư tưởng của Bác giúp ta nhận thức đúng những vấn
+									đề lớn hơn có liên quan đến việc bảo vệ nền độc lập dân tộc, phát triển xã hội và
+									đảm bảo quyền con người.</blockquote>
+								<blockquote>Tư tưởng Hồ Chí Minh là nền tảng vững chắc để Đảng ta vạch ra đường lối cách
+									mạng đúng đắn, là sợi chỉ đỏ dẫn đường cho toàn Đảng, toàn quân, toàn dân ta đi tới
+									thắng lợi.</blockquote>
+								<p style="color: #e54b4b; font-weight: bold;"> -> Tư tưởng Hồ Chí Minh mãi mãi sống với
+									chúng ta vì đã thấm sâu vào quần chúng nhân dân, chỉ đạo việc thực hiện có hiệu ủa
+									những nhiệm vụ đối với thời đại.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Accordion Item 2 -->
+					<div class="accordion_item">
+						<div class="accordion_header">
+							<h4>II. Tư tưởng Hồ Chí Minh đối với sự phát triển thế giới</h4>
+							<span class="icon">+</span>
+						</div>
+						<div class="accordion_content">
+							<div style="font-size: 20px;" class="content_inner">
+								<blockquote style="font-weight: bold;">
+									Phản ánh <span class="highlight-text"
+										data-keyword="Tìm hiểu thêm về sự khát vọng thời đại trong Tư tưởng của Hồ Chí Minh">khát
+										vọng thời đại</span>
+								</blockquote>
+								<blockquote style="font-weight: bold;">
+									Tìm ra các giải pháp đấu tranh<span class="highlight-text"
+										data-keyword="Tìm hiểu thêm về hành động giải phóng loài người trong Tư tưởng của Hồ Chí Minh">giải
+										phóng loài người</span>
+								</blockquote>
+								<blockquote style="font-weight: bold;">
+									Cổ vũ các dân tộc đấu tranh trong sự nghiệp giải phóng
+								</blockquote>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- DOCUMENTS -->
+		<div class="grax_tm_section" id="document">
+			<div class="grax_tm_portfolio">
+				<div class="container">
+					<div class="grax_tm_title_holder">
+						<h3>Tư Liệu <span> Tham Khảo</span></h3>
+					</div>
+					<div class="portfolio_list">
+						<ul class="gallery_zoom my_waypoint">
+							<li class="wow fadeInLeft" data-wow-duration="1.5s">
+								<div class="list_inner">
+									<div class="image">
+										<img src="img/placeholders/1-1.jpg" alt="" />
+										<div class="main"
+											data-img-url="img/news/hcm1-16529275928651573705413-0-0-375-600-crop-16529276019091318892288.jpg">
+										</div>
+									</div>
+									<div class="overlay"></div>
+									<div class="details">
+										<span>Video</span>
+										<h3>Tư Tưởng Hồ Chí Minh Về Văn Hoá</h3>
+									</div>
+									<!-- Thẻ a với link video -->
+									<a class="grax_tm_full_link popup-youtube"
+										href="https://www.youtube.com/watch?v=8E940gAAxpo"></a>
+								</div>
+							</li>
+
+							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
+								<div class="list_inner">
+									<div class="image">
+										<img src="img/placeholders/1-1.jpg" alt="" />
+										<div class="main"
+											data-img-url="img/news/tu-tuong-ho-chi-minh-mot-hoc-thuyet-cach-mang-vo-gia-cua-viet-nam.jpg">
+										</div>
+									</div>
+									<div class="overlay"></div>
+									<div class="details">
+										<span>Hình ảnh</span>
+										<h3>Bác Viết Thư</h3>
+									</div>
+									<a class="grax_tm_full_link zoom"
+										href="img/news/tu-tuong-ho-chi-minh-mot-hoc-thuyet-cach-mang-vo-gia-cua-viet-nam.jpg"></a>
+								</div>
+							</li>
+							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".4s">
+								<div class="list_inner">
+									<div class="image">
+										<img src="img/placeholders/1-1.jpg" alt="" />
+										<div class="main" data-img-url="img/news/R.jpg"></div>
+									</div>
+									<div class="overlay"></div>
+									<div class="details">
+										<span>Hình ảnh</span>
+										<h3>Bác Tham Gia Kháng Chiến</h3>
+									</div>
+									<a class="grax_tm_full_link zoom" href="img/news/R.jpg"></a>
+								</div>
+							</li>
+							<li class="wow fadeInLeft" data-wow-duration="1.5s">
+								<div class="list_inner">
+									<div class="image">
+										<img src="img/placeholders/1-1.jpg" alt="" />
+										<div class="main"
+											data-img-url="img/news/gian-di-la-duc-tinh-quy-gia-nhat-cua-moi-nguoi.jpg">
+										</div>
+									</div>
+									<div class="overlay"></div>
+									<div class="details">
+										<span>Video</span>
+										<h3>Tư Tưởng Hồ Chí Minh Về Xã Hội Chủ Nghĩa</h3>
+									</div>
+									<!-- Thẻ a với link video -->
+									<a class="grax_tm_full_link popup-youtube"
+										href="https://www.youtube.com/watch?v=3jRm8KRwFlo"></a>
+								</div>
+							</li>
+							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
+								<div class="list_inner">
+									<div class="image">
+										<img src="img/placeholders/1-1.jpg" alt="" />
+										<div class="main" data-img-url="img/news/bacho0.jpg"></div>
+									</div>
+									<div class="overlay"></div>
+									<div class="details">
+										<span>Hình ảnh</span>
+										<h3>Tổ Công Tác Của Bác</h3>
+									</div>
+									<a class="grax_tm_full_link zoom" href="img/news/bacho0.jpg"></a>
+								</div>
+							</li>
+							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".4s">
+								<div class="list_inner">
+									<div class="image">
+										<img src="img/placeholders/1-1.jpg" alt="" />
+										<div class="main"
+											data-img-url="img/news/vna_potal_70_nam_chien_thang_bien_gioi_thu_dong_1950_chien_thang_tao_chuyen_bien_co_ban_cho_cuoc_khang_chien_chong_phap__174409530_stand.jpg">
+										</div>
+									</div>
+									<div class="overlay"></div>
+									<div class="details">
+										<span>Hình ảnh</span>
+										<h3>Bác Lãng Đạo Kháng Chiến</h3>
+									</div>
+									<a class="grax_tm_full_link zoom"
+										href="img/news/vna_potal_70_nam_chien_thang_bien_gioi_thu_dong_1950_chien_thang_tao_chuyen_bien_co_ban_cho_cuoc_khang_chien_chong_phap__174409530_stand.jpg"></a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /DOCUMENTS -->
+
+		<!-- Câu hỏi CQ-->
+		<div class="grax_tm_progress_part1" id="cq">
+			<div class="container">
+				<div class="part_inner">
 					<div class="left wow fadeInLeft" data-wow-duration="1.5s">
-						<div class="image parallax" data-relative-input="true">
-							<img src="img/placeholders/3-4.jpg" alt="" />
-							<div class="main layer" data-img-url="img/about/1.jpg" data-depth="0.04"></div>
+						<div class="grax_tm_title_holder">
+							<h3 style="font-size: 40px;">CÂU HỎI <span>CQ</span></h3>
+						</div>
+						<div class="grax_tm_title_holder2">
+							<h5 style="margin-bottom: 10px;">Trong quá trình hình thành và phát triển tư tưởng của Hồ
+								Chí Minh, thời kỳ, sự kiện và yếu tố nào là quan trọng nhất? Vì sao?</h5>
 						</div>
 					</div>
 					<div class="right wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
-						<div class="grax_tm_title_holder">
-							<h3>About <span>Me</span></h3>
+						<div class="hcm_sections">
+							<div class="section_inner period" onclick="openModal('periodModal')">
+								<div class="section_header">
+									<span class="label">Thời kỳ quan trọng</span>
+									<span class="number">1911-1920</span>
+								</div>
+								<div class="progress_bar">
+									<div class="progress_in" style="width: 100%"></div>
+								</div>
+							</div>
+							<div class="section_inner event" onclick="openModal('eventModal')">
+								<div class="section_header">
+									<span class="label">Sự kiện quan trọng</span>
+									<span class="number">Cách mạng Tháng Mười Nga 1917</span>
+								</div>
+								<div class="progress_bar">
+									<div class="progress_in" style="width: 100%"></div>
+								</div>
+							</div>
+							<div class="section_inner factor" onclick="openModal('factorModal')">
+								<div class="section_header">
+									<span class="label">Yếu tố quan trọng</span>
+									<span class="number">Tinh thần dân tộc</span>
+								</div>
+								<div class="progress_bar">
+									<div class="progress_in" style="width: 100%"></div>
+								</div>
+							</div>
 						</div>
-						<div class="text">
-							<p>Hello! I'm Alan Walker. I'm a web developer, and I'm very passionate and dedicated to my work. With 20 years experience as a professional web developer, I have acquired the skills and knowledge necessary to make your project a success. I enjoy every step of the design process, from discussion and collaboration.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="periodModal" class="modal1">
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('periodModal')">&times;</span>
+				<h2 class="modal-title">Thời kỳ quan trọng nhất</h2>
+				<div class="modal-text">
+					<p>Thời kỳ 1911-1920 là giai đoạn quan trọng nhất trong quá trình hình thành tư tưởng của Hồ Chí
+						Minh:</p>
+					<ul>
+						<img src="img/news/1911-1920.jpeg" alt="Hồ Chí Minh 1945"
+							style="width: 100%; margin-bottom: 20px;">
+						<li>Đây là thời kỳ Người ra đi tìm đường cứu nước, tiếp xúc với nhiều nền văn hóa và tư tưởng
+							tiến bộ trên thế giới</li>
+						<li>Người đã từng sống và học tập tại nhiều nước như Pháp, Anh, Mỹ...</li>
+						<li>Đây là giai đoạn Người bắt đầu hình thành những tư tưởng cốt lõi về con đường giải phóng dân
+							tộc</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div id="eventModal" class="modal1">
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('eventModal')">&times;</span>
+				<h2 class="modal-title">Sự kiện quan trọng nhất</h2>
+				<div class="modal-text">
+					<p>Cách mạng Tháng Mười Nga 1917 là sự kiện có ảnh hưởng quyết định:</p>
+					<ul>
+						<img src="img/news/CMT10.jpg" alt="Hồ Chí Minh 1945" style="width: 100%; margin-bottom: 20px;">
+						<li>Đây là sự kiện mở ra con đường mới cho các dân tộc bị áp bức</li>
+						<li>Giúp Người nhận ra rằng chủ nghĩa Lenin là con đường đúng đắn cho việc giải phóng dân tộc
+						</li>
+						<li>Từ đây, Người đã kết hợp chủ nghĩa yêu nước với chủ nghĩa Marx-Lenin một cách sáng tạo</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div id="factorModal" class="modal1">
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('factorModal')">&times;</span>
+				<h2 class="modal-title">Yếu tố quan trọng nhất</h2>
+				<div class="modal-text">
+					<p>Tinh thần yêu nước và truyền thống văn hóa dân tộc là yếu tố quan trọng nhất:</p>
+					<ul>
+						<img src="img/news/ttdt.jpg" alt="Hồ Chí Minh 1945" style="width: 100%; margin-bottom: 20px;">
+						<li>Đây là nền tảng tư tưởng xuyên suốt của Hồ Chí Minh</li>
+						<li>Giúp Người tiếp thu có chọn lọc các giá trị văn hóa nhân loại</li>
+						<li>Là cơ sở để Người phát triển lý luận cách mạng phù hợp với điều kiện Việt Nam</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			function openModal(modalId) {
+				document.getElementById(modalId).style.display = "block";
+			}
+
+			function closeModal(modalId) {
+				document.getElementById(modalId).style.display = "none";
+			}
+
+			window.onclick = function (event) {
+				if (event.target.className === 'modal') {
+					event.target.style.display = "none";
+				}
+			}
+
+			// Add animation class to elements with wow class
+			document.addEventListener('DOMContentLoaded', function () {
+				const wowElements = document.querySelectorAll('.wow');
+				wowElements.forEach(element => {
+					element.classList.add('fadeInLeft');
+				});
+			});
+		</script>
+		<!-- Câu hỏi CQ-->
+
+		<style>
+			.accordion_container {
+				width: 100%;
+			}
+
+			.accordion_item {
+				background: white;
+				border: 2px solid #e54b4b;
+				border-radius: 8px;
+				margin-bottom: 15px;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.accordion_header {
+				padding: 20px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				cursor: pointer;
+				background: white;
+				transition: background-color 0.3s ease;
+			}
+
+			.accordion_header:hover {
+				background: #f8f8f8;
+			}
+
+			.accordion_header h4 {
+				margin: 0;
+				font-size: 18px;
+				color: #333;
+				font-weight: 500;
+			}
+
+			.accordion_header .icon {
+				font-size: 24px;
+				transition: transform 0.3s ease;
+				color: #e54b4b;
+			}
+
+			.accordion_item.active .accordion_header .icon {
+				transform: rotate(45deg);
+			}
+
+			.accordion_content {
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.3s ease-out;
+			}
+
+			.accordion_item.active .accordion_content {
+				max-height: 1000px;
+			}
+
+			.content_inner {
+				padding: 0 20px 20px;
+			}
+
+			.content_inner p {
+				color: #666;
+				line-height: 1.6;
+				margin-bottom: 15px;
+			}
+
+			.content_inner ul {
+				list-style-type: disc;
+				padding-left: 20px;
+				margin-bottom: 15px;
+			}
+
+			.content_inner ul li {
+				color: #666;
+				margin-bottom: 8px;
+				line-height: 1.4;
+			}
+
+			.content_inner blockquote {
+				border-left: 4px solid #e74c3c;
+				padding-left: 15px;
+				margin: 15px 0;
+				font-style: italic;
+				color: #555;
+			}
+
+			@media (max-width: 768px) {
+				.accordion_header h4 {
+					font-size: 16px;
+				}
+
+				.content_inner {
+					padding: 0 15px 15px;
+				}
+			}
+		</style>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const accordionItems = document.querySelectorAll('.accordion_item');
+
+				accordionItems.forEach(item => {
+					const header = item.querySelector('.accordion_header');
+					const content = item.querySelector('.accordion_content');
+
+					header.addEventListener('click', () => {
+						// Close other items
+						accordionItems.forEach(otherItem => {
+							if (otherItem !== item && otherItem.classList.contains('active')) {
+								otherItem.classList.remove('active');
+								otherItem.querySelector('.accordion_content').style.maxHeight = '0px';
+							}
+						});
+
+						// Toggle current item
+						item.classList.toggle('active');
+						if (item.classList.contains('active')) {
+							content.style.maxHeight = content.scrollHeight + 'px';
+						} else {
+							content.style.maxHeight = '0px';
+						}
+					});
+				});
+			});
+		</script>
+
+		<!-- COPYRIGHT -->
+		<div class="grax_tm_section">
+			<div class="grax_tm_copyright">
+				<div class="my_wave">
+					<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+						<defs></defs>
+						<path id="wave_img" data-color="#fff"
+							d="M 0 185.609 C 317.16666666666663 118.136 317.16666666666663 118.136 634.3333333333333 151.87 C 951.4999999999999 185.609 951.4999999999999 185.609 1268.6666666666665 116.402 C 1585.833333333333 47.195 1585.833333333333 47.195 1903 131.925 L 1903 507 L 0 507 Z"
+							fill="#fff"></path>
+					</svg>
+				</div>
+				<div class="container">
+					<div class="copyright_inner">
+						<div class="logo wow fadeInLeft" data-wow-duration="1s">
+							<img src="img/logo/logo.png" alt="" />
 						</div>
-						<div class="list">
+						<div class="social wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">
 							<ul>
 								<li>
-									<div class="list_inner">
-										<img class="svg" src="img/svg/checked.svg" alt="" />
-										<span>Web Development</span>
-									</div>
+									<a href="#"><img class="svg" src="img/svg/social/facebook.svg" alt="" /></a>
 								</li>
 								<li>
-									<div class="list_inner">
-										<img class="svg" src="img/svg/checked.svg" alt="" />
-										<span>Search Engine Optimization</span>
-									</div>
+									<a href="#"><img class="svg" src="img/svg/social/twitter.svg" alt="" /></a>
 								</li>
 								<li>
-									<div class="list_inner">
-										<img class="svg" src="img/svg/checked.svg" alt="" />
-										<span>Social Media Marketing</span>
-									</div>
+									<a href="#"><img class="svg" src="img/svg/social/dribbble.svg" alt="" /></a>
 								</li>
 								<li>
-									<div class="list_inner">
-										<img class="svg" src="img/svg/checked.svg" alt="" />
-										<span>Content Generation</span>
-									</div>
+									<a href="#"><img class="svg" src="img/svg/social/tik-tok.svg" alt="" /></a>
 								</li>
+								<!-- You can download another svg icons from here for free https://www.flaticon.com -->
 							</ul>
 						</div>
-						<div class="grax_tm_button">
-							<a href="img/resume/resume.jpg" download>Download CV</a>
+						<div class="copy wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">
+							<p>&copy; Copyright 2025 by Group 2</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- /ABOUT -->
-	
-	<!-- PORTFOLIO -->
-	<div class="grax_tm_section" id="portfolio">
-		<div class="grax_tm_portfolio">
-			<div class="container">
-				<div class="grax_tm_title_holder">
-					<h3>Selected <span>Works</span></h3>
-				</div>
-				<div class="portfolio_list">
-					<ul class="gallery_zoom my_waypoint">
-						<li class="wow fadeInLeft" data-wow-duration="1.5s">
-							<div class="list_inner">
-								<div class="image">
-									<img src="img/placeholders/1-1.jpg" alt="" />
-									<div class="main" data-img-url="img/portfolio/1.jpg"></div>
-								</div>
-								<div class="overlay"></div>
-								<div class="details">
-									<span>Video</span>
-									<h3>Sweet Fruit</h3>
-								</div>
-								<a class="grax_tm_full_link popup-youtube" href="https://www.youtube.com/watch?v=ICr_bOuM9Zo"></a>
-							</div>
-						</li>
-						<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
-							<div class="list_inner">
-								<div class="image">
-									<img src="img/placeholders/1-1.jpg" alt="" />
-									<div class="main" data-img-url="img/portfolio/2.jpg"></div>
-								</div>
-								<div class="overlay"></div>
-								<div class="details">
-									<span>Branding</span>
-									<h3>Good Present</h3>
-								</div>
-								<a class="grax_tm_full_link zoom" href="img/portfolio/2.jpg"></a>
-							</div>
-						</li>
-						<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".4s">
-							<div class="list_inner">
-								<div class="image">
-									<img src="img/placeholders/1-1.jpg" alt="" />
-									<div class="main" data-img-url="img/portfolio/3.jpg"></div>
-								</div>
-								<div class="overlay"></div>
-								<div class="details">
-									<span>Design</span>
-									<h3>Ice Cream</h3>
-								</div>
-								<a class="grax_tm_full_link zoom" href="img/portfolio/3.jpg"></a>
-							</div>
-						</li>
-						<li class="wow fadeInLeft" data-wow-duration="1.5s">
-							<div class="list_inner">
-								<div class="image">
-									<img src="img/placeholders/1-1.jpg" alt="" />
-									<div class="main" data-img-url="img/portfolio/4.jpg"></div>
-								</div>
-								<div class="overlay"></div>
-								<div class="details">
-									<span>Video</span>
-									<h3>Black Coffee</h3>
-								</div>
-								<a class="grax_tm_full_link popup-youtube" href="https://www.youtube.com/watch?v=ICr_bOuM9Zo"></a>
-							</div>
-						</li>
-						<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
-							<div class="list_inner">
-								<div class="image">
-									<img src="img/placeholders/1-1.jpg" alt="" />
-									<div class="main" data-img-url="img/portfolio/5.jpg"></div>
-								</div>
-								<div class="overlay"></div>
-								<div class="details">
-									<span>Branding</span>
-									<h3>Blue Lemon</h3>
-								</div>
-								<a class="grax_tm_full_link zoom" href="img/portfolio/5.jpg"></a>
-							</div>
-						</li>
-						<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".4s">
-							<div class="list_inner">
-								<div class="image">
-									<img src="img/placeholders/1-1.jpg" alt="" />
-									<div class="main" data-img-url="img/portfolio/7.jpg"></div>
-								</div>
-								<div class="overlay"></div>
-								<div class="details">
-									<span>Design</span>
-									<h3>Delicious Cherry</h3>
-								</div>
-								<a class="grax_tm_full_link zoom" href="img/portfolio/7.jpg"></a>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /PORTFOLIO -->
-	
-	<!-- PROGRESS -->
-	<div class="grax_tm_progress_part">
-		<div class="container">
-			<div class="part_inner">
-				<div class="left wow fadeInLeft" data-wow-duration="1.5s">
-					<h3>I have high skills in developing and programming</h3>
-					<p>I was doing everything in my power to provide me with all the experiences to provide cost-effective and high quality products to satisfy my customers all over the world</p>
-				</div>
-				<div class="right wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
-					<div class="kioto_progress">
-						<div class="progress_inner" data-value="95">
-							<span><span class="label">Web Development</span><span class="number">95%</span></span>
-							<div class="background"><div class="bar"><div class="bar_in"></div></div></div>
-						</div>
-						<div class="progress_inner" data-value="80" >
-							<span><span class="label">Brand Identity</span><span class="number">80%</span></span>
-							<div class="background"><div class="bar"><div class="bar_in"></div></div></div>
-						</div>
-						<div class="progress_inner" data-value="90">
-							<span><span class="label">Logo Design</span><span class="number">90%</span></span>
-							<div class="background"><div class="bar"><div class="bar_in"></div></div></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /PROGRESS -->
-	
-	<!-- TALK -->
-	<div class="grax_tm_section">
-		<div class="grax_tm_talk">
-			<div class="container">
-				<div class="talk_inner">
-					<div class="text wow fadeInLeft" data-wow-duration="1.5s">
-						<h3><span>I'm available for freelance work</span></h3>
-					</div>
-					<div class="button wow fadeInLeft anchor" data-wow-duration="1.5s" data-wow-delay=".2s">
-						<a href="#contact">Contact Me</a>
-					</div>
-				</div>
-			</div>	
-		</div>
-	</div>
-	<!-- /TALK -->
-	
-	<!-- NEWS -->
-	<div class="grax_tm_section" id="news">
-		<div class="grax_tm_news">
-			<div class="container">
-				<div class="grax_tm_title_holder">
-					<h3>Latest <span>News</span></h3>
-				</div>
-				<div class="news_list">
-					<ul>
-						<li class="wow fadeInLeft" data-wow-duration="1.5s">
-							<div class="list_inner">
-								<div class="image">
-									<img src="img/placeholders/4-3.jpg" alt="" />
-									<div class="main" data-img-url="img/news/1.jpg"></div>
-									<a class="grax_tm_full_link" href="#"></a>
-								</div>
-								<div class="details">
-									<h3 class="title"><a href="#">Developers watch out for these burnout symptoms</a></h3>
-									<p class="date">By <a href="#">Alex Watson</a> <span>01 January 2022</span></p>
-								</div>
-								<div class="description">
-									<p>As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities.</p>
-									<blockquote>As Vintage decided to have a closer look into fast-paced New York web design realm in person. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities.</blockquote>
-									<p>As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. We encounter professionals with careers to covet and lives to write books about. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities.</p>
-									<div class="share">
-										<span>Share:</span>
-										<ul class="social">
-											<li><a href="#"><img class="svg" src="img/svg/social/facebook.svg" alt="" ></a></li>
-											<li><a href="#"><img class="svg" src="img/svg/social/twitter.svg" alt="" ></a></li>
-											<li><a href="#"><img class="svg" src="img/svg/social/behance.svg" alt="" ></a></li>
-											<li><a href="#"><img class="svg" src="img/svg/social/dribbble.svg" alt="" ></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
-							<div class="list_inner">
-								<div class="image">
-									<img src="img/placeholders/4-3.jpg" alt="" />
-									<div class="main" data-img-url="img/news/2.jpg"></div>
-									<a class="grax_tm_full_link" href="#"></a>
-								</div>
-								<div class="details">
-									<h3 class="title"><a href="#">How to be appreciated for your hard work as a developer</a></h3>
-									<p class="date">By <a href="#">Brook Kennedy</a> <span>22 December 2021</span></p>
-								</div>
-								<div class="description">
-									<p>As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities.</p>
-									<blockquote>As Vintage decided to have a closer look into fast-paced New York web design realm in person. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities.</blockquote>
-									<p>As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. We encounter professionals with careers to covet and lives to write books about. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities.</p>
-									<div class="share">
-										<span>Share:</span>
-										<ul class="social">
-											<li><a href="#"><img class="svg" src="img/svg/social/facebook.svg" alt="" ></a></li>
-											<li><a href="#"><img class="svg" src="img/svg/social/twitter.svg" alt="" ></a></li>
-											<li><a href="#"><img class="svg" src="img/svg/social/behance.svg" alt="" ></a></li>
-											<li><a href="#"><img class="svg" src="img/svg/social/dribbble.svg" alt="" ></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".4s">
-							<div class="list_inner">
-								<div class="image">
-									<img src="img/placeholders/4-3.jpg" alt="" />
-									<div class="main" data-img-url="img/news/3.jpg"></div>
-									<a class="grax_tm_full_link" href="#"></a>
-								</div>
-								<div class="details">
-									<h3 class="title"><a href="#">How designers and developers can collaborate better</a></h3>
-									<p class="date">By <a href="#">Paola Atkins</a> <span>05 December 2021</span></p>
-								</div>
-								<div class="description">
-									<p>As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities.</p>
-									<blockquote>As Vintage decided to have a closer look into fast-paced New York web design realm in person. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities.</blockquote>
-									<p>As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. We encounter professionals with careers to covet and lives to write books about. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities. As Vintage decided to have a closer look into fast-paced New York web design realm in person, we get to acquaint with most diverse and exceptionally captivating personalities.</p>
-									<div class="share">
-										<span>Share:</span>
-										<ul class="social">
-											<li><a href="#"><img class="svg" src="img/svg/social/facebook.svg" alt="" ></a></li>
-											<li><a href="#"><img class="svg" src="img/svg/social/twitter.svg" alt="" ></a></li>
-											<li><a href="#"><img class="svg" src="img/svg/social/behance.svg" alt="" ></a></li>
-											<li><a href="#"><img class="svg" src="img/svg/social/dribbble.svg" alt="" ></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /NEWS -->
-	
-	<!-- CONTACT -->
-	<div class="grax_tm_contact" id="contact">
-		<div class="container">
-			<div class="grax_tm_title_holder">
-				<h3>Get in <span>Touch</span></h3>
-			</div>
-			<div class="contact_inner">
-				<div class="left wow fadeInLeft" data-wow-duration="1s">
-					<div class="text">
-						<p>Please fill out the form on this section to contact with me. Or call between 9:00 a.m. and 8:00 p.m. ET, Monday through Friday</p>
-					</div>
-					<div class="info_list">
-						<ul>
-							<li>
-								<div class="list_inner">
-									<img class="svg" src="img/svg/location.svg" alt="" />
-									<p><span class="first">Address:</span><span class="second">Brook 103, New York, USA</span></p>
-								</div>
-							</li>
-							<li>
-								<div class="list_inner">
-									<img class="svg" src="img/svg/email.svg" alt="" />
-									<p><span class="first">Email:</span><span class="second"><a href="#">example@gmail.com</a></span></p>
-								</div>
-							</li>
-							<li>
-								<div class="list_inner">
-									<img class="svg" src="img/svg/phone.svg" alt="" />
-									<p><span class="first">Phone:</span><span class="second"><a href="#">+77 033 442 55 57</a></span></p>
-								</div>
-							</li>
-							<li>
-								<div class="list_inner">
-									<img class="svg" src="img/svg/social/dribbble.svg" alt="" />
-									<p><span class="first">Website:</span><span class="second"><a href="#">www.myaddress.com</a></span></p>
-								</div>
-							</li>
-							<li>
-								<div class="list_inner">
-									<img class="svg" src="img/svg/social/twitter.svg" alt="" />
-									<p><span class="first">Twitter:</span><span class="second"><a href="#">@twitternickname</a></span></p>
-								</div>
-							</li>
-							<li>
-								<div class="list_inner">
-									<img class="svg" src="img/svg/social/facebook.svg" alt="" />
-									<p><span class="first">Facebook:</span><span class="second"><a href="#">@facebooknickname</a></span></p>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="right wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">
-					<div class="fields">
-						<form action="/" method="post" class="contact_form" id="contact_form">
-							<div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
-							<div class="empty_notice"><span>Please Fill Required Fields</span></div>
-							<div class="first">
-								<ul>
-									<li>
-										<input id="name" type="text" placeholder="Name">
-									</li>
-									<li>
-										<input id="email" type="text" placeholder="Email">
-									</li>
-								</ul>
-							</div>
-							<div class="last">
-								<textarea id="message" placeholder="Message"></textarea>
-							</div>
-							<div class="grax_tm_button">
-								<a id="send_message" href="#">Send Message</a>
-							</div>
+		<!-- /COPYRIGHT -->
 
-							<!-- If you want to change mail address to yours, please open modal.php and go to line 4 -->
+		<!-- CURSOR -->
+		<div class="mouse-cursor cursor-outer"></div>
+		<div class="mouse-cursor cursor-inner"></div>
+		<!-- /CURSOR -->
 
-						</form>
-					</div>
+		<!-- START: Page Progress -->
+		<div class="progressbar">
+			<a style="color: red;" href="#"><span class="text">Bay Lên</span></a>
+			<span class="line"></span>
+		</div>
+		<!-- END: Page Progress -->
+		<!-- CHATBOT -->
+		<div id="chatbot-container" style="display: none;">
+			<div id="chatbot-header">
+				<h4 style="color: #fff; font-weight: bold;">Hỏi đáp cùng thầy Khoa!</h4>
+				<button id="close-chatbot">&times;</button>
+			</div>
+			<div id="chatbot-messages"></div>
+			<div id="chatbot-loading" style="display: none;">
+				<div class="loading-dots">
+					<div class="dot"></div>
+					<div class="dot"></div>
+					<div class="dot"></div>
+					<p>Đừng hối, thầy Khoa đang suy nghĩ...</p>
 				</div>
 			</div>
-		</div>
-	</div>
-	<!-- /CONTACT -->
-	
-	<!-- COPYRIGHT -->
-	<div class="grax_tm_section">
-		<div class="grax_tm_copyright">
-			<div class="my_wave">
-                <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                    <defs></defs>
-                    <path id="wave_img" data-color="#fff" d="M 0 185.609 C 317.16666666666663 118.136 317.16666666666663 118.136 634.3333333333333 151.87 C 951.4999999999999 185.609 951.4999999999999 185.609 1268.6666666666665 116.402 C 1585.833333333333 47.195 1585.833333333333 47.195 1903 131.925 L 1903 507 L 0 507 Z" fill="#fff"></path>
-                </svg>
-            </div>
-			<div class="container">
-				<div class="copyright_inner">
-					<div class="logo wow fadeInLeft" data-wow-duration="1s">
-						<img src="img/logo/logo.png" alt="" />
-					</div>
-					<div class="social wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">
-						<ul>
-							<li><a href="#"><img class="svg" src="img/svg/social/facebook.svg" alt="" /></a></li>
-							<li><a href="#"><img class="svg" src="img/svg/social/twitter.svg" alt="" /></a></li>
-							<li><a href="#"><img class="svg" src="img/svg/social/dribbble.svg" alt="" /></a></li>
-							<li><a href="#"><img class="svg" src="img/svg/social/tik-tok.svg" alt="" /></a></li>
-							<!-- You can download another svg icons from here for free https://www.flaticon.com -->
-						</ul>
-					</div>
-					<div class="copy wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">
-						<p>&copy; Copyright 2022 by Marketify</p>
-					</div>
-				</div>
+			<div id="chatbot-input" style="display: flex; padding: 10px; margin-bottom: auto;">
+				<input type="text" id="user-input" placeholder="Thầy Khoa nè ku, hỏi gì đi!"
+					style="flex: 1; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+				<button id="send-button"
+					style="margin-left: 5px; padding: 5px; background: #ffffff; color: white; border: none; border-radius: 4px; cursor: pointer;"><img
+						src="https://r2.fivemanage.com/BZMR0nG5HMWQZlsg7rbJy/mingcute--send-fill.png"
+						style="height: 30px; width: 30px; margin-bottom: 10px;" /></button>
 			</div>
 		</div>
+		<button id="open-chatbot"
+			style="position: fixed; bottom: 20px; right: 20px; padding: 10px; background: #e54b4b; color: white; border: none; border-radius: 80%; cursor: pointer;"><img
+				src="https://r2.fivemanage.com/BZMR0nG5HMWQZlsg7rbJy/hugeicons--ai-chat-02.png"
+				style="height: 50px; width: 50px" /></button>
 	</div>
-	<!-- /COPYRIGHT -->
-	
-	<!-- CURSOR -->
-	<div class="mouse-cursor cursor-outer"></div>
-    <div class="mouse-cursor cursor-inner"></div>
-	<!-- /CURSOR -->
-	
-	<!-- START: Page Progress -->
-	<div class="progressbar">
-		<a href="#"><span class="text">To Top</span></a>
-		<span class="line"></span>
-	</div>
-	<!-- END: Page Progress -->
-		
-</div>
-<!-- / WRAPPER ALL -->
-	
-<!-- SCRIPTS -->
-<script src="js/jquery.js"></script>
-<!--[if lt IE 10]> <script type="text/javascript" src="js/ie8.js"></script> <![endif]-->	
-<script src="js/plugins.js"></script>
-<script src="js/init.js"></script>
-<!-- /SCRIPTS -->
+	<!-- / WRAPPER ALL -->
 
+	<!-- SCRIPTS -->
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/init.js"></script>
+	<!-- /SCRIPTS -->
+	<script type="module">
+		import { GoogleGenerativeAI } from '@google/generative-ai';
+
+		const apiKey = 'AIzaSyCpLTayB36F3TEMCbqdsWWnar81yksRPa8';
+		const genAI = new GoogleGenerativeAI(apiKey);
+		const generationConfig = {
+			temperature: 1,
+			topP: 0.95,
+			topK: 40,
+			maxOutputTokens: 8192,
+		};
+
+		let chat; // Store the chat session
+
+		// Initialize the chat model and start a chat session
+		async function initializeChat() {
+			try {
+				const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp", generationConfig });
+				// Create the chat history with proper format
+				const history = [
+					{
+						role: "user",
+						parts: [{
+							text: "Bạn là một sinh viên đại học chuyên ngành khoa học chính trị, với kiến thức chuyên môn cao về bộ môn tư tưởng Hồ Chí Minh. Nhiệm vụ của bạn là giải thích, phân tích và ứng dụng tư tưởng Hồ Chí Minh trong các bối cảnh thực tiễn hiện đại, sử dụng ngôn ngữ súc tích, rõ ràng, và có tính học thuật."
+						}]
+					}
+				];
+
+				// Start a chat session with history
+				chat = model.startChat({
+					history: history,
+					generationConfig,
+				});
+
+				console.log('Chat initialized successfully');
+				// After initialization, add keyword listeners
+				addKeywordListeners();
+			} catch (error) {
+				console.error('Error initializing Gemini:', error);
+			}
+		}
+
+		// Modified sendMessage function to use proper message format
+		async function sendMessage(messageText) {
+			if (!chat) {
+				appendMessage('Bot: Chat is not initialized yet. Please try again.');
+				return;
+			}
+
+			// If messageText is not provided, get it from the input field
+			if (!messageText) {
+				const userInput = document.getElementById('user-input');
+				messageText = userInput.value.trim();
+				if (messageText === '') return;
+				userInput.value = '';
+			}
+
+			// Always append the message to the chat
+			appendMessage('You: ' + messageText);
+
+			// Show loading icon
+			const loadingContainer = document.getElementById('chatbot-loading');
+			loadingContainer.style.display = 'block';
+
+			try {
+				const result = await chat.sendMessage(messageText);
+				const response = await result.response;
+
+				// Hide loading icon
+				loadingContainer.style.display = 'none';
+
+				appendMessage('Bot: ' + response.text());
+			} catch (error) {
+				console.error('Error calling Gemini API:', error);
+
+				// Hide loading icon
+				loadingContainer.style.display = 'none';
+
+				appendMessage('Bot: Sorry, I encountered an error. Please try again.');
+			}
+		}
+
+		// Modified addKeywordListeners function
+		function addKeywordListeners() {
+			const highlights = document.querySelectorAll('.highlight-text');
+			highlights.forEach(keyword => {
+				keyword.removeEventListener('click', handleKeywordClick);
+				keyword.addEventListener('click', handleKeywordClick);
+			});
+		}
+
+		// Separate function to handle keyword clicks
+		function handleKeywordClick(event) {
+			const keywordText = event.target.getAttribute('data-keyword') || event.target.textContent;
+			if (keywordText) {
+				// Show the chatbot if it's hidden
+				openChatbot();
+
+				// Send the keyword text to the chatbot
+				sendMessage(keywordText);
+			}
+		}
+
+		function appendMessage(message) {
+			const messagesContainer = document.getElementById('chatbot-messages');
+			const messageElement = document.createElement('div');
+
+			// Determine if the message is from the user or the bot
+			if (message.startsWith('You:')) {
+				messageElement.classList.add('message', 'user-message'); // User message styles
+				messageElement.textContent = message.replace('You: ', ''); // Remove "You: " prefix
+			} else {
+				messageElement.classList.add('message', 'bot-message'); // Bot message styles
+				const formattedMessage = formatBotMessage(message.replace('Bot: ', '')); // Format the bot message
+				messageElement.innerHTML = formattedMessage; // Use innerHTML to insert formatted content
+			}
+
+			messagesContainer.appendChild(messageElement);
+			messagesContainer.scrollTop = messagesContainer.scrollHeight;
+		}
+
+		// Function to format the bot message
+		function formatBotMessage(message) {
+			// Add CSS styles for the formatted message
+			const styles = `
+		<style>
+			.bot-message {
+				font-family: Arial, sans-serif;
+				line-height: 1.6;
+				padding: 10px;
+			}
+	
+			.bot-message h3 {
+				color: #2c3e50;
+				margin: 20px 0 10px;
+				font-size: 1.4em;
+				font-weight: bold;
+			}
+	
+			.bot-message .bot-list {
+				margin: 10px 0;
+				padding-left: 20px;
+			}
+	
+			.bot-message .bot-list li {
+				margin: 8px 0;
+				position: relative;
+				list-style-type: none;
+			}
+	
+			.bot-message .bot-list li strong {
+				display: inline-block;
+				padding-left: 20px;
+				color: #e54b4b;
+				font-weight: 600;
+			}
+	
+			.bot-message .bot-list li .bot-list-indent {
+				margin-left: 40px;
+				padding-left: 20px;
+				background-color: #f9f9f9;
+				border-radius: 5px;
+			}
+		</style>`;
+
+			// Helper function to create bullet points for content before and after the colon
+			function processContent(content) {
+				// Remove * characters and process bold formatting denoted by **
+				const sanitizedContent = content.replace(/\*/g, '').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+				const items = sanitizedContent.split(/:/).map(item => item.trim());
+				let result = '';
+
+				if (items.length === 2) {
+					// Create bullet points for both sides of the colon
+					result += `<ul class="bot-list">`;
+					result += `<li><strong>${items[0]}</strong></li>`;
+					result += `<li><div class="bot-list-indent">${items[1]}</div></li>`;
+					result += `</ul>`;
+				} else {
+					// Fallback for content without a colon
+					result += `<ul class="bot-list">`;
+					result += `<li>${items[0]}</li>`;
+					result += `</ul>`;
+				}
+
+				return result;
+			}
+
+			let formattedMessage = '';
+
+			try {
+				// Split message into sections based on numbered titles
+				const sections = message.split(/(?=\d+\.\s)/);
+
+				sections.forEach(section => {
+					if (section.trim()) {
+						// Match the heading and content
+						const headingMatch = section.match(/^(\d+\.\s[^\n]+)\n(.*)$/s);
+
+						if (headingMatch) {
+							const [_, heading, content] = headingMatch;
+
+							// Add formatted heading
+							formattedMessage += `<h3>${heading.trim().replace(/\*/g, '')}</h3>`;
+
+							// Process each line of content
+							const lines = content.trim().split(/\n/);
+							lines.forEach(line => {
+								formattedMessage += processContent(line);
+							});
+						}
+					}
+				});
+
+				return `<div class="bot-message">${styles}${formattedMessage}</div>`;
+			} catch (error) {
+				console.error('Error formatting message:', error);
+				return `<div class="bot-message">${message}</div>`;
+			}
+		}
+
+		function openChatbot() {
+			const chatbotContainer = document.getElementById('chatbot-container');
+			chatbotContainer.style.display = 'block';
+			setTimeout(() => {
+				chatbotContainer.classList.add('show');
+			}, 10); // Small delay to trigger the transition
+		}
+
+		function closeChatbot() {
+			const chatbotContainer = document.getElementById('chatbot-container');
+			chatbotContainer.classList.remove('show');
+			setTimeout(() => {
+				chatbotContainer.style.display = 'none';
+			}, 300); // Match the transition duration
+		}
+
+		// Event Listeners
+		document.getElementById('send-button').addEventListener('click', () => sendMessage());
+
+		document.getElementById('user-input').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				e.preventDefault();
+				sendMessage();
+			}
+		});
+
+		document.getElementById('open-chatbot').addEventListener('click', function () {
+			toggleChatbot();
+		});
+
+		document.getElementById('close-chatbot').addEventListener('click', function () {
+			closeChatbot();
+		});
+
+		function toggleChatbot() {
+			const chatbotContainer = document.getElementById('chatbot-container');
+			if (chatbotContainer.classList.contains('show')) {
+				closeChatbot();
+			} else {
+				openChatbot();
+			}
+		}
+
+		// Initialize the chat when the page loads
+		window.addEventListener('load', initializeChat);
+
+		// Add keyword listeners when modal content is loaded
+		document.addEventListener('DOMContentLoaded', function () {
+			const observer = new MutationObserver(addKeywordListeners);
+			observer.observe(document.body, { childList: true, subtree: true });
+		});
+
+		$(document).ready(function () {
+			$('.popup-youtube').magnificPopup({
+				type: 'iframe',
+				iframe: {
+					patterns: {
+						youtube: {
+							index: 'youtube.com/', // Điều chỉnh cho YouTube
+							id: 'v=', // Lấy ID video từ URL
+							src: 'https://www.youtube.com/embed/%id%?autoplay=1' // URL phát
+						}
+					}
+				},
+				mainClass: 'mfp-fade',
+				removalDelay: 300,
+				preloader: false,
+				fixedContentPos: false
+			});
+		});
+
+	</script>
 </body>
+
 </html>
