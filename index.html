@@ -16,7 +16,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-	<title>CQ2 - GROUP2</title>
+	<title>CQ6 - GROUP5</title>
 
 	<!-- Magnific Popup CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
@@ -40,6 +40,334 @@
       <script type="text/javascript" src="js/modernizr.custom.js"></script>
     <![endif]-->
 	<!-- /STYLES -->
+	<style>
+		/* 3D Rotating Card Styles for NEWS section */
+		.news-wrapper {
+			width: 100%;
+			height: 800px;
+			position: relative;
+			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			margin: 20px 0;
+		}
+
+		.news-inner {
+			--w: 280px;
+			--h: 430px;
+			--translateZ: calc((var(--w) + var(--h)) * 0.5);
+			--rotateX: -5deg;
+			--perspective: 1200px;
+			position: absolute;
+			width: var(--w);
+			height: var(--h);
+			top: 12%;
+			left: calc(50% - (var(--w) / 2));
+			z-index: 2;
+			transform-style: preserve-3d;
+			transform: perspective(var(--perspective));
+			animation: rotating 30s linear infinite;
+		}
+
+		@keyframes rotating {
+			from {
+				transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(0);
+			}
+
+			to {
+				transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(1turn);
+			}
+		}
+
+		.news-card {
+			position: absolute;
+			border: 2px solid rgba(var(--color-card));
+			border-radius: 12px;
+			overflow: hidden;
+			inset: 0;
+			transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
+			background: white;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.news-img {
+			width: 100%;
+			height: 30%;
+			object-fit: cover;
+			border-bottom: 2px solid rgba(var(--color-card), 0.3);
+			background: rgba(var(--color-card), 0.1);
+		}
+
+		.news-img img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.news-content {
+			padding: 10px;
+			height: 70%;
+			overflow-y: auto;
+			text-align: left;
+			background: radial-gradient(circle,
+					rgba(255, 255, 255, 1) 0%,
+					rgba(var(--color-card), 0.1) 100%);
+			/* Hide scrollbar but maintain functionality */
+			scrollbar-width: none;
+			/* Firefox */
+			-ms-overflow-style: none;
+			/* IE and Edge */
+		}
+
+		.news-content::-webkit-scrollbar {
+			display: none;
+		}
+
+		.news-content h3 {
+			margin-top: 0;
+			/* Changed from 80px to 0 */
+			color: rgb(var(--color-card));
+			font-size: 16px;
+			margin-bottom: 10px;
+			font-weight: 600;
+			height: auto;
+			/* Allow title to take its natural height */
+			line-height: 1.3;
+		}
+
+		.news-card:hover {
+			box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+			cursor: pointer;
+		}
+
+		.news-content p {
+			font-size: 12px;
+			line-height: 1.4;
+			margin-bottom: 10px;
+			overflow-wrap: break-word;
+			word-wrap: break-word;
+		}
+
+		.news-card:hover::after {
+			opacity: 0.7;
+		}
+
+		.news-modal {
+			display: none;
+			position: fixed;
+			z-index: 1000;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.7);
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+
+		.news-modal.active {
+			opacity: 1;
+		}
+
+		.news-modal-content {
+			background-color: #fff;
+			margin: 5% auto;
+			padding: 25px;
+			border: 1px solid #e54b4b;
+			width: 80%;
+			max-width: 800px;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+			position: relative;
+			transform: translateY(-50px);
+			opacity: 0;
+			transition: all 0.3s ease;
+		}
+
+		.news-modal.active .news-modal-content {
+			transform: translateY(0);
+			opacity: 1;
+		}
+
+		.news-modal-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: 2px solid rgba(var(--color-card), 0.3);
+			padding-bottom: 15px;
+			margin-bottom: 20px;
+		}
+
+		.news-modal-header h2 {
+			margin: 0;
+			color: rgb(var(--color-card));
+			font-size: 28px;
+		}
+
+		.news-modal-close {
+			font-size: 30px;
+			font-weight: bold;
+			cursor: pointer;
+			color: #aaa;
+			transition: color 0.3s ease;
+		}
+
+		.news-modal-close:hover {
+			color: #e54b4b;
+		}
+
+		.news-modal-body {
+			max-height: 60vh;
+			overflow-y: auto;
+			padding-right: 10px;
+		}
+
+		.news-modal-body img {
+			max-width: 100%;
+			height: auto;
+			margin: 15px 0;
+			border-radius: 8px;
+			box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+		}
+
+		.news-modal-footer {
+			text-align: right;
+			margin-top: 20px;
+			padding-top: 15px;
+			border-top: 1px solid #eee;
+		}
+	</style>
+	<style>
+		/* Blob Card Container */
+		.blob-card-container {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 30px;
+			margin: 40px 0;
+			width: 100%;
+		}
+
+		/* Card styling */
+		.card {
+			position: relative;
+			width: calc(50% - 15px);
+			height: 350px;
+			border-radius: 14px;
+			z-index: 1;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+			cursor: pointer;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			margin-bottom: 30px;
+			/* Added to ensure vertical spacing between rows */
+		}
+
+		.card:hover {
+			transform: translateY(-10px);
+			box-shadow: 25px 25px 70px #bebebe, -25px -25px 70px #ffffff;
+		}
+
+		.bg1 {
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			width: calc(100% - 10px);
+			height: calc(100% - 10px);
+			z-index: 2;
+			background: rgba(255, 255, 255, .95);
+			backdrop-filter: blur(24px);
+			border-radius: 10px;
+			overflow: hidden;
+			outline: 2px solid white;
+		}
+
+		.blob {
+			position: absolute;
+			z-index: 1;
+			top: 50%;
+			left: 50%;
+			width: 250px;
+			height: 250px;
+			border-radius: 50%;
+			opacity: 0.9;
+			filter: blur(20px);
+			animation: blob-bounce 6s infinite ease;
+			box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+		}
+
+		.card-content {
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			height: 100%;
+			position: relative;
+			z-index: 3;
+		}
+
+		.card-content img {
+			width: 100px;
+			height: 100px;
+			object-fit: cover;
+			border-radius: 50%;
+			margin-bottom: 15px;
+			border: 3px solid white;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+		}
+
+		.card-content h3 {
+			text-align: center;
+			margin-bottom: 15px;
+			color: #333;
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		.card-content p {
+			text-align: center;
+			font-size: 14px;
+			line-height: 1.5;
+			color: #666;
+		}
+
+		.card:nth-child(1) .blob {
+			background-color: rgb(255, 200, 0);
+		}
+
+		.card:nth-child(2) .blob {
+			background-color: rgb(255, 50, 50);
+		}
+
+		@keyframes blob-bounce {
+			0% {
+				transform: translate(-100%, -100%) translate3d(0, 0, 0);
+			}
+
+			25% {
+				transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+			}
+
+			50% {
+				transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+			}
+
+			75% {
+				transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+			}
+
+			100% {
+				transform: translate(-100%, -100%) translate3d(0, 0, 0);
+			}
+		}
+	</style>
 	<!-- /STYLES -->
 	<!-- Meta tags for module imports -->
 	<meta name="importmap-type" content="importmap">
@@ -147,9 +475,9 @@
 						<ul class="anchor_nav">
 							<li class="current"><a href="#home">Trang Chủ</a></li>
 							<li><a href="#about">Giới Thiệu</a></li>
-							<li><a href="#news">Cơ Sở</a></li>
-							<li><a href="#formation">Quá Trình</a></li>
-							<li><a href="#legacy">Giá Trị</a></li>
+							<li><a href="#news">Đường Lối</a></li>
+							<li><a href="#formation">Xây Dựng</a></li>
+							<li><a href="#legacy">Khôi Phục</a></li>
 							<li><a href="#document">Tư Liệu</a></li>
 							<li><a href="#cq">CQ</a></li>
 						</ul>
@@ -181,10 +509,11 @@
 				<div class="container">
 					<div class="dropdown_inner">
 						<ul class="anchor_nav">
+							<li class="current"><a href="#home">Trang Chủ</a></li>
 							<li><a href="#about">Giới Thiệu</a></li>
-							<li><a href="#news">Cơ Sở</a></li>
-							<li><a href="#formation">Quá Trình</a></li>
-							<li><a href="#legacy">Giá Trị</a></li>
+							<li><a href="#news">Đường Lối</a></li>
+							<li><a href="#formation">Xây Dựng</a></li>
+							<li><a href="#legacy">Khôi Phục</a></li>
 							<li><a href="#document">Tư Liệu</a></li>
 							<li><a href="#cq">CQ</a></li>
 						</ul>
@@ -205,10 +534,10 @@
 				<div class="container">
 					<div class="details" data-animation="toTop">
 						<!-- Animation Values: toTop, toRight, scale, rotate -->
-						<span class="fn_animation job">TƯ TƯỞNG</span>
+						<span class="fn_animation job">LỊCH SỬ ĐẢNG CỘNG SẢN</span>
 						<h3 class="fn_animation"
 							style="font-family: Arial, Helvetica, sans-serif; color: white; font-weight: 500; font-size: 72px;">
-							HỒ CHÍ MINH</h3>
+							VIỆT NAM</h3>
 					</div>
 					<div class="grax_tm_down" data-skin="light">
 						<div class="line_wrapper">
@@ -219,9 +548,6 @@
 			</div>
 		</div>
 		<!-- /HERO -->
-		<div style="width:100%;display:flex;flex-direction:column;gap:8px;min-height:635px;">
-			<iframe src="https://quizizz.com/join?gc=492959" style="flex:1;" frameBorder="0" allowfullscreen></iframe>
-		</div>
 		<!-- ABOUT -->
 		<div class="grax_tm_section" id="about">
 			<div class="grax_tm_about">
@@ -230,62 +556,32 @@
 						<div class="left wow fadeInLeft" data-wow-duration="1.5s">
 							<div class="image parallax" data-relative-input="true">
 								<img src="img/placeholders/3-4.jpg" alt="" />
-								<div class="main layer"
-									data-img-url="https://tinhdoan.tayninh.gov.vn/wp-content/uploads/2020/11/119883456_721752095074929_901996236616693581_n.jpg"
-									data-depth="0.04"></div>
+								<div class="main layer" data-depth="0.04"
+									style="background-image: url('img/news/Di chúc của Bác.jpeg');"></div>
 							</div>
 						</div>
 						<div class="right wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
 							<div class="grax_tm_title_holder">
-								<h3>Tư Tưởng <span>Hồ CHí Minh</span></h3>
+								<h3>Di chúc của Chủ tịch <span>Hồ CHí Minh</span></h3>
 							</div>
-							<div class="text">
-								<p>
-									Là một hệ thống quan điểm toàn diện và sâu sắc về những vấn đề cơ bản của <span
-										class="highlight-text" data-keyword="Cách Mạng Việt Nam">Cách Mạng Việt
-										Nam</span>, kết quả của sự vận dụng và phát triển sáng tạo <span
-										class="highlight-text" data-keyword="Chủ nghĩa Mác - Lênin"> chủ nghĩa Mác -
-										Lênin</span> vào điều kiện cụ thể của nước ta, kế thừa và phát triển các giá trị
-									truyền thống tốt đẹp của dân tộc, là tài sản tinh thần vô cùng to lớn và quý giá của
-									Đảng và dân tộc ta, mãi mãi soi đường cho sự nghiệp cách mạng của nhân dân ta giành
-									thắng lợi.
-								</p>
-								<!-- <span class="highlight-text" data-keyword="Độc lập dân tộc">Độc lập dân tộc</span>
-								<span class="highlight-text" data-keyword="tự do dân tộc">Tự do dân tộc</span>
-								<span class="highlight-text" data-keyword="tư tưởng Hồ Chí Minh gồm những nội dung nào">Tư tưởng Hồ Chí Minh</span> -->
-							</div>
-							<!-- <div class="list">
-								<ul>
-									<li>
-										<div class="list_inner">
-											<img class="svg" src="img/svg/checked.svg" alt="" />
-											<span>Phát Triển Web</span>
-										</div>
-									</li>
-									<li>
-										<div class="list_inner">
-											<img class="svg" src="img/svg/checked.svg" alt="" />
-											<span>Tối Ưu Hóa Công Cụ Tìm Kiếm</span>
-										</div>
-									</li>
-									<li>
-										<div class="list_inner">
-											<img class="svg" src="img/svg/checked.svg" alt="" />
-											<span>Tiếp Thị Truyền Thông Xã Hội</span>
-										</div>
-									</li>
-									<li>
-										<div class="list_inner">
-											<img class="svg" src="img/svg/checked.svg" alt="" />
-											<span>Tạo Nội Dung</span>
-										</div>
-									</li>
-								</ul>
-							</div> -->
-							<div class="grax_tm_button">
-								<a href="https://moet.gov.vn/content/vanban/Lists/VBDH/Attachments/2729/GT%20h%E1%BB%8Dc%20ph%E1%BA%A7n%20T%C6%B0%20t%C6%B0%E1%BB%9Fng%20HCM%20(K)%20Tr%20%C4%91%E1%BA%A7u-Tr68.pdf"
-									target="_blank">Giáo Trình Đầy Đủ</a>
-							</div>
+							<di class="quote-container" style="margin: 30px 0; padding: 30px; border-radius: 5px;">
+								<blockquote
+									style="margin: 30px; font-size: 3.0em; font-weight: bold; color: #c61a09; line-height: 1.6; text-align: center; margin: 0;">
+									"Còn non, còn nước, còn người<br>
+									Thắng giặc Mỹ, ta sẽ xây dựng hơn mười ngày nay!"
+								</blockquote>
+								<p style="text-align: right; font-style: italic; margin-top: 15px; font-size: 1.1em;">-
+									Trích Di chúc Chủ tịch Hồ Chí Minh</p>
+								<div class="grax_tm_button">
+									<a href="https://baochinhphu.vn/toan-van-di-chuc-cua-chu-tich-ho-chi-minh-102169104.htm"
+										target="_blank">Nội Dung Di Chúc Đầy Đủ</a>
+								</div>
+								<div class="logo-overlay">
+									<img src="https://play-lh.googleusercontent.com/j5KmJiZxrCRR7SBEjmLtn5gpQz8exDTIOTNM0xegJwQVQbyNZfSa-UtoHrWj2BLxm_Q=w240-h480-rw"
+										alt="Artivive Logo" class="logo" />
+									<div class="overlay-text">Sử dụng app Artivive để quét ảnh này thành video tư
+										liệu</div>
+								</div>
 						</div>
 					</div>
 				</div>
@@ -297,1479 +593,1283 @@
 		<div class="grax_tm_section" id="news">
 			<div class="grax_tm_news">
 				<div class="container">
-					<div class="grax_tm_title_holder">
-						<h3>Cơ Sở <span>Hình Thành</span></h3>
+					<div class="grax_tm_title_holder" style="margin-bottom: 50px;">
+						<h3>Đường lối kháng chiến chống Mỹ <span> <br> cứu nước của Đảng</span></h3>
 					</div>
-					<div class="news_list">
-						<div class="grax_tm_title_holder1">
-							<h4 style="margin-bottom: 10px;">Cơ Sở <span>Khách Quan</span></h4>
-						</div>
-						<ul>
-							<li class="wow fadeInLeft" data-wow-duration="1.5s">
-								<div class="list_inner">
-									<div class="image">
-										<img src="img/placeholders/4-3.jpg" alt="" />
-										<div class="main" data-img-url="img/news/1.jpg"></div>
-										<a class="grax_tm_full_link" href="#"></a>
-									</div>
-									<div class="details">
-										<h3 class="title">
-											<a href="#">Bối Cảnh Lịch Sử Hình Thành Tư Tưởng Hồ Chí Minh</a>
-										</h3>
-										<!-- <p class="date">
-							Bởi <a href="#">Nguyễn Văn A</a>
-							<span>01 Tháng 1, 2022</span>
-						</p> -->
-									</div>
-									<div style="font-size: 20px;" class="description">
-										<p>
-											Bác sinh ngày 19/05/1890, trong lúc đất nước gặp nhiều biến động.
-											<span class="highlight-text" data-keyword="Triều đình Nguyễn">Triều đình
-												Nguyễn</span> dần đầu hàng Pháp và thừa nhận <span
-												class="highlight-text" data-keyword="Nền bảo hộ của Pháp">nền bảo
-												hộ</span> của chúng trên
-											toàn đất nước.
-										</p>
-										<blockquote>
-											Cuối TK XIX, các cuộc khởi nghĩa dưới khẩu hiệu <span class="highlight-text"
-												data-keyword="Khẩu hiệu Cần Vương">“Cần Vương”</span> dần thất bại =>
-											Hệ tư tưởng phong kiến lỗi thời trước các nhiệm vụ lịch sử.
-										</blockquote>
-										<blockquote>
-											Đầu TK XX các tầng lớp công nhân, tiểu tư sản và tư sản xuất hiện tạo tiền
-											đề bên trong cho phong trào yêu nước, giải phóng dân tộc. </blockquote>
-										<p>
-											Các trào lưu cải cách ở Nhật Bản, Trung Quốc tràn vào Việt Nam, phong trào
-											yêu nước cũng chuyển sang xu hướng dân chủ <span class="highlight-text"
-												data-keyword="Xu hướng dân chủ tư sản">tư sản</span>.
-										</p>
-										<p>
-											Các nhà yêu nước có tư tưởng tiến bộ tiêu biểu như: Phan Bội Châu, Phan Châu
-											Trinh, Hoàng Hoa Thám đã cố gắng vận động và tổ chức các cuộc đấu tranh yêu
-											nước theo mục tiêu, phương pháp mới nhưng còn nhiều lỗ hổng nên dần thất
-											bại.
-										</p>
-										<blockquote>Phong trào cứu nước của nhân dân ta muốn giành được thắng lợi phải
-											đi theo một con đường mới.</blockquote>
-										<div style="margin-top: 20px;" class="share">
-											<span>Chia sẻ:</span>
-											<ul class="social">
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/facebook.svg"
-															alt="" /></a>
-												</li>
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/twitter.svg"
-															alt="" /></a>
-												</li>
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/behance.svg"
-															alt="" /></a>
-												</li>
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/dribbble.svg"
-															alt="" /></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
-								<div class="list_inner">
-									<div class="image">
-										<img src="img/placeholders/4-3.jpg" alt="" />
-										<div class="main" data-img-url="img/news/2.jpg"></div>
-										<a class="grax_tm_full_link" href="#"></a>
-									</div>
-									<div class="details">
-										<h3 class="title">
-											<a href="#">Bối Cảnh Thời Đại Hình Thành Tư Tưởng Hồ Chí Minh</a>
-										</h3>
-										<!-- </div>
-						<p class="date">
-							Bởi <a href="#">Trần Thị B</a>
-							<span>22 Tháng 12, 2021</span>
-						</p>
-						</div> -->
-										<div style="font-size: 20px;" class="description">
-											<p>
-												Ở Việt Nam, việc cứu nước chìm trong bóng tối: “không có đường ra”.
-												Ngoài thế giới, chủ nghĩa tư bản chuyển sang giai đoạn độc quyền và xác
-												lập <span class="highlight-text"
-													data-keyword="Quyền thống trị của chủ nghĩa tư bản">quyền thống
-													trị</span> trên toàn thế giới. Chủ nghĩa đế quốc nổi lên và trở
-												thành kẻ thù chung của các <span class="highlight-text"
-													data-keyword="Dân tộc thuộc địa">dân tộc thuộc địa</span>.
-											</p>
-											<blockquote>
-												Các cuộc đấu tranh của công nhân các nước TBCN đầu XIX - cuối XX với
-												thành công rực rỡ của <span class="highlight-text"
-													data-keyword="Cách mạng tháng Mười Nga năm 1917"> “Cách mạng tháng
-													Mười Nga năm 1917”</span>, lật đổ nhà
-												nước Tư sản và thiết lập <span class="highlight-text"
-													data-keyword="Chính quyền Xô Viết">Chính quyền Xô Viết</span> ⇒ Thức
-												tỉnh các dân tộc
-												châu Á, mở ra thời đại giải phóng dân tộc.
-											</blockquote>
-											<blockquote>
-												Với thắng lợi này, Liên bang Cộng hòa xã hội chủ nghĩa Xô Viết ra đời
-												(1922) và tiếp đó là sự ra đời của <span class="highlight-text"
-													data-keyword="Quốc tế Cộng Sản (3-1919)">Quốc tế Cộng sản
-													(3-1919)</span> ⇒ Phong
-												trào công nhân trong các nước tư sản chủ nghĩa phương Tây và phong trào
-												giải phóng dân tộc ở các nước thuộc địa phương Đông càng có quan hệ mật
-												thiết với nhau hơn trong việc chống kẻ thù chung là <span
-													class="highlight-text" data-keyword="Chủ nghĩa đế quốc"> chủ nghĩa
-													đế quốc</span>.
-											</blockquote>
-											<div style="margin-top: 20px;" class="share">
-												<span>Chia sẻ:</span>
-												<ul class="social">
-													<li>
-														<a href="#"><img class="svg" src="img/svg/social/facebook.svg"
-																alt="" /></a>
-													</li>
-													<li>
-														<a href="#"><img class="svg" src="img/svg/social/twitter.svg"
-																alt="" /></a>
-													</li>
-													<li>
-														<a href="#"><img class="svg" src="img/svg/social/behance.svg"
-																alt="" /></a>
-													</li>
-													<li>
-														<a href="#"><img class="svg" src="img/svg/social/dribbble.svg"
-																alt="" /></a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-							</li>
-							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".4s">
-								<div class="list_inner">
-									<div class="image">
-										<img src="img/placeholders/4-3.jpg" alt="" />
-										<div class="main" data-img-url="img/news/3.jpg"></div>
-										<a class="grax_tm_full_link" href="#"></a>
-									</div>
-									<div class="details">
-										<h3 class="title">
-											<a href="#">Những Tiền Đề, Tư Tưởng - Lý Luận</a>
-										</h3>
-										<!-- <p class="date">
-							Bởi <a href="#">Lê Văn C</a>
-							<span>05 Tháng 12, 2021</span>
-						</p> -->
-									</div>
-									<div style="font-size: 20px;" class="description">
-										<p style="font-weight: bold; font-size: 25px;">
-											Giá trị truyền thống tốt đẹp của của dân tộc Việt Nam
-										</p>
-										<blockquote>
-											Lịch sử dựng nước và giữ nước lâu đời đã hình thành nên truyền thống yêu
-											nước, kiên cường, bất khuất , là tinh thần tương thân tương ái, ý thức cố
-											kết cộng đồng,... hình thành nên tư tưởng Hồ Chí Minh.
-										</blockquote>
-										<blockquote>
-											Chủ nghĩa yêu nước là truyền thống, tư tưởng, tình cảm thiêng liêng cao quý
-											nhất, là cội nguồn của trí tuệ và lòng dũng cảm của người Việt, là chuẩn mực
-											đạo đức cơ bản của dân tộc Việt Nam. ⇒ Ý chí này thúc giục Bác Nguyễn Tất
-											Thành quyết chí ra đi tìm đường cứu nước
-										</blockquote>
-										<p style="font-weight: bold; font-size: 25px; margin-top: 40px;">
-											Tinh hoa văn hóa nhân loại
-										</p>
-										<blockquote>
-											Lịch sử dựng nước và giữ nước lâu đời đã hình thành nên truyền thống yêu
-											nước, kiên cường, bất khuất , là tinh thần tương thân tương ái, ý thức cố
-											kết cộng đồng,... hình thành nên tư tưởng Hồ Chí Minh.
-										</blockquote>
-										<blockquote>
-											Phương Đông: Bác chọn lọc các tư tưởng, học thuyết triết học cũng như các
-											mặt tích cực của Nho giáo từ những người đi trước và kể cả tôn giáo như Phật
-											giáo nếu có những điều thích hợp với điều kiện của nước ta.
-										</blockquote>
-										<blockquote>
-											Phương Tây: Bác sớm tiếp thu các tư tưởng ở Pháp, Mỹ. Người trực tiếp đọc và
-											tiếp thu các tư tưởng về tự do, bình đẳng, bác ái qua nhiều tác phẩm. Đồng
-											thời người còn tiếp thu từ các bản Tuyên ngôn nhân quyền và dân quyền của
-											Pháp, Tuyên ngôn độc lập 1776 của Mỹ.
-										</blockquote>
-										<p>⇒ Cho ta thấy Người tự biết làm giàu tri thức, trí tuệ của bản thân, vừa tiếp
-											thu, chọn lọc đề từ đó suy nghĩ lựa chọn, kế thừa, đổi mới, vận dụng và phát
-											triển. </p>
-										<p style="font-weight: bold; font-size: 25px; margin-top: 40px;">
-											Chủ nghĩa Mác - Lênin
-										</p>
-										<blockquote>
-											Là cơ sở thế giới quan và phương pháp luận của tư tưởng Hồ Chí Minh, bác
-											đã tiếp thu chủ nghĩa Mác - Lênin trên nền tảng chắt lọc, hấp thụ và một vốn
-											chính trị, hiểu biết phong phú được tích lũy qua thực tiễn hoạt động đấu
-											tranh vì mục tiêu cứu nước và giải phóng dân tộc, cùng với đó là một bản
-											lĩnh trí tuệ khi vận dụng vào Việt Nam.
-										</blockquote>
-										<p>⇒ Qua đó Bác hiểu được rằng chỉ có CNXH, CNCS mới giải phóng được các dân tộc
-											bị áp bức.</p>
-										<div style="margin-top: 20px;" class="share">
-											<span>Chia sẻ:</span>
-											<ul class="social">
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/facebook.svg"
-															alt="" /></a>
-												</li>
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/twitter.svg"
-															alt="" /></a>
-												</li>
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/behance.svg"
-															alt="" /></a>
-												</li>
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/dribbble.svg"
-															alt="" /></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div style="padding-top: 0px;" class="news_list">
-						<div class="grax_tm_title_holder1">
-							<h4 style="margin-bottom: 10px;">Nhân Tố <span>Chủ Quan</span></h4>
-						</div>
-						<ul>
-							<li class="wow fadeInLeft" data-wow-duration="1.5s">
-								<div class="list_inner">
-									<div class="image">
-										<img src="img/placeholders/4-3.jpg" alt="" />
-										<div class="main" data-img-url="img/news/5.jpg"></div>
-										<a class="grax_tm_full_link" href="#"></a>
-									</div>
-									<div class="details">
-										<h3 class="title">
-											<a href="#">Khả Năng Tư Duy Và Trí Tuệ Của Chủ Tịch Hồ Chí Minh </a>
-										</h3>
-										<!-- <p class="date">
-							Bởi <a href="#">Nguyễn Văn A</a>
-							<span>01 Tháng 1, 2022</span>
-						</p> -->
-									</div>
-									<div style="font-size: 20px;" class="description">
-										<blockquote>
-											Bác đã không ngừng quan sát, nhận xét thực tiễn, làm phồng thêm sự hiểu biết
-											để tạo nên những thành công trong các hoạt động của Người.
-										</blockquote>
-										<blockquote>
-											Các nhà yêu nước tiền bối cùng thời với Bác tuy họ có quan sát nhưng họ chưa
-											thấy được, nhận thức đúng được về sự thay đổi của dân tộc và thời đại. Trong
-											khi đó Bác đã khám phá ra các quy luật vận động xã hội, đời sống văn hóa và
-											khái quát chúng thành lý luận, rồi Bác đã đem những lý luận này chỉ đạo
-											<span class="highlight-text"
-												data-keyword="Các hoạt động thực tiễn được chỉ đạo bởi Bác Hồ">hoạt
-												động thực tiễn</span>.
-										</blockquote>
-										<p>
-											⇒ Lý luận của Bác mang giá trị khách quan, cách mạng và khoa học.
-										</p>
-										<div style="margin-top: 20px;" class="share">
-											<span>Chia sẻ:</span>
-											<ul class="social">
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/facebook.svg"
-															alt="" /></a>
-												</li>
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/twitter.svg"
-															alt="" /></a>
-												</li>
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/behance.svg"
-															alt="" /></a>
-												</li>
-												<li>
-													<a href="#"><img class="svg" src="img/svg/social/dribbble.svg"
-															alt="" /></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
-								<div class="list_inner">
-									<div class="image">
-										<img src="img/placeholders/4-3.jpg" alt="" />
-										<div class="main" data-img-url="img/news/6.jpg"></div>
-										<a class="grax_tm_full_link" href="#"></a>
-									</div>
-									<div class="details">
-										<h3 class="title">
-											<a href="#">Phẩm Chất Đạo Đức Và Năng Lực Hoạt Động Thực Tiễn</a>
-										</h3>
-										<!-- </div>
-						<p class="date">
-							Bởi <a href="#">Trần Thị B</a>
-							<span>22 Tháng 12, 2021</span>
-						</p>
-						</div> -->
-										<div style="font-size: 20px;" class="description">
-											<blockquote>
-												Phẩm chất, tài năng được thể hiện hết ở tư duy độc lập, tự chủ, sáng
-												tạo, cộng với đầu óc phê phán tinh gtường, sáng suốt trong việc nhận
-												xét, đánh giá các sự vật, sự vật chung quanh. Và chúng cũng được Bác
-												biểu hiện ở bản lĩnh kiên định, luôn tin vào nhân dân, khiêm tốn, bình
-												dị, ham học hỏi, nhạy bén với cái mới, có phương pháp biện chứng, có đầu
-												óc thực tiễn.
-											</blockquote>
-											<blockquote>
-												Đồng thời phẩm chất này còn biểu hiện qua sự khổ công học tập để chiếm
-												lĩnh đỉnh cao tri thức nhân loại, là 1 nhà yêu nước chân chính, <span
-													class="highlight-text"
-													data-keyword="Hình ảnh người chiến sĩ cộng sản">1 chiến
-													sĩ cộng sản nhiệt thành</span>, một trái tim yêu nước thương dân,
-												sẵn sàng hi
-												sinh vì độc lập tự do của Tổ quốc.
-											</blockquote>
-											<p>⇒ Tư tưởng Hồ Chí Minh đã trở thành tư tưởng Việt Nam hiện đại.</p>
-											<div style="margin-top: 20px;" class="share">
-												<span>Chia sẻ:</span>
-												<ul class="social">
-													<li>
-														<a href="#"><img class="svg" src="img/svg/social/facebook.svg"
-																alt="" /></a>
-													</li>
-													<li>
-														<a href="#"><img class="svg" src="img/svg/social/twitter.svg"
-																alt="" /></a>
-													</li>
-													<li>
-														<a href="#"><img class="svg" src="img/svg/social/behance.svg"
-																alt="" /></a>
-													</li>
-													<li>
-														<a href="#"><img class="svg" src="img/svg/social/dribbble.svg"
-																alt="" /></a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-							</li>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /NEWS -->
+					<h4 style="margin: 40px 0 20px;">Chiến tranh đặc biệt thất bại <span>, Chiến tranh cục bộ bắt
+							đầu</span></h4>
 
-		<!-- TIMELINE -->
-		<div class="grax_tm_section" id="formation">
-			<div class="timeline-section">
-				<div class="container">
-					<div class="grax_tm_title_holder">
-						<h3>Quá Trình <span>Hình Thành</span></h3>
-					</div>
-					<div class="grax_tm_timeline">
-						<div class="timeline-container">
+					<div class="accordion_container">
+						<!-- Accordion Item 1 -->
+						<div class="accordion_item">
+							<div class="accordion_header">
+								<h4>“Chiến tranh đặc biệt” của địch dần lộ rõ nguy cơ thất bại</h4>
+								<span class="icon">+</span>
+							</div>
+							<div class="accordion_content">
+								<div style="font-size: 20px;" class="content_inner">
+									<blockquote>Các chiến dịch như <span class="highlight-text">Ấp Bắc
+											(1963)</span>,<span class="highlight-text">Bình Giã (1964-1965)</span> giáng
+										đòn mạnh vào chiến lược “Chiến tranh đặc biệt”.</blockquote>
+									<blockquote>Quân đội Sài Gòn yếu kém, thiếu tinh thần chiến đấu.</blockquote>
+									<blockquote><span class="highlight-text">Kế hoạch ấp chiến lược bị phá sản</span> ->
+										nhân dân nổi dậy phá ấp, giải phóng nhiều vùng nông thôn.</blockquote>
+									<blockquote>Mỹ tăng cường viện trợ nhưng không hiệu quả.</blockquote>
+									<blockquote>Sau<span class="highlight-text">cuộc đảo chính lật đổ Ngô Đình Diệm
+											(11/1963)</span>, chính quyền Sài Gòn rơi vào bất ổn, liên tục thay đổi lãnh
+										đạo, chia rẽ nội bộ.</blockquote>
+									<ul
+										style="display: flex; justify-content: space-between; list-style-type: none; padding: 0; margin: 0;">
+										<li style="text-align: center; flex: 1;">
+											<img style="width: 90%; height: auto;"
+												src="https://thuviennguyenvanhuong.vn/wp-content/uploads/2023/11/Photo-monks_1493115432_VnEx.jpg"
+												alt="Biểu tình của người dân và Phật tử:" />
+											<figcaption
+												style="margin-top: 5px; font-size: 15px; font-weight: bold; color: #000000;">
+												Biểu tình của người dân và Phật tử</figcaption>
+										</li>
+										<li style="text-align: center; flex: 1;">
+											<img style="width: 90%; height: auto;"
+												src="https://thuviennguyenvanhuong.vn/wp-content/uploads/2023/11/7095515727_560e8ed3cf_o.jpg"
+												alt="Đảo chính tại cổng Dinh Tổng thống Ngô:" />
+											<figcaption
+												style="margin-top: 5px; font-size: 15px; font-weight: bold; color: #000000;">
+												Đảo chính tại cổng Dinh Tổng thống Ngô</figcaption>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- Accordion Item 2 -->
+						<div class="accordion_item">
+							<div class="accordion_header">
+								<h4>Mỹ khởi động "Chiến tranh cục bộ"</h4>
+								<span class="icon">+</span>
+							</div>
+							<div class="accordion_content">
+								<div style="font-size: 20px;" class="content_inner">
+									<blockquote>Tổng thống Mỹ <span class="highlight-text">Lyndon B. Johnson</span>
+										quyết
+										định tiến hành chiến lược “Chiến tranh cục bộ” ở miền Nam.</blockquote>
+									<blockquote><span class="highlight-text">“Chiến tranh cục bộ”:</span> là hình thức
+										chiến tranh trong chiến lược toàn cầu “phản ứng linh hoạt” của Mỹ, biểu hiện ->
+										Mỹ đưa quân chiến đấu cùng các nước đồng minh trực tiếp tham chiến, đóng vai trò
+										chủ yếu trên chiến trường miền Nam; quân đội Sài Gòn đóng vai trò hỗ trợ và bình
+										định. </blockquote>
+									<blockquote>Ngày 8-3-1965: Quân Mỹ đổ bộ Đà Nẵng. Đồng thời Mỹ mở cuộc chiến tranh
+										phá hoại bằng không quân và hải quân đánh phá miền Bắc nhằm làm suy yếu miền
+										Bắc, ngăn sự chi viện cho cách mạng miền Nam. </blockquote>
+								</div>
+								<div style="text-align: center; position: relative;">
+									<!-- Ảnh chính -->
+									<img src="img/news/phuc-1.jpg"
+										alt="1965 Mar.8th_THUỶ QUÂN LỤC CHIẾN HOA KỲ 🇺🇸 ĐỔ BỘ ĐÀ NẴNG"
+										style="width: 70%; height: auto;">
 
-							<!-- Timeline Block 1 -->
-							<div class="timeline-block wow fadeInLeft" data-wow-duration="1.5s" data-popup="popup"
-								onclick="openPopup(this)">
-								<div class="timeline-dot"></div>
-								<div class="timeline-content">
-									<h3>Giai đoạn trước 1911</h3>
-									<span class="timeline-date">1890-1911</span>
-									<p>
-										Hình thành tư tưởng yêu nước và chí hướng cứu nước.
+									<!-- Logo với hiệu ứng hover -->
+									<div class="logo-overlay">
+										<img src="https://play-lh.googleusercontent.com/j5KmJiZxrCRR7SBEjmLtn5gpQz8exDTIOTNM0xegJwQVQbyNZfSa-UtoHrWj2BLxm_Q=w240-h480-rw"
+											alt="Artivive Logo" class="logo" />
+										<div class="overlay-text">Sử dụng app Artivive để quét ảnh này thành video tư
+											liệu</div>
+									</div>
+
+									<figcaption
+										style="margin-top: 5px; font-size: 15px; font-weight: bold; color: #000000;">
+										8-3-1965 - THUỶ QUÂN LỤC CHIẾN HOA KỲ 🇺🇸 ĐỔ BỘ ĐÀ NẴNG</figcaption>
+								</div>
+							</div>
+
+							<!-- CSS -->
+							<style>
+								.logo-overlay {
+									position: absolute;
+									bottom: 10px;
+									right: 10px;
+									z-index: 2;
+								}
+
+								.logo {
+									width: 50px;
+									height: 50px;
+									cursor: pointer;
+								}
+
+								.overlay-text {
+									display: none;
+									font-size: 14px;
+									color: #fff;
+									background-color: rgba(0, 0, 0, 0.7);
+									padding: 5px;
+									border-radius: 5px;
+									margin-top: 10px;
+									text-align: center;
+								}
+
+								/* Hiển thị chú thích khi hover vào logo */
+								.logo-overlay:hover .overlay-text {
+									display: block;
+								}
+							</style>
+
+
+						</div>
+					</div>
+					<h4 style="margin: 40px 0 20px;">Phát động kháng chiến <span>toàn quốc</span></h4>
+					<p style=" font-size: 20px;">Hội nghị lần thứ 11 ( 25 đến 27-3-1965 ) và lần thứ 12 ( 21 đến
+						27-12-1965 ) của Ban Chấp hành Trung ương Đảng đã phát động cuộc kháng chiến chống Mỹ, cứu nước
+						trên phạm vi toàn quốc và hạ quyết tâm: <span class="highlight-text">“Động viên lực lượng của cả
+							nước, kiên quyết đánh bại cuộc chiến tranh xâm lược của đế quốc Mỹ trong bất cứ tình huống
+							nào, để bảo vệ miền Bắc, giải phóng miền Nam, hoàn thành cách mạng dân tộc dân chủ nhân dân
+							trong cả nước, tiến tới thực hiện hòa bình thống nhất nước nhà”.</span></p>
+
+					<div style="display: flex; align-items: center; gap: 20px;">
+						<h4 style="margin: 40px 0 20px;font-size: 24px; color: #333;">Nội dung đường lối kháng chiến và
+							<span>Tư tưởng chỉ đạo chung</span> - Đại hội lần thứ III
+						</h4>
+						<img src="https://cdn.tuyengiao.vn/uploads/2021/1/21/25/4d3f567a3ff431dc004bb1870e00c33c-1591346716971602518615.jpg?w=440&h=264&q=75&f=6&s=56q0pwtrsau"
+							alt="Ảnh tiêu đề" style="margin: 40px 0 20px; width: 30%; height: 30%;">
+					</div>
+
+					<!-- 3D Card Carousel for first news list -->
+					<div class="news-wrapper">
+						<div class="news-inner" style="--quantity: 6;">
+							<!-- Card 1 -->
+							<div class="news-card"
+								style="--index: 0; --color-card: 155, 18, 144, 0.534; box-shadow: 0 10px 15px rgba(155, 18, 144, 0.534);">
+								<div class="news-img">
+									<img src="img/news/1.png" alt="Quyết Tâm Chiến Lược">
+								</div>
+								<div class="news-content">
+									<h3 style="color: #000000;">Quyết Tâm Chiến Lược</h3>
+									<p>Dù tình hình chiến tranh ngày càng ác liệt, Đảng khẳng định nhân dân ta có đủ
+										điều kiện và sức mạnh để đánh bại Mỹ.</p>
+									<p>Cuộc chiến tranh xâm lược của Mỹ ở miền Nam là một cuộc chiến tranh thực dân mới,
+										chứa đầy mâu thuẫn chiến lược và không thể cứu vãn được tình thế bế tắc của
+										chúng: từ lực lượng, chính trị đến chiến lược toàn cầu.</p>
+									<p>Với tinh thần “Quyết tâm thắng giặc Mỹ xâm lược”, Đảng phát động kháng chiến
+										chống Mỹ, cứu nước là nhiệm vụ thiêng liêng của cả dân tộc.</p>
+								</div>
+							</div>
+
+							<!-- Card 2 -->
+							<div class="news-card"
+								style="--index: 1; --color-card: 75, 138, 229, 0.534; box-shadow: 0 10px 15px rgba(75, 138, 229, 0.534);">
+								<div class="news-img">
+									<img src="img/news/2.png" alt="Mục tiêu chiến lược">
+								</div>
+								<div class="news-content">
+									<h3 style="color: #000000;">Mục Tiêu Chiến Lược</h3>
+									<p>Kiên quyết đánh bại cuộc chiến tranh xâm lược của đế quốc Mỹ trong bất kỳ tình
+										huống nào.</p>
+									<p>Nhằm bảo vệ miền Bắc, giải phóng miền Nam, hoàn thành cách mạng dân tộc dân chủ
+										nhân dân trong cả nước.</p>
+									<p>Tiến tới thực hiện hòa bình thống nhất nước nhà.</p>
+								</div>
+							</div>
+
+							<!-- Card 3 -->
+							<div class="news-card"
+								style="--index: 2; --color-card: 142, 212, 99, 0.534; box-shadow: 0 10px 15px rgba(142, 212, 99, 0.534);">
+								<div class="news-img">
+									<img src="img/news/6.png" alt="Những Tiền Đề">
+								</div>
+								<div class="news-content">
+									<h3 style="color: #000000;">Phương Châm Chiến Lược</h3>
+									<p>Đánh lâu dài, dựa vào sức mình là chính.</p>
+									<p>Càng đánh càng mạnh, cố gắng mức độ cao.</p>
+									<p>Tập trung lực lượng cả 2 miền, tranh thủ thời cơ giành thắng lợi quyết định trong
+										thời gian ngắn trên chiến trường miền Nam.</p>
+								</div>
+							</div>
+
+							<!-- Card 4 -->
+							<div class="news-card"
+								style="--index: 3; --color-card: 229, 75, 75, 0.534; box-shadow: 0 10px 15px rgba(229, 75, 75, 0.534);">
+								<div class="news-img">
+									<img src="img/news/7.png" alt="Bối Cảnh Lịch Sử">
+								</div>
+								<div class="news-content">
+									<h3 style="color: #000000;">Tư Tưởng Chỉ Đạo Đối Với Miền Nam</h3>
+									<p>Giữ vững và phát triển thế tiến công, kiên quyết tiến công và liên tục tiến công.
+									</p>
+									<p>Tiếp tục kiên trì phương châm kết hợp đấu tranh quân sự với chính trị, triệt để
+										thực hiện ba mũi giáp công, đánh địch trên cả 3 vùng chiến lược.</p>
+									<p>Quân sự có tác dụng quyết định trực tiếp và giữ một vị trí ngày càng quan trọng.
 									</p>
 								</div>
 							</div>
 
-							<!-- Timeline Block 2 -->
-							<div class="timeline-block wow fadeInLeft" data-wow-duration="1.5s" data-popup="popup-2"
-								onclick="openPopup(this)">
-								<div class="timeline-dot"></div>
-								<div class="timeline-content">
-									<h3>Giai Đoạn Đầu (1911-1920)</h3>
-									<span class="timeline-date">1911-1920</span>
-									<p>Tìm thấy con đường cứu nước, giải phóng dân tộc.</p>
+							<!-- Card 5 -->
+							<div class="news-card"
+								style="--index: 4; --color-card: 229, 206, 75, 0.534; box-shadow: 0 10px 15px rgba(229, 206, 75, 0.534);">
+								<div class="news-img">
+									<img src="img/news/8.png" alt="Bối Cảnh Thời Đại">
+								</div>
+								<div class="news-content">
+									<h3 style="color: #000000;">Tư Tưởng Chỉ Đạo Đối Với Miền Bắc</h3>
+									<p>Chuyển hướng xây dựng kinh tế, đảm bảo tiếp tục xây dựng miền Bắc vững mạnh về
+										kinh tế và quốc phòng.</p>
+									<p>Tiến hành cuộc chiến tranh nhân dân chống chiến tranh phá hoại của Mỹ để bảo vệ
+										miền Bắc XHCN.</p>
+									<p>Động viên sức người ở mức cao nhất để chi viện cuộc chiến tranh giải phóng miền
+										Nam.</p>
+									<p>Đồng thời chuẩn bị đề phòng địch trong trường hợp chúng liều lĩnh mở rộng chiến
+										tranh cục bộ cả nước.</p>
 								</div>
 							</div>
 
-							<div class="timeline-block wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.2s"
-								data-popup="popup-3" onclick="openPopup(this)">
-								<div class="timeline-dot"></div>
-								<div class="timeline-content">
-									<h3>Giai Đoạn Hình Thành (1921-1930)</h3>
-									<span class="timeline-date">1921-1930</span>
-									<p>Hình thành cơ bản tư tưởng về cách mạng Việt Nam.</p>
+							<!-- Card 6 -->
+							<div class="news-card"
+								style="--index: 5; --color-card: 99, 195, 212, 0.534; box-shadow: 0 10px 15px rgba(99, 195, 212, 0.534);">
+								<div class="news-img">
+									<img src="img/news/9.png" alt="Những Tiền Đề">
+								</div>
+								<div class="news-content">
+									<h3 style="color: #000000;">Về Mối Quan Hệ Và Nhiệm Vụ Cách Mạng Cả Hai Miền</h3>
+									<p>Miền Nam là tiền tuyến lớn, miền Bắc là hậu phương lớn.</p>
+									<p>Bảo vệ miền Bắc là nhiệm vụ chung của cả nước, vì đây là hậu phương vững chắc cho
+										cuộc kháng chiến.</p>
+									<p>Hai nhiệm vụ bảo vệ miền Bắc và giải phóng miền Nam gắn bó chặt chẽ, không tách
+										rời.</p>
+									<p>Khẩu hiệu “Tất cả để đánh thắng giặc Mỹ xâm lược” thể hiện quyết tâm của toàn dân
+										tộc.</p>
 								</div>
 							</div>
+						</div>
+					</div>
+					<div class="grax_tm_title_holder">
+						<h3>Xây dựng hậu phương chống chiến tranh phá hoại của <span>đế quốc Mỹ</span> ở Miền Bắc </h3>
+					</div>
+					<!-- <h4 style="margin: 40px 0 50px;">Ở miền Bắc</span></h4> -->
+					<div class="flip-card-container">
+						<div class="flip-card">
+							<img src="img/news/vinhbacbo.jpg" alt="Miền Bắc" class="card-icon">
+							<div class="flip-card__content">
+								<p class="flip-card__description">Sau <span class="highlight-text" ,
+										data-keyword="sự kiện Vịnh Bắc Bộ">sự kiện Vịnh Bắc Bộ ngày 5-8-1964</span> , Mỹ
+									bắt đầu cuộc
+									chiến tranh phá hoại miền Bắc bằng không quân và hải quân, với mục đích đưa miền Bắc
+									trở về “thời kỳ đồ đá”, phá hủy công cuộc xây dựng chủ nghĩa xã hội, ngăn chặn sự
+									chi viện của miền Bắc cho miền Nam, và đè bẹp ý chí kháng chiến của nhân dân Việt
+									Nam. Tuy nhiên, thực tế đã chứng minh rằng Mỹ không thể đạt được mục tiêu này.</p>
+							</div>
+						</div>
+						<div class="flip-card">
+							<img src="img/news/banchaphanhtrunguong.jpg" alt="Miền Bắc" class="card-icon">
+							<div class="flip-card__content">
+								<p class="flip-card__description">Trước tình hình đó, Ban Chấp hành Trung ương Đảng đã
+									kịp thời chuyển hướng chiến lược, đề ra các nhiệm vụ cụ thể cho miền Bắc:
+								<ul>
+									<li><span class="highlight-text" data-keyword="Chuyển hướng kinh tế">Chuyển hướng
+											kinh tế </span> phù hợp với điều kiện chiến tranh.</li>
+									<li><span class="highlight-text" data-keyword="Tăng cường lực lượng quốc phòng">Tăng
+											cường
+											lực lượng quốc phòng
+										</span> để đối phó với tình hình mới.</li>
+									<li><span class="highlight-text" data-keyword="Chi viện tối đa cho miền Nam">Chi
+											viện tối đa cho miền Nam </span> để đánh bại địch trên chiến trường.</li>
+									<li><span class="highlight-text"
+											data-keyword="Chuyển hướng tư tưởng và tổ chức">Chuyển
+											hướng tư tưởng và tổ chức</span> phù hợp với yêu cầu mới.</li>
+								</ul>
+								</p>
+							</div>
+						</div>
+						<div class="flip-card">
+							<img src="img/news/loikeugoi.jpg" alt="Miền Bắc" class="card-icon">
+							<div class="flip-card__content">
+								<p class="flip-card__description">Lời kêu gọi của Chủ tịch Hồ Chí Minh ngày 17-7-1966:
+									“Chiến tranh có thể kéo dài 5 năm, 10 năm, 20 năm hoặc lâu hơn nữa. Hà Nội, Hải
+									Phòng và một số thành phố, xí nghiệp có thể bị tàn phá, song nhân dân Việt Nam quyết
+									không sợ. Không có gì quý hơn độc lập, tự do” đã thổi bùng tinh thần quyết tâm của
+									quân và dân miền Bắc. Các phong trào thi đua yêu nước như “Ba sẵn
+									sàng” của thanh niên, “Ba đảm đang” của phụ nữ, “Tay cày tay súng” của nông
+									dân, “Tay búa tay súng” của công nhân, cùng khẩu hiệu “Thóc không thiếu một cân,
+									quân không thiếu một
+									người” , giao thông vận tải “Xe chưa qua, nhà không
+									tiếc”,….. đã trở thành động lực mạnh mẽ cho cuộc chiến đấu.
+								</p>
+								<ul>
+									<span class="highlight-text"
+										data-keyword="Tinh thần: “Quyết tâm thắng giặc Mỹ xâm lược”, “Tất cả vì miền Nam ruột thịt”"
+										style="font-weight: bold; font-size: 20px;"> => Tinh thần: “Quyết tâm thắng giặc
+										Mỹ xâm lược”,
+										“Tất
+										cả vì miền Nam ruột thịt”.</span>
+								</ul>
+							</div>
+						</div>
+						<div class="master-flip-card">
+							<div class="master-flip-card__inner">
+								<!-- Front of master card -->
+								<div class="master-flip-card__front">
+									<img src="img/news/mienbac.jpg" alt="Main Card" class="master-card-image">
+									<h2 class="master-card-title">Giai đoạn 1965-1968</h2>
+								</div>
 
-							<div class="timeline-block wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.4s"
-								data-popup="popup-4" onclick="openPopup(this)">
-								<div class="timeline-dot"></div>
-								<div class="timeline-content">
-									<h3>Giai Đoạn Hoàn Thiện (1930-1945)</h3>
-									<span class="timeline-date">1930-1945</span>
-									<p>Vượt qua thử thách, kiên trì giữ vững lập trường cách mạng.</p>
-								</div>
-							</div>
+								<!-- Back of master card - contains mini cards -->
+								<div class="master-flip-card__back">
+									<div class="mini-cards-container">
+										<!-- Mini Card 1 -->
+										<div class="mini-flip-card">
+											<div class="mini-flip-card__inner">
+												<div class="mini-flip-card__front">
+													<img src="img/news/basansang.jpg" alt="Ba Sẵn Sàng"
+														class="card-icon">
+												</div>
+												<div class="mini-flip-card__back">
+													<h3 class="mini-card-title">Ba Sẵn Sàng</h3>
+												</div>
+											</div>
+										</div>
 
-							<div class="timeline-block wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.6s"
-								data-popup="popup-5" onclick="openPopup(this)">
-								<div class="timeline-dot"></div>
-								<div class="timeline-content">
-									<h3>Giai Đoạn Phát Triển (1945-1969)</h3>
-									<span class="timeline-date">1945-1969</span>
-									<p>Tư tưởng HCM tiếp tục phát triển, hoàn thiện.</p>
+										<!-- Mini Card 2 -->
+										<div class="mini-flip-card">
+											<div class="mini-flip-card__inner">
+												<div class="mini-flip-card__front">
+													<img src="img/news/badamdang.png" alt="Ba Đảm Đang"
+														class="card-icon">
+												</div>
+												<div class="mini-flip-card__back">
+													<h3 class="mini-card-title">Ba Đảm Đang</h3>
+												</div>
+											</div>
+										</div>
+
+										<!-- Mini Card 3 -->
+										<div class="mini-flip-card">
+											<div class="mini-flip-card__inner">
+												<div class="mini-flip-card__front">
+													<img src="img/news/taycaytaysung.jpg" alt="Tay Cày Tay Súng"
+														class="card-icon">
+												</div>
+												<div class="mini-flip-card__back">
+													<h3 class="mini-card-title">Tay Cày Tay Súng</h3>
+												</div>
+											</div>
+										</div>
+
+										<!-- Mini Card 4 -->
+										<div class="mini-flip-card">
+											<div class="mini-flip-card__inner">
+												<div class="mini-flip-card__front">
+													<img src="img/news/xechuaquanhakhongtiec.jpg"
+														alt="Xe Chưa Qua, Nhà Không Tiếc" class="card-icon">
+												</div>
+												<div class="mini-flip-card__back">
+													<h3 class="mini-card-title">Xe Chưa Qua, Nhà Không Tiếc</h3>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
+						</div>
+					</div>
+					<div class="grax_tm_title_holder" style="margin-bottom: 10px;">
+						<h4><span>Thành Quả Đạt Được</span> sau <span>4 năm </span>kiên cường chiến đấu và xây dựng
+						</h4>
+					</div>
+					<br>
+					<div class="circle-container">
+						<!-- Quarter 1 -->
+						<div class="quarter quarter-1">
+							<div class="quarter-content">
+								<p class="quarter-text">Không giảm sút mà còn phát triển, với 4.655 hợp tác
+									xã được trang bị cơ khí nhỏ, phong trào thâm canh tăng vụ được đẩy mạnh.</p>
+								<h3>Nông nghiệp</h3>
+							</div>
+						</div>
+
+						<!-- Quarter 2 -->
+						<div class="quarter quarter-2">
+							<div class="quarter-content">
+								<p class="quarter-text">Duy trì sản xuất dù nhiều nhà máy phải sơ tán hoặc phân nhỏ,
+									công nghiệp địa phương phát triển mạnh.</p>
+								<h3>Công nghiệp</h3>
+							</div>
+						</div>
+
+						<!-- Quarter 3 -->
+						<div class="quarter quarter-3">
+							<div class="quarter-content">
+								<p class="quarter-text">Bắn hạ 3.200 máy bay, bắn cháy 140 tàu chiến, bảo vệ vững chắc
+									hậu phương.</p>
+								<h3>Quốc phòng</h3>
+							</div>
+						</div>
+
+						<!-- Quarter 4 -->
+						<div class="quarter quarter-4">
+							<div class="quarter-content">
+								<p class="quarter-text">Tổng số quân giải phóng miền Nam lên 220.000 quân
+									chủ lực và 57.000 quân địa phương.</p>
+								<h3>Chi viện</h3>
+							</div>
+						</div>
+
+						<!-- Center Circle -->
+						<div class="center-circle">
+							<img src="img/news/mienbac.jpg" alt="Miền Bắc 1954-1975">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	<!-- /NEWS -->
 
-		<!-- Popup Modal 1 -->
-		<div id="popup" class="popup">
-			<div class="popup-content">
-				<span class="close-btn" onclick="closePopup()">&times;</span>
-				<h2 class="popup-title">Giai đoạn trước 1911: Hình thành tư tưởng yêu nước</h2>
-				<div class="popup-description">
-					<p>Chủ tịch Hồ Chí Minh sinh ngày 19-5-1890 trong một gia đình nhà nho yêu nước tại Nghệ An. Người
-						được thừa hưởng và hun đúc những phẩm chất cao đẹp từ truyền thống gia đình, đồng thời tiếp thu
-						được những tư tưởng tiến bộ của thời đại.</p>
-
-					<h3>Những yếu tố ảnh hưởng đến tư tưởng của Người:</h3>
-					<ul>
-						<img src="https://lh5.googleusercontent.com/proxy/nDovq9K07EkNf3Ct6GijIoyYMwQej-3sXWoktIBX7BveToH1-n8Warw1bM4JKY0_yA-luwrx3IIIsAa0U4DlSWzTFI3Y8dCsA2wYsRp9K6nzuORzVuGU8UQ4mg"
-							alt="Hồ Chí Minh 1945" style="width: 100%; margin-bottom: 20px;">
-						<li><strong>Gia đình:</strong> Được tiếp thu tư tưởng, lối sống, đức tính cao quý từ cha mẹ và
-							anh em trong gia đình nhà nho yêu nước</li>
-						<li><strong>Quê hương:</strong> Nghệ Tĩnh - vùng đất với bề dày lịch sử đấu tranh chống giặc
-							ngoại xâm và những tấm gương hào kiệt anh hùng</li>
-						<li><strong>Hoàn cảnh xã hội:</strong> Chứng kiến trực tiếp cảnh đồng bào bị thực dân áp bức và
-							sự yếu kém của bộ máy nhà nước phong kiến</li>
-						<li><strong>Bài học lịch sử:</strong> Nhận thức sâu sắc về những hạn chế và nguyên nhân thất bại
-							của các phong trào yêu nước đương thời</li>
-					</ul>
-
-					<h3>Quyết định mang tính bước ngoặt:</h3>
-					<p>Từ những trải nghiệm và quan sát thực tế, Người đã đi đến quyết định quan trọng:</p>
-					<ul>
-						<img src="https://cdn-images.vtv.vn/zoom/640_400/2017/11-1496627183837.jpg"
-							alt="Hồ Chí Minh 1945" style="width: 100%; margin-bottom: 20px;">
-						<li>Rời Tổ quốc để tìm hiểu thực chất về những khẩu hiệu Tự do, Bình đẳng, Bác ái mà thực dân
-							Pháp rêu rao</li>
-						<li>Tự mình khám phá và tìm ra con đường cách mạng mới cho dân tộc Việt Nam</li>
-						<li>Mang theo hoài bão sẽ trở về giúp đồng bào khi đã tìm được phương hướng đúng đắn để giải
-							phóng dân tộc</li>
-					</ul>
-
-					<p class="conclusion" style="font-size: 20px;">Giai đoạn này đã đặt nền móng quan trọng cho tư tưởng
-						cách mạng và con đường hoạt động sau này của Chủ tịch Hồ Chí Minh, thể hiện tinh thần yêu nước
-						sâu sắc và quyết tâm tìm ra con đường cứu nước đúng đắn của Người.</p>
-				</div>
+	<!-- TIMELINE -->
+	<div class="grax_tm_section" id="formation">
+		<div class="container">
+			<div class="grax_tm_title_holder1">
+				<h3>Giữ thế vững thế chiến lược tiến công, đánh bại chiến lược <span>Chiến tranh cục bộ</span> của đế
+					quốc Mỹ <span>1965-1968</span>.</h3>
 			</div>
-		</div>
 
-		<!-- Popup Modal 2 -->
-		<div id="popup-2" class="popup">
-			<div class="popup-content">
-				<span class="close-btn" onclick="closePopup()">&times;</span>
-				<h2 class="popup-title">Thời kỳ 1911 - 1920: Tìm thấy con đường cứu nước, giải phóng dân tộc</h2>
-				<div class="popup-description">
-					<div class="section">
-						<h3>Khởi đầu hành trình</h3>
-						<p>Năm 1911, với ý thức dân tộc sâu sắc và hoài bão cháy bỏng về việc tìm ra con đường cứu nước,
-							giải phóng dân tộc, Nguyễn Tất Thành (sau này là Hồ Chí Minh) đã quyết định rời <span
-								class="highlight-text" data-keyword="Vai trò của Bến cảng Nhà Rồng">bến cảng Nhà
-								Rồng</span> , bắt đầu hành trình sang phương Tây. Từ đây, Người không ngừng học hỏi, tìm
-							tòi và mày
-							mò để tìm ra giải pháp cho dân tộc mình.</p>
+			<div class="timeline">
+				<div class="timeline__event timeline__event--type6" data-modal-id="limited-war-intro">
+					<div class="timeline__event__icon">
+
 					</div>
-
-					<div class="section">
-						<h3>Những trải nghiệm và nhận thức mới</h3>
-						<p>Trong những năm tháng bôn ba nơi xứ người, Bác đã chứng kiến không ít cảnh người lao động bị
-							bóc lột, áp bức. Người nhận ra rằng, ở bất cứ đâu, nhân dân lao động đều có chung khát vọng
-							thoát khỏi ách thống trị, giành lại tự do và nhân phẩm.</p>
-
-						<p>Những bài học từ các lý tưởng nhân văn như <em>"bốn bể đều là anh em"</em> và <em>"năm châu
-								họp làm một nhà"</em> đã thấm nhuần trong suy nghĩ của Người. Cùng với nỗi xót xa trước
-							cảnh vong nô của các dân tộc bị áp bức, Bác đã hình thành ý thức sâu sắc về sự cần thiết của
-							đoàn kết quốc tế – đoàn kết những người lao động và các dân tộc bị áp bức trên thế giới để
-							đấu tranh vì quyền lợi chung.</p>
+					<div class="timeline__event__date">
+						1965
 					</div>
-
-					<div class="section">
-						<h3>Quá trình học hỏi và hoạt động</h3>
-						<p>Mặc dù phải đối mặt với muôn vàn khó khăn và thử thách, Bác luôn kiên trì, chịu đựng và không
-							ngừng học hỏi. Người dành thời gian nghiên cứu tình hình các nước, suy ngẫm về những gì đã
-							thấy, đã nghe, và tích cực tham gia các diễn thuyết của những nhà tư tưởng lớn.</p>
-
-						<div class="highlight-box">
-							<p>Đặc biệt, năm 1919, Người đã gửi <strong><span class="highlight-text"
-										data-keyword="Bản Yêu Sách của nhân dân An Nam">"Bản Yêu Sách của nhân dân An
-										Nam"</span></strong> tới
-								<span class="highlight-text" data-keyword="Hội nghị Versailles">Hội nghị
-									Versailles</span>, nhằm tố cáo tội ác của thực dân Pháp, đồng thời kêu gọi sự chú ý
-								của nhân dân thế giới và chính quyền Pháp đối với tình hình Việt Nam và Đông Dương lúc
-								bấy giờ.
+					<div class="timeline__event__content">
+						<div class="timeline__event__title">
+							Chiến tranh cục bộ bắt đầu
+						</div>
+						<div class="timeline__event__description">
+							<p>Mỹ huy động 700.000 quân mở cuộc phản công chiến lược lần thứ nhất vào ba hướng chính.
 							</p>
 						</div>
 					</div>
+				</div>
 
-					<div class="section">
-						<h3>Bước ngoặt tư tưởng</h3>
-						<p>Bước ngoặt quan trọng trong tư tưởng của Bác diễn ra khi Người đọc được <strong><span
-									class="highlight-text" data-keyword="Luận cương
-							về vấn đề dân tộc và thuộc địa">"Luận cương về vấn đề dân tộc và thuộc địa"</span></strong> của Lênin. Ánh sáng
-							từ chủ nghĩa Lênin đã chỉ
-							ra con đường cứu nước – con đường giành độc lập cho dân tộc và tự do cho đồng bào. Đây chính
-							là câu trả lời mà Bác đã tìm kiếm bấy lâu nay.</p>
+				<!-- Timeline Event 7 - Vietnamese Victories -->
+				<div class="timeline__event timeline__event--type7" data-modal-id="viet-victories">
+					<div class="timeline__event__icon">
+
 					</div>
-
-					<div class="milestone-section">
-						<h3 style="color: #e54b4b;">Dấu mốc lịch sử</h3>
-						<p>Tháng 12 năm 1920, Nguyễn Ái Quốc biểu quyết tán thành việc gia nhập <span
-								class="highlight-text" data-keyword="Đệ Tam Quốc Tế">Đệ Tam Quốc tế (Quốc tế
-								Cộng sản)</span> và trở thành một trong những người sáng lập <span
-								class="highlight-text" data-keyword="Đảng Cộng sản Pháp">Đảng Cộng sản Pháp</span>.</p>
-						<div class="image-container">
-							<img src="https://file3.qdnd.vn/data/images/0/2021/05/29/phucthang/06-hcm01.jpg?w=400"
-								alt="Hồ Chí Minh 1945" class="centered-image">
+					<div class="timeline__event__date">
+						1965-1966
+					</div>
+					<div class="timeline__event__content">
+						<div class="timeline__event__title">
+							Những chiến thắng đầu tiên
+						</div>
+						<div class="timeline__event__description">
+							<p>Chiến thắng Núi Thành, Vạn Tường và Plâyme làm thất bại kế hoạch "tìm diệt" của Mỹ.</p>
 						</div>
 					</div>
+				</div>
 
-					<p class="conclusion" style="font-size: 20px;">
-						Sự kiện này không chỉ đánh dấu bước chuyển biến mang tính bước ngoặt trong tư tưởng của Nguyễn
-						Ái Quốc – từ chủ nghĩa yêu nước sang chủ nghĩa Mác-Lênin, từ giác ngộ dân tộc sang giác ngộ giai
-						cấp – mà còn khẳng định sự chuyển đổi của Người từ một người yêu nước thành một chiến sĩ cộng
-						sản kiên trung.
+				<!-- Timeline Event 8 - Second Offensive -->
+				<div class="timeline__event timeline__event--type8" data-modal-id="second-offensive">
+					<div class="timeline__event__icon">
+
+					</div>
+					<div class="timeline__event__date">
+						1966-1967
+					</div>
+					<div class="timeline__event__content">
+						<div class="timeline__event__title">
+							Cuộc tiến công lần hai của Mỹ
+						</div>
+						<div class="timeline__event__description">
+							<p>Mỹ tập trung 390.000 quân, 50.000 quân chư hầu và 540.000 quân ngụy nhưng đều bị đánh
+								bại.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Timeline Event 9 - Diplomatic Front -->
+				<div class="timeline__event timeline__event--type9" data-modal-id="diplomatic-front">
+					<div class="timeline__event__icon">
+
+					</div>
+					<div class="timeline__event__date">
+						1967
+					</div>
+					<div class="timeline__event__content">
+						<div class="timeline__event__title">
+							Mở mặt trận ngoại giao
+						</div>
+						<div class="timeline__event__description">
+							<p>Hội nghị lần thứ 13 Ban Chấp hành Trung ương Đảng quyết định tạo cục diện "vừa đánh, vừa
+								đàm".</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Timeline Event 10 - Tet Offensive -->
+				<div class="timeline__event timeline__event--type10" data-modal-id="tet-offensive">
+					<div class="timeline__event__icon">
+
+					</div>
+					<div class="timeline__event__date">
+						1-1968
+					</div>
+					<div class="timeline__event__content">
+						<div class="timeline__event__title">
+							Tổng tiến công Tết Mậu Thân
+						</div>
+						<div class="timeline__event__description">
+							<p>Cuộc tổng tiến công và nổi dậy đồng loạt trên toàn miền Nam, tạo bước ngoặt của cuộc
+								kháng chiến.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Timeline Event 11 - Paris Peace Talks -->
+				<div class="timeline__event timeline__event--type11" data-modal-id="paris-talks">
+					<div class="timeline__event__icon">
+
+					</div>
+					<div class="timeline__event__date">
+						1968-1969
+					</div>
+					<div class="timeline__event__content">
+						<div class="timeline__event__title">
+							Hội nghị Paris
+						</div>
+						<div class="timeline__event__description">
+							<p>Mỹ buộc phải đàm phán tại Paris. Chính phủ cách mạng lâm thời Cộng Hòa miền Nam Việt Nam
+								được thành lập.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="right wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
+				<div class="grax_tm_title_holder">
+					<h6><span style="font-weight: bold;"> ===>>> “Tết Mậu Thân thắng rất lốn, mà nhất là đánh bại được ý
+							chí
+							xâm lược của Mỹ, tạo nên bước ngoặt quyết đinh của chiến tranh. Nhưng sau đó ta chuyển chậm,
+							chủ trương tiếp tục các đợt tiến công vào đô thị khi không còn điều kiện là sai lầm về chỉ
+							đạo chiến lược, để địch gây ra cho ta nhiều khó khăn, tổn thất”</span></h6>
+				</div>
+				<div class="text">
+					<p style="font-size: 20px;">
+						Mặc dù Tết Mậu Thân đánh bại ý chí xâm lược của Mỹ, tạo bước ngoặt chiến lược, nhưng sau đó, ta
+						đã mắc sai lầm trong chỉ đạo chiến lược. Việc tiếp tục mở các đợt tiến công vào đô thị khi không
+						còn yếu tố bất ngờ đã dẫn đến tổn thất lớn về lực lượng và thế trận.
 					</p>
 				</div>
 			</div>
 		</div>
-
-		<!-- Popup Modal 3 -->
-		<div id="popup-3" class="popup">
-			<div class="popup-content">
-				<span class="close-btn" onclick="closePopup()">&times;</span>
-				<h2 class="popup-title">Thời kỳ 1921 - 1930: Hình thành cơ bản tư tưởng về cách mạng Việt Nam</h2>
-				<div class="popup-description">
-					<div class="timeline-section1">
-						<h3>Hành trình hoạt động</h3>
-						<div class="timeline">
-							<div class="timeline-item">
-								<span class="year">1921-1923:</span> Hoạt động tại Pháp
-							</div>
-							<div class="timeline-item">
-								<span class="year">1923-1924:</span> Hoạt động tại Liên Xô
-							</div>
-							<div class="timeline-item">
-								<span class="year">1924-1927:</span> Hoạt động tại Trung Quốc
-							</div>
-							<div class="timeline-item">
-								<span class="year">1928-1929:</span> Hoạt động tại Thái Lan
-							</div>
-						</div>
-					</div>
-
-					<div class="section" style="font-size: 20px;">
-						<p>Trong giai đoạn này, Hồ Chí Minh không chỉ tích cực tham gia các hoạt động thực tiễn mà còn
-							viết nhiều bài báo và tác phẩm mang tính lý luận sâu sắc. Người tố cáo tội ác của chủ nghĩa
-							thực dân và phân tích mối quan hệ giữa cách mạng giải phóng thuộc địa với cách mạng vô sản ở
-							chính quốc.</p>
-					</div>
-
-					<div class="theory-section">
-						<h3>Những tư tưởng cốt lõi</h3>
-
-						<div class="theory-item">
-							<h4>1. Bản chất của chủ nghĩa thực dân</h4>
-							<p>Chỉ rõ bản chất "ăn cướp" và "giết người" của chủ nghĩa thực dân, gây ra đau khổ và áp
-								bức cho các dân tộc thuộc địa.</p>
-						</div>
-
-						<div class="theory-item">
-							<h4>2. Con đường cách mạng</h4>
-							<p>Khẳng định cách mạng giải phóng dân tộc phải đi theo con đường cách mạng vô sản, là một
-								bộ phận của cách mạng vô sản thế giới.</p>
-						</div>
-
-						<div class="theory-item">
-							<h4>3. Mối quan hệ giữa các cuộc cách mạng</h4>
-							<p>Cách mạng thuộc địa và cách mạng vô sản có mối quan hệ khăng khít, hỗ trợ lẫn nhau nhưng
-								không phụ thuộc hoàn toàn.</p>
-						</div>
-
-						<div class="theory-item">
-							<h4>4. Tính chất của cách mạng thuộc địa</h4>
-							<p>Là cuộc "dân tộc cách mệnh" nhằm đánh đuổi giặc ngoại xâm, giành độc lập và tự do cho dân
-								tộc.</p>
-						</div>
-
-						<div class="theory-item">
-							<h4>5. Vai trò của nông dân</h4>
-							<p>Nhấn mạnh tầm quan trọng của việc lôi kéo tầng lớp nông dân và xây dựng khối liên minh
-								công – nông làm động lực chính.</p>
-						</div>
-
-						<div class="theory-item">
-							<h4>6. Vai trò của Đảng lãnh đạo</h4>
-							<p>Khẳng định sự cần thiết của một Đảng cách mạng theo chủ nghĩa Mác-Lênin, có tổ chức vững
-								mạnh và đội ngũ cán bộ tận tụy.</p>
-						</div>
-
-						<div class="theory-item">
-							<h4>7. Tầm quan trọng của quần chúng</h4>
-							<p>Xác định cách mạng là sự nghiệp của toàn thể quần chúng nhân dân, không phải của cá nhân
-								hay nhóm người.</p>
-						</div>
-					</div>
-
-					<p class="conclusion" style="font-size: 20px;">
-						Những tư tưởng cốt lõi này được Hồ Chí Minh truyền tải qua các tác phẩm, bài viết và đưa về
-						nước, trở thành "chất xúc tác" mạnh mẽ thúc đẩy phong trào dân tộc phát triển theo xu hướng mới,
-						phù hợp với yêu cầu của thời đại.
-					</p>
+	</div>
+	<!-- Timeline Modal -->
+	<div id="timeline-modal" class="timeline-modal">
+		<div class="timeline-modal-content">
+			<span class="timeline-modal-close">&times;</span>
+			<div class="timeline-modal-header">
+				<h2 id="timeline-modal-title"></h2>
+				<div class="timeline-modal-date" id="timeline-modal-date"></div>
+			</div>
+			<div class="timeline-modal-body" id="timeline-modal-body"></div>
+		</div>
+	</div>
+	<!-- News Modal Templates -->
+	<div id="newsModal" class="news-modal">
+		<div class="news-modal-content">
+			<div class="news-modal-header">
+				<h2 id="newsModalTitle"></h2>
+				<span class="news-modal-close">&times;</span>
+			</div>
+			<div class="news-modal-body" id="newsModalBody"></div>
+			<div class="news-modal-footer">
+				<div class="share">
+					<span>Chia sẻ:</span>
+					<ul class="social">
+						<li>
+							<a href="#"><img class="svg" src="img/svg/social/facebook.svg" alt="" /></a>
+						</li>
+						<li>
+							<a href="#"><img class="svg" src="img/svg/social/twitter.svg" alt="" /></a>
+						</li>
+						<li>
+							<a href="#"><img class="svg" src="img/svg/social/behance.svg" alt="" /></a>
+						</li>
+						<li>
+							<a href="#"><img class="svg" src="img/svg/social/dribbble.svg" alt="" /></a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- Popup Modal 4 -->
-		<div id="popup-4" class="popup">
-			<div class="popup-content">
-				<span class="close-btn" onclick="closePopup()">&times;</span>
-				<h2 class="popup-title">Thời kỳ 1930 - 1945: Vượt qua thử thách, kiên trì giữ vững lập trường cách mạng
-				</h2>
-				<div class="popup-description">
-					<div class="section">
-						<h3>Hội nghị lần thứ nhất Ban Chấp hành Trung ương lâm thời của Đảng (1930)</h3>
-						<p>Cuối những năm 20, đầu những năm 30, <span class="highlight-text"
-								data-keyword="Khuynh hướng “tả”">khuynh hướng “tả”</span> đã tác động trực tiếp đến cách
-							mạng
-							Việt Nam. Hội nghị Trung ương đã quyết định đổi tên Đảng thành Đảng Cộng sản Đông Dương, chỉ
-							trích và thủ tiêu các văn kiện Chánh Cương vắn tắt và Sách lược vắn tắt của Nguyễn Ái Quốc,
-							cho rằng chúng chỉ tập trung vào việc phản đế mà bỏ quên lợi ích giai cấp.</p>
-					</div>
+	<!-- /TIMELINE -->
 
-					<div class="section">
-						<h3>Quan điểm kiên định của Nguyễn Ái Quốc</h3>
-						<p>Nguyễn Ái Quốc bảo vệ quan điểm về mối quan hệ giữa giai cấp và dân tộc, cách mạng giải phóng
-							thuộc địa và cách mạng vô sản. Người phản đối khuynh hướng “tả” và những biệt phái trong
-							Đảng, khẳng định sự cần thiết của việc đặt nhiệm vụ giải phóng dân tộc lên hàng đầu.</p>
-					</div>
-
-					<div class="section">
-						<h3>Đại hội VII Quốc tế Cộng sản (1935)</h3>
-						<p>Đại hội này đã phê phán khuynh hướng “tả”, ủng hộ mở rộng mặt trận dân tộc thống nhất chống
-							phát xít và khôi phục các văn kiện do Nguyễn Ái Quốc soạn thảo. Từ đây, đường lối cách mạng
-							Việt Nam đã được điều chỉnh phù hợp với tình hình thực tiễn.</p>
-					</div>
-
-					<div class="section">
-						<h3>Mặt trận Dân chủ Đông Dương (1936 - 1939)</h3>
-						<p>Mặt trận được thành lập, ưu tiên nhiệm vụ giải phóng dân tộc. Hồ Chí Minh theo dõi sát tình
-							hình trong nước và chỉ đạo cách mạng, đồng thời đề nghị Quốc tế Cộng sản cho phép trở về quê
-							hương để lãnh đạo phong trào.</p>
-					</div>
-
-					<div class="section">
-						<h3>Ngày trở về và Hội nghị Trung ương lần thứ tám (1941)</h3>
-						<p>Ngày 28/1/1941, Hồ Chí Minh trở về Việt Nam sau 30 năm hoạt động ở nước ngoài. Tại Hội nghị
-							Trung ương lần thứ tám (tháng 5/1941), Đảng ta hoàn chỉnh chiến lược cách mạng, tập trung
-							vào giải phóng dân tộc, tạo tiền đề cho thắng lợi của <span class="highlight-text"
-								data-keyword="Cách mạng Tháng Tám 1945">Cách mạng Tháng Tám 1945</span>.</p>
-					</div>
-
-					<div class="milestone-section">
-						<h3 style="color: #e54b4b;">Tuyên ngôn Độc lập (1945)</h3>
-						<p>Ngày 2/9/1945, Hồ Chí Minh đọc <span class="highlight-text"
-								data-keyword="Tuyên ngôn Độc lập">Tuyên ngôn Độc lập</span> , tuyên bố sự ra đời của
-							nước Việt Nam Dân
-							chủ Cộng hòa, khẳng định:</p>
-						<blockquote>“Tất cả các dân tộc trên thế giới đều bình đẳng; dân tộc nào cũng có quyền sống,
-							quyền sung sướng và quyền tự do.”</blockquote>
-						<div class="video-container">
-							<iframe width="100%" height="450"
-								src="https://www.youtube.com/embed/SCPphVYDPDk?si=ZRE0Tc0KTe_4yWvq"
-								title="YouTube video player" frameborder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-								referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-						</div>
-					</div>
-
-					<div class="conclusion" style="font-size: 20px;">
-						<p>Sự ra đời của nước Việt Nam Dân chủ Cộng hòa đánh dấu thắng lợi của chủ nghĩa Mác - Lênin
-							được vận dụng sáng tạo tại Việt Nam và thành công của tư tưởng Hồ Chí Minh về độc lập dân
-							tộc gắn liền với chủ nghĩa xã hội.</p>
-					</div>
-
-				</div>
-			</div>
-		</div>
-
-		<!-- Popup Modal 5 -->
-		<div id="popup-5" class="popup">
-			<div class="popup-content">
-				<span class="close-btn" onclick="closePopup()">&times;</span>
-				<h2 class="popup-title">Thời kỳ 1945 - 1969: Tư tưởng Hồ Chí Minh tiếp tục phát triển và hoàn thiện</h2>
-				<div class="popup-description">
-
-					<div class="image-container">
-						<img src="https://baotanglichsu.vn/DataFiles/Uploaded/image/lam-thoi-1.jpg"
-							alt="Hồ Chí Minh 1945" class="centered-image">
-					</div>
-					<div class="section">
-						<h3>Khó khăn và thử thách</h3>
-						<p>Ngày 23 tháng 9 năm 1945, khi quân Pháp quay lại xâm lược Việt Nam, với âm mưu bóp chết nước
-							Việt Nam Dân chủ Cộng hòa còn non trẻ, đất nước lại rơi vào tình thế hiểm nghèo. Đứng trước
-							tình hình "ngàn cân treo sợi tóc", Chủ tịch Hồ Chí Minh, với tầm nhìn sâu rộng và khả năng
-							lãnh đạo tài ba, đã dũng cảm chèo lái con thuyền cách mạng Việt Nam vượt qua sóng gió, chiến
-							thắng các thử thách cam go, để đưa đất nước tiến lên phía trước.</p>
-					</div>
-
-					<div class="section">
-						<h3>Củng cố chính quyền và đối ngoại</h3>
-						<p>Trong thời kỳ này, Chủ tịch Hồ Chí Minh đã tập trung củng cố chính quyền non trẻ, đồng thời
-							đẩy lùi giặc đói, giặc dốt, khắc phục tình trạng thiếu hụt tài chính, duy trì sự ổn định cho
-							đất nước. Về mặt đối ngoại, Người đã vận dụng linh hoạt các chính sách "thêm bạn, bớt thù"
-							và "dĩ bất biến, ứng vạn biến", tranh thủ mọi thời gian và cơ hội để xây dựng lực lượng,
-							chuẩn bị cho cuộc kháng chiến lâu dài và gian khổ sắp tới.</p>
-					</div>
-
-					<div class="section">
-						<h3>Kháng chiến chống thực dân Pháp</h3>
-						<p>Ngày 19 tháng 12 năm 1946, Hồ Chí Minh phát động cuộc kháng chiến toàn quốc chống thực dân
-							Pháp. Từ thời điểm này, Bác Hồ trở thành linh hồn của cuộc kháng chiến. Người không chỉ chăm
-							lo xây dựng Đảng mà còn chống lại tệ quan liêu, mệnh lệnh hành chính, đồng thời xây dựng đạo
-							đức cách mạng và phát động phong trào thi đua ái quốc rộng khắp trong toàn dân.</p>
-					</div>
-
-					<div class="section">
-						<h3>Đại hội Đảng và kết quả kháng chiến</h3>
-						<p>Năm 1951, <span class="highlight-text"
-								data-keyword="Đại hội đại biểu toàn quốc lần thứ II">Đại hội đại biểu toàn quốc lần thứ
-								II</span> của Đảng Lao động Việt Nam được tổ chức, đánh
-							dấu một bước tiến quan trọng trong quá trình hoạt động công khai của Đảng. Đại hội này đã
-							đưa ra quyết định thành lập các đảng riêng tại Campuchia và Lào, kịp thời lãnh đạo các cuộc
-							cách mạng ở mỗi nước. Đồng thời, Đại hội cũng đề ra các chủ trương, đường lối, giải quyết
-							tốt các vấn đề quan hệ giai cấp, động viên toàn Đảng và toàn dân trong cuộc kháng chiến
-							chống thực dân Pháp và đế quốc Mỹ, đưa cách mạng Việt Nam tới thắng lợi.</p>
-					</div>
-
-					<div class="section">
-						<h3>Thắng lợi và hòa bình</h3>
-						<p>Năm 1954, dưới sự lãnh đạo tài tình của Đảng và Chủ tịch Hồ Chí Minh, cuộc kháng chiến chống
-							thực dân Pháp đã hoàn toàn thắng lợi. <span class="highlight-text"
-								data-keyword="Hiệp định Giơnevơ">Hiệp định Giơnevơ</span> được ký kết, miền Bắc hoàn
-							toàn độc
-							lập, nhưng đất nước bị chia cắt thành hai miền do âm mưu xâm lược của đế quốc Mỹ và tay sai
-							của chúng.</p>
-					</div>
-
-					<div class="section">
-						<h3>Xác định kẻ thù và nhiệm vụ cách mạng</h3>
-						<p>Dưới tình thế đất nước bị chia cắt, Bác Hồ và Đảng Cộng sản Việt Nam đã chủ trương xác định
-							kẻ thù mới, đưa ra nhiệm vụ cho cả hai miền Nam và Bắc. Miền Bắc được xác định là khu vực
-							cách mạng xã hội chủ nghĩa, đóng vai trò quyết định trong sự nghiệp phát triển của cách mạng
-							Việt Nam, hướng tới mục tiêu thống nhất đất nước. Miền Nam, với nhiệm vụ cách mạng dân tộc
-							dân chủ nhân dân, là nơi quyết định trực tiếp sự nghiệp giải phóng hoàn toàn, thực hiện hòa
-							bình và thống nhất đất nước.</p>
-					</div>
-
-					<div class="conclusion" style="font-size: 20px;">
-						<p style="font-size: 20px;">Tư tưởng Hồ Chí Minh, qua quá trình lãnh đạo đất nước, đã được bổ
-							sung và phát triển, hình thành hệ thống quan điểm lý luận vững chắc về cách mạng Việt Nam.
-							Những tư tưởng này bao gồm chủ nghĩa xã hội, Nhà nước của dân, do dân và vì dân, xây dựng
-							Đảng Cộng sản Việt Nam, cùng các quan điểm quan trọng khác, tạo nền tảng lý luận cho sự
-							nghiệp cách mạng và xây dựng chủ nghĩa xã hội ở Việt Nam.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<script>
-			function openPopup(element) {
-				const popupId = element.getAttribute('data-popup'); // Get the popup ID from the data attribute
-				const popup = document.getElementById(popupId);
-				popup.style.display = 'block';
-				// Trigger reflow
-				void popup.offsetWidth;
-				popup.classList.add('active');
-				document.body.style.overflow = 'hidden';
-			}
-
-			function closePopup() {
-				const popups = document.querySelectorAll('.popup'); // Get all popups
-				popups.forEach(popup => {
-					popup.classList.remove('active');
-					setTimeout(() => {
-						popup.style.display = 'none';
-						document.body.style.overflow = 'auto';
-					}, 500); // Match with transition duration
-				});
-			}
-
-			// Close popup when clicking outside
-			window.onclick = function (event) {
-				const popups = document.querySelectorAll('.popup');
-				popups.forEach(popup => {
-					if (event.target == popup) {
-						closePopup();
-					}
-				});
-			}
-		</script>
-
-		<style>
-			.timeline-section {
-				padding: 80px 0;
-				position: relative;
-			}
-
-			.timeline-container {
-				position: relative;
-				top: 70px;
-			}
-
-			.timeline-container::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: 50%;
-				transform: translateX(-50%);
-				height: 100%;
-				width: 4px;
-				background: #e54b4bbb;
-			}
-
-			.timeline-block {
-				position: relative;
-				margin: 40px 0;
-			}
-
-			.timeline-dot {
-				position: absolute;
-				left: 50%;
-				top: 0;
-				transform: translateX(-50%);
-				width: 20px;
-				height: 20px;
-				border-radius: 50%;
-				background: #e54b4b;
-				border: 4px solid #fff;
-				box-shadow: 0 0 0 4px rgba(235, 37, 37, 0.2);
-			}
-
-			.timeline-content {
-				position: relative;
-				width: calc(50% - 50px);
-				background: #fff;
-				padding: 20px;
-				border-radius: 8px;
-				box-shadow: 0 3px 10px rgba(255, 2, 2, 0.404);
-				margin-left: calc(50% + 50px);
-			}
-
-			.timeline-block:nth-child(even) .timeline-content {
-				margin-left: 0;
-				margin-right: calc(50% + 50px);
-			}
-
-			.timeline-content h3 {
-				color: #e54b4b;
-				font-size: 20px;
-				margin-bottom: 10px;
-			}
-
-			.timeline-date {
-				display: block;
-				font-size: 14px;
-				color: #666;
-				margin-bottom: 10px;
-			}
-
-			.timeline-content p {
-				margin: 0;
-				line-height: 1.6;
-				color: #444;
-			}
-
-			@media screen and (max-width: 768px) {
-				.timeline-container::before {
-					left: 20px;
-				}
-
-				.timeline-dot {
-					left: 20px;
-				}
-
-				.timeline-content {
-					width: calc(100% - 70px);
-					margin-left: 70px;
-				}
-
-				.timeline-block:nth-child(even) .timeline-content {
-					margin-left: 70px;
-					margin-right: 0;
-				}
-			}
-		</style>
-
-		<!-- /TIMELINE 1 -->
-
-		<!-- TALK -->
-		<div class="grax_tm_section">
-			<div class="grax_tm_talk">
-				<div class="container">
-					<div class="talk_inner">
-						<div class="text wow fadeInLeft" data-wow-duration="1.5s">
-							<h3><span>Máu Đỏ Da Vàng - Tôi Là Người Việt Nam</span></h3>
-						</div>
-						<div class="button wow fadeInLeft anchor" data-wow-duration="1.5s" data-wow-delay=".2s">
-							<a href="#about">Hồ Chí Minh</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /TALK -->
-		<!-- ACCORDION SECTION -->
-
-		<div style="margin-top: 40px;" class="grax_tm_section" id="legacy">
-			<div style="margin-left: 345px; margin-bottom: 20px;" class="container grax_tm_title_holder">
-				<h3>Giá Trị Tư Tưởng <span>Hồ Chí Minh</span></h3>
-			</div>
+	<!-- TALK -->
+	<div class="grax_tm_section">
+		<div class="grax_tm_talk">
 			<div class="container">
-				<div class="accordion_container">
-					<!-- Accordion Item 1 -->
-					<div class="accordion_item">
-						<div class="accordion_header">
-							<h4>I. Soi sáng con đường giải phóng và phát triển dân tộc</h4>
-							<span class="icon">+</span>
-						</div>
-						<div class="accordion_content">
-							<div style="font-size: 20px;" class="content_inner">
-								<p style="font-weight: bold;">Tài sản tinh thần vô giá của dân tộc Việt Nam</p>
-								<ul>
-									<li>Tư tưởng Hồ Chí Minh là sản phẩm của dân tộc và thời đại, trường tồn, bất diệt,
-										là tài sản vô giá của dân tộc. Trong đó chủ yếu là Mác-Lênin, mà con đáp ứng
-										nhiều vấn đề của thời đại, của sự nghiệp cách mạng Việt Nam và thế giới.</li>
-									<li>Tính sáng tạo của tư tưởng này được thể hiện ở chỗ: trung thành với những nguyên
-										lý phổ biến của chủ nghĩa Mác-Lênin. Bác đã mạnh dạn loại bỏ những gì không
-										thích hợp với điều kiện cụ thể của nước ta, dám đề xuất những vấn đề và giải
-										quyết một cách linh hoạt.</li>
-									<li>Ngày nay, tư tưởng đó bao gồm một hệ thống những quan điểm về chiến lược cách
-										mạng dân tộc dân chủ nhân dân, cách mạng xã hội chủ nghĩa ở nước ta,... Điều đó
-										đảm bảo cho tương lai, tiền đồ vẻ vang của dân tộc Việt Nam.</li>
-									<li>Tư tưởng Bác vừa phản ánh quy luật khách quan của sự nghiệp đấu tranh giải phóng
-										trong thời đại cách mạng vô sản, vừa phản ánh mối quan hệ khăng khít giữa mục
-										tiêu giải phóng dân tộc với mục tiêu giải phóng giai cấp và con người.</li>
-								</ul>
-								<p style="font-weight: bold;">Nền tảng tư tưởng và kim chỉ nam cho hành động của cách
-									mạng Việt Nam</p>
-								<blockquote>Tư tưởng Hồ Chí Minh soi đường cho Đảng ta và nhân dân ta trên con đường
-									thực hiện <span class="highlight-text"
-										data-keyword="Ý nghĩa mục tiêu dân giàu, nước mạnh, dân chủ, công bằng, văn minh">mục
-										tiêu dân giàu, nước mạnh, dân chủ, công bằng, văn minh</span>.</blockquote>
-								<blockquote>Trong suốt chặng đường hơn một nửa thế kỷ, tu tưởng này đã trở thành ngọn cờ
-									dẫn dắt cách mạng nước ta đi từ thắng lợi này đến thắng lợi khác.</blockquote>
-								<blockquote>Trong bối cảnh ngày nay, tư tưởng của Bác giúp ta nhận thức đúng những vấn
-									đề lớn hơn có liên quan đến việc bảo vệ nền độc lập dân tộc, phát triển xã hội và
-									đảm bảo quyền con người.</blockquote>
-								<blockquote>Tư tưởng Hồ Chí Minh là nền tảng vững chắc để Đảng ta vạch ra đường lối cách
-									mạng đúng đắn, là sợi chỉ đỏ dẫn đường cho toàn Đảng, toàn quân, toàn dân ta đi tới
-									thắng lợi.</blockquote>
-								<p style="color: #e54b4b; font-weight: bold;"> -> Tư tưởng Hồ Chí Minh mãi mãi sống với
-									chúng ta vì đã thấm sâu vào quần chúng nhân dân, chỉ đạo việc thực hiện có hiệu ủa
-									những nhiệm vụ đối với thời đại.</p>
-							</div>
-						</div>
+				<div class="talk_inner">
+					<div class="text wow fadeInLeft" data-wow-duration="1.5s">
+						<h3><span>Khôi phục kinh tế, bảo vệ miền Bắc. Thống nhất Tổ quốc</span></h3>
 					</div>
-					<!-- Accordion Item 2 -->
-					<div class="accordion_item">
-						<div class="accordion_header">
-							<h4>II. Tư tưởng Hồ Chí Minh đối với sự phát triển thế giới</h4>
-							<span class="icon">+</span>
-						</div>
-						<div class="accordion_content">
-							<div style="font-size: 20px;" class="content_inner">
-								<blockquote style="font-weight: bold;">
-									Phản ánh <span class="highlight-text"
-										data-keyword="Tìm hiểu thêm về sự khát vọng thời đại trong Tư tưởng của Hồ Chí Minh">khát
-										vọng thời đại</span>
-								</blockquote>
-								<blockquote style="font-weight: bold;">
-									Tìm ra các giải pháp đấu tranh<span class="highlight-text"
-										data-keyword="Tìm hiểu thêm về hành động giải phóng loài người trong Tư tưởng của Hồ Chí Minh">giải
-										phóng loài người</span>
-								</blockquote>
-								<blockquote style="font-weight: bold;">
-									Cổ vũ các dân tộc đấu tranh trong sự nghiệp giải phóng
-								</blockquote>
-							</div>
-						</div>
+					<div class="button wow fadeInLeft anchor" data-wow-duration="1.5s" data-wow-delay=".2s">
+						<a href="#contact">1969-1975</a>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	<!-- /TALK -->
 
-		<!-- DOCUMENTS -->
-		<div class="grax_tm_section" id="document">
-			<div class="grax_tm_portfolio">
-				<div class="container">
-					<div class="grax_tm_title_holder">
-						<h3>Tư Liệu <span> Tham Khảo</span></h3>
+	<!-- Banner Slider Section -->
+	<div class="grax_tm_section" id="historical-periods">
+		<div class="container">
+
+			<div class="history-slider-container">
+				<!-- Radio Navigation -->
+				<input type="radio" name="history-slider" id="slide1" checked>
+				<input type="radio" name="history-slider" id="slide2">
+				<input type="radio" name="history-slider" id="slide3">
+
+				<!-- Navigation Arrows -->
+				<!-- <div class="slider-arrows">
+					<label for="slide3" class="arrow arrow-left" id="arrow-left"></label>
+					<label for="slide2" class="arrow arrow-right" id="arrow-right"></label>
+				</div> -->
+
+				<!-- Slider Wrapper -->
+				<div class="slider-wrapper">
+					<!-- Slide 1: Historical Context -->
+					<div class="slider-slide" data-period="context">
+						<div class="slide-content">
+							<h2>Bối Cảnh Lịch Sử</h2>
+							<p>Cuối những năm 1960, phong trào giải phóng dân tộc trên thế giới tiếp tục phát triển mạnh
+								mẽ...</p>
+							<div class="slide-btn">Xem chi tiết</div>
+						</div>
+						<div class="slide-image"
+							style="background-image: url('https://lh6.googleusercontent.com/proxy/dH2D5EoiwNHFTw0YJYkIfROdwpqrjlHC9nUgn6NsXb7ncIUpKcTGIr06TlAWFEE52-KgFRMd6h_Wf1tb4eX7vy_UlcS85QlwAebYeMgXVHxpQd0DQGTeboluAxVDlWgcc9XpMx8EYOviXIxKQ08QjA');">
+						</div>
 					</div>
-					<div class="portfolio_list">
-						<ul class="gallery_zoom my_waypoint">
-							<li class="wow fadeInLeft" data-wow-duration="1.5s">
-								<div class="list_inner">
-									<div class="image">
-										<img src="img/placeholders/1-1.jpg" alt="" />
-										<div class="main"
-											data-img-url="img/news/hcm1-16529275928651573705413-0-0-375-600-crop-16529276019091318892288.jpg">
-										</div>
-									</div>
-									<div class="overlay"></div>
-									<div class="details">
-										<span>Video</span>
-										<h3>Tư Tưởng Hồ Chí Minh Về Văn Hoá</h3>
-									</div>
-									<!-- Thẻ a với link video -->
-									<a class="grax_tm_full_link popup-youtube"
-										href="https://www.youtube.com/watch?v=8E940gAAxpo"></a>
-								</div>
-							</li>
 
-							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
-								<div class="list_inner">
-									<div class="image">
-										<img src="img/placeholders/1-1.jpg" alt="" />
-										<div class="main"
-											data-img-url="img/news/tu-tuong-ho-chi-minh-mot-hoc-thuyet-cach-mang-vo-gia-cua-viet-nam.jpg">
-										</div>
-									</div>
-									<div class="overlay"></div>
-									<div class="details">
-										<span>Hình ảnh</span>
-										<h3>Bác Viết Thư</h3>
-									</div>
-									<a class="grax_tm_full_link zoom"
-										href="img/news/tu-tuong-ho-chi-minh-mot-hoc-thuyet-cach-mang-vo-gia-cua-viet-nam.jpg"></a>
-								</div>
-							</li>
-							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".4s">
-								<div class="list_inner">
-									<div class="image">
-										<img src="img/placeholders/1-1.jpg" alt="" />
-										<div class="main" data-img-url="img/news/R.jpg"></div>
-									</div>
-									<div class="overlay"></div>
-									<div class="details">
-										<span>Hình ảnh</span>
-										<h3>Bác Tham Gia Kháng Chiến</h3>
-									</div>
-									<a class="grax_tm_full_link zoom" href="img/news/R.jpg"></a>
-								</div>
-							</li>
-							<li class="wow fadeInLeft" data-wow-duration="1.5s">
-								<div class="list_inner">
-									<div class="image">
-										<img src="img/placeholders/1-1.jpg" alt="" />
-										<div class="main"
-											data-img-url="img/news/gian-di-la-duc-tinh-quy-gia-nhat-cua-moi-nguoi.jpg">
-										</div>
-									</div>
-									<div class="overlay"></div>
-									<div class="details">
-										<span>Video</span>
-										<h3>Tư Tưởng Hồ Chí Minh Về Xã Hội Chủ Nghĩa</h3>
-									</div>
-									<!-- Thẻ a với link video -->
-									<a class="grax_tm_full_link popup-youtube"
-										href="https://www.youtube.com/watch?v=3jRm8KRwFlo"></a>
-								</div>
-							</li>
-							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
-								<div class="list_inner">
-									<div class="image">
-										<img src="img/placeholders/1-1.jpg" alt="" />
-										<div class="main" data-img-url="img/news/bacho0.jpg"></div>
-									</div>
-									<div class="overlay"></div>
-									<div class="details">
-										<span>Hình ảnh</span>
-										<h3>Tổ Công Tác Của Bác</h3>
-									</div>
-									<a class="grax_tm_full_link zoom" href="img/news/bacho0.jpg"></a>
-								</div>
-							</li>
-							<li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".4s">
-								<div class="list_inner">
-									<div class="image">
-										<img src="img/placeholders/1-1.jpg" alt="" />
-										<div class="main"
-											data-img-url="img/news/vna_potal_70_nam_chien_thang_bien_gioi_thu_dong_1950_chien_thang_tao_chuyen_bien_co_ban_cho_cuoc_khang_chien_chong_phap__174409530_stand.jpg">
-										</div>
-									</div>
-									<div class="overlay"></div>
-									<div class="details">
-										<span>Hình ảnh</span>
-										<h3>Bác Lãng Đạo Kháng Chiến</h3>
-									</div>
-									<a class="grax_tm_full_link zoom"
-										href="img/news/vna_potal_70_nam_chien_thang_bien_gioi_thu_dong_1950_chien_thang_tao_chuyen_bien_co_ban_cho_cuoc_khang_chien_chong_phap__174409530_stand.jpg"></a>
-								</div>
-							</li>
+					<!-- Slide 2: North Vietnam Restoration -->
+					<div class="slider-slide" data-period="restoration">
+						<div class="slide-content">
+							<h2>Khôi phục kinh tế và bảo vệ miền Bắc</h2>
+							<p>Sau khi Mỹ tuyên bố ngừng ném bom miền Bắc vào cuối năm 1968, miền Bắc bước vào giai đoạn
+								khôi phục kinh tế...</p>
+							<div class="slide-btn">Xem chi tiết</div>
+						</div>
+						<div class="slide-image"
+							style="background-image: url('https://baonamdinh.vn/file/e7837c02816d130b0181a995d7ad7e96/dataimages//201602/original/images1220808_1.jpg');">
+						</div>
+					</div>
+
+					<!-- Slide 3: South Vietnam Liberation -->
+					<div class="slider-slide" data-period="liberation">
+						<div class="slide-content">
+							<h2>Giải phóng miền Nam, thống nhất đất nước</h2>
+							<p>Sau Hiệp định Paris, Mỹ rút quân nhưng vẫn viện trợ mạnh mẽ cho chính quyền Sài Gòn...
+							</p>
+							<div class="slide-btn">Xem chi tiết</div>
+						</div>
+						<div class="slide-image"
+							style="background-image: url('https://edu.viettel.vn/upload/26807/fck/files/1(104).jpg');">
+						</div>
+					</div>
+				</div>
+
+				<!-- Slide Indicators -->
+				<div class="slider-indicators">
+					<label for="slide1" class="indicator"></label>
+					<label for="slide2" class="indicator"></label>
+					<label for="slide3" class="indicator"></label>
+				</div>
+			</div>
+
+			<!-- Drawer Container -->
+			<div class="history-drawer-container">
+				<!-- Historical Context Drawer -->
+				<div id="context-drawer" class="history-drawer">
+					<div class="drawer-header">
+						<h2>Bối Cảnh Lịch Sử (1969-1975)</h2>
+						<div class="drawer-close">&times;</div>
+					</div>
+					<div class="drawer-content">
+						<h3>1. Tình hình quốc tế</h3>
+						<ul>
+							<li>Cuối những năm 1960, phong trào giải phóng dân tộc trên thế giới tiếp tục phát triển
+								mạnh mẽ, đặc biệt ở khu vực châu Á, châu Phi và Mỹ Latinh.</li>
+							<li>Mỹ bước vào thời kỳ khó khăn do chiến tranh Việt Nam kéo dài, phong trào phản đối chiến
+								tranh trong nước Mỹ gia tăng.</li>
+							<li>Liên Xô và Trung Quốc có mâu thuẫn sâu sắc, ảnh hưởng đến sự viện trợ cho Việt Nam.</li>
+							<li>Hội nghị Paris về Việt Nam được tổ chức từ năm 1968 nhằm tìm kiếm một giải pháp hòa bình
+								cho cuộc chiến.</li>
+						</ul>
+
+						<div class="drawer-image-container">
+							<img src="https://photo-baomoi.bmcdn.me/w700_r1/17/04/27/205/22123875/1_141821.jpg"
+								alt="Phong trào phản chiến tại Mỹ">
+							<p class="caption">Phong trào phản chiến tại Mỹ</p>
+						</div>
+
+						<h3>2. Tình hình trong nước</h3>
+						<ul>
+							<li>Ngày 2/9/1969, Chủ tịch Hồ Chí Minh từ trần, để lại niềm tiếc thương vô hạn cho toàn thể
+								dân tộc.</li>
+							<li>Miền Bắc vừa khắc phục hậu quả chiến tranh phá hoại, vừa sản xuất để chi viện cho miền
+								Nam.</li>
+							<li>Miền Nam tiếp tục cuộc kháng chiến chống Mỹ và chính quyền Sài Gòn, chuẩn bị cho những
+								trận đánh quyết định.</li>
+						</ul>
+
+						<div class="drawer-image-container">
+							<img src="https://th.bing.com/th/id/OIP.GJ03cJF1a4Tmhpa9yKYURgAAAA?rs=1&pid=ImgDetMain"
+								alt="Chủ tịch Hồ Chí Minh">
+							<p class="caption">Chủ tịch Hồ Chí Minh (1890-1969)</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Restoration Drawer -->
+				<div id="restoration-drawer" class="history-drawer">
+					<div class="drawer-header">
+						<h2>Khôi phục kinh tế và bảo vệ miền Bắc (1969-1973)</h2>
+						<div class="drawer-close">&times;</div>
+					</div>
+					<div class="drawer-content">
+						<h3>1. Khôi phục kinh tế sau chiến tranh phá hoại lần thứ nhất</h3>
+						<p>Sau khi Mỹ tuyên bố ngừng ném bom miền Bắc vào cuối năm 1968, miền Bắc bước vào giai đoạn
+							khôi phục kinh tế:</p>
+						<ul>
+							<li><strong>Nông nghiệp:</strong> Đẩy mạnh sản xuất lương thực, mở rộng diện tích trồng lúa,
+								sử dụng giống mới có năng suất cao, phát động các phong trào thi đua trong sản xuất nông
+								nghiệp.</li>
+							<li><strong>Công nghiệp:</strong> Khôi phục các nhà máy bị đánh phá như Nhà máy điện Uông
+								Bí, Nhà máy xi măng Hải Phòng, các cơ sở công nghiệp ở Thái Nguyên, Nam Định.</li>
+							<li><strong>Giao thông vận tải:</strong> Sửa chữa lại các tuyến đường sắt, quốc lộ, cầu cống
+								bị phá hủy trong chiến tranh.</li>
+							<li><strong>Thương mại và đời sống nhân dân:</strong> Phân phối hàng hóa hợp lý, từng bước
+								ổn định đời sống nhân dân sau thời gian dài bị chiến tranh phá hoại.</li>
+						</ul>
+
+						<div class="drawer-image-container">
+							<img src="https://d4.violet.vn/uploads/blogs/447/1_50_nam_43_0004_500.jpg"
+								alt="Khôi phục công nghiệp miền Bắc">
+							<p class="caption">Khôi phục nhà máy sau chiến tranh phá hoại</p>
+						</div>
+
+						<h3>2. Bảo vệ miền Bắc trước chiến tranh phá hoại lần thứ hai của Mỹ (1972-1973)</h3>
+						<ul>
+							<li>Tháng 4/1972, Mỹ mở cuộc chiến tranh phá hoại lần thứ hai bằng không quân và hải quân
+								nhằm ngăn chặn sự chi viện của miền Bắc cho chiến trường miền Nam.</li>
+							<li>Đỉnh điểm là chiến dịch Điện Biên Phủ trên không vào tháng 12/1972, khi Mỹ dùng B-52
+								đánh phá Hà Nội, Hải Phòng nhằm ép Việt Nam nhượng bộ tại bàn đàm phán Paris.</li>
+							<li>Với tinh thần chiến đấu kiên cường, quân và dân miền Bắc bắn rơi 81 máy bay Mỹ, trong đó
+								có 34 chiếc B-52, buộc Mỹ phải ký kết Hiệp định Paris vào ngày 27/1/1973, rút quân khỏi
+								Việt Nam.</li>
+						</ul>
+
+						<div class="drawer-image-container">
+							<img src="https://baohaiquanvietnam.vn/storage/users/user_6/N%C4%83m%202022/Th%C3%A1ng%2012/23-12/1-3064.jpg"
+								alt="B-52 bị bắn rơi">
+							<p class="caption">B-52 bị phòng không Việt Nam bắn rơi</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Liberation Drawer -->
+				<div id="liberation-drawer" class="history-drawer">
+					<div class="drawer-header">
+						<h2>Giải phóng miền Nam, thống nhất đất nước (1973-1975)</h2>
+						<div class="drawer-close">&times;</div>
+					</div>
+					<div class="drawer-content">
+						<h3>1. Sau Hiệp định Paris (1973-1974)</h3>
+						<ul>
+							<li>Mỹ rút quân nhưng vẫn viện trợ mạnh mẽ cho chính quyền Sài Gòn, tiếp tục duy trì sự tồn
+								tại của chế độ Nguyễn Văn Thiệu.</li>
+							<li>Miền Bắc đẩy mạnh công cuộc tái thiết, khôi phục kinh tế và tiếp tục chi viện cho miền
+								Nam.</li>
+							<li>Ở miền Nam, quân Giải phóng mở các cuộc tiến công vào những căn cứ trọng yếu của địch,
+								mở rộng vùng giải phóng, đặc biệt là chiến thắng Phước Long (tháng 1/1975).</li>
+						</ul>
+
+						<h3>2. Cuộc Tổng tiến công và nổi dậy mùa Xuân năm 1975</h3>
+						<p>Trước thời cơ chiến lược, Bộ Chính trị quyết định mở cuộc tổng tiến công và nổi dậy giải
+							phóng hoàn toàn miền Nam:</p>
+
+						<div class="campaign-timeline">
+							<div class="campaign-item">
+								<h4>Chiến dịch Tây Nguyên (4/3 - 24/3/1975)</h4>
+								<ul>
+									<li>Mở đầu với trận đánh then chốt tại Buôn Ma Thuột, quân Giải phóng nhanh chóng
+										kiểm soát toàn bộ Tây Nguyên.</li>
+									<li>Quân đội Sài Gòn hoảng loạn rút lui, tạo điều kiện cho ta tiến công sâu hơn.
+									</li>
+								</ul>
+							</div>
+
+							<div class="campaign-item">
+								<h4>Chiến dịch Huế - Đà Nẵng (21/3 - 29/3/1975)</h4>
+								<ul>
+									<li>Sau khi chiếm Tây Nguyên, quân ta tiến công miền Trung, giải phóng Huế ngày
+										25/3, giải phóng Đà Nẵng ngày 29/3.</li>
+									<li>Hơn 10 vạn quân địch bị tiêu diệt, làm tan rã hệ thống phòng thủ miền Trung của
+										địch.</li>
+								</ul>
+							</div>
+
+							<div class="campaign-item">
+								<h4>Chiến dịch Hồ Chí Minh (26/4 - 30/4/1975)</h4>
+								<ul>
+									<li>Ngày 26/4, quân ta mở cuộc tổng tiến công vào Sài Gòn.</li>
+									<li>Ngày 30/4, xe tăng Quân Giải phóng tiến vào Dinh Độc Lập, bắt sống Tổng thống
+										Dương Văn Minh.</li>
+									<li>Chính quyền Sài Gòn sụp đổ, miền Nam hoàn toàn giải phóng.</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="drawer-image-container">
+							<img src="img/xetang.jpeg" alt="Xe tăng tiến vào Dinh Độc Lập">
+							<p class="caption">Xe tăng Quân Giải phóng tiến vào Dinh Độc Lập ngày 30/4/1975</p>
+							<div class="logo-overlay">
+								<img src="https://play-lh.googleusercontent.com/j5KmJiZxrCRR7SBEjmLtn5gpQz8exDTIOTNM0xegJwQVQbyNZfSa-UtoHrWj2BLxm_Q=w240-h480-rw"
+									alt="Artivive Logo" class="logo" />
+								<div class="overlay-text">Sử dụng app Artivive để quét ảnh này thành video tư
+									liệu</div>
+							</div>
+						</div>
+
+
+						<h3>3. Ý NGHĨA LỊCH SỬ</h3>
+						<ul class="historical-significance">
+							<li><strong>Kết thúc 30 năm chiến tranh, giành lại độc lập, thống nhất đất nước:</strong>
+								Chiến thắng năm 1975 đánh dấu sự kết thúc của cuộc đấu tranh trường kỳ, thống nhất hai
+								miền Nam - Bắc.</li>
+							<li><strong>Tạo tiền đề cho sự phát triển của đất nước:</strong> Việt Nam bước vào thời kỳ
+								xây dựng chủ nghĩa xã hội trên cả nước, khắc phục hậu quả chiến tranh.</li>
+							<li><strong>Có ý nghĩa quốc tế to lớn:</strong> Thắng lợi của Việt Nam đã cổ vũ phong trào
+								đấu tranh giải phóng dân tộc trên thế giới, đặc biệt là ở các nước thuộc địa.</li>
 						</ul>
 					</div>
 				</div>
-			</div>
-		</div>
-		<!-- /DOCUMENTS -->
 
-		<!-- Câu hỏi CQ-->
-		<div class="grax_tm_progress_part1" id="cq">
+				<!-- Drawer Overlay -->
+				<div class="drawer-overlay"></div>
+			</div>
+			<h4 style="margin: 40px 0 20px;">Ý NGHĨA LỊCH SỬ</h4>
+			<p style=" font-size: 20px;">
+			<ul style=" font-size: 20px;">
+				<li><strong>Kết thúc 30 năm chiến tranh, giành lại độc lập, thống nhất đất nước:</strong> Chiến thắng
+					năm 1975 đánh dấu sự kết thúc của cuộc đấu tranh trường kỳ, thống nhất hai miền Nam - Bắc.</li>
+				<li><strong>Tạo tiền đề cho sự phát triển của đất nước:</strong> Việt Nam bước vào thời kỳ xây dựng chủ
+					nghĩa xã hội trên cả nước, khắ
+					phục hậu quả chiến tranh.</li>
+				<li><strong>Có ý nghĩa quốc tế to lớn:</strong> Thắng lợi của Việt Nam đã cổ vũ phong trào đấu tranh
+					giải phóng dân tộc trên thế giới, đặc biệt là ở các nước thuộc địa.</li>
+			</ul>
+			</p>
+		</div>
+	</div>
+
+	<!-- DOCUMENTS -->
+	<div class="grax_tm_section" id="document">
+		<div class="grax_tm_portfolio">
 			<div class="container">
-				<div class="part_inner">
-					<div class="left wow fadeInLeft" data-wow-duration="1.5s">
-						<div class="grax_tm_title_holder">
-							<h3 style="font-size: 40px;">CÂU HỎI <span>CQ</span></h3>
-						</div>
-						<div class="grax_tm_title_holder2">
-							<h5 style="margin-bottom: 10px;">Trong quá trình hình thành và phát triển tư tưởng của Hồ
-								Chí Minh, thời kỳ, sự kiện và yếu tố nào là quan trọng nhất? Vì sao?</h5>
-						</div>
-					</div>
-					<div class="right wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
-						<div class="hcm_sections">
-							<div class="section_inner period" onclick="openModal('periodModal')">
-								<div class="section_header">
-									<span class="label">Thời kỳ quan trọng</span>
-									<span class="number">1911-1920</span>
-								</div>
-								<div class="progress_bar">
-									<div class="progress_in" style="width: 100%"></div>
-								</div>
-							</div>
-							<div class="section_inner event" onclick="openModal('eventModal')">
-								<div class="section_header">
-									<span class="label">Sự kiện quan trọng</span>
-									<span class="number">Cách mạng Tháng Mười Nga 1917</span>
-								</div>
-								<div class="progress_bar">
-									<div class="progress_in" style="width: 100%"></div>
-								</div>
-							</div>
-							<div class="section_inner factor" onclick="openModal('factorModal')">
-								<div class="section_header">
-									<span class="label">Yếu tố quan trọng</span>
-									<span class="number">Tinh thần dân tộc</span>
-								</div>
-								<div class="progress_bar">
-									<div class="progress_in" style="width: 100%"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div class="grax_tm_title_holder">
+					<h3>Tư Liệu <span>Tham Khảo</span></h3>
 				</div>
-			</div>
-		</div>
+				<div class="portfolio_list">
+					<ul class="gallery_zoom my_waypoint">
+						<!-- Video 1
+						<li class="wow fadeInLeft" data-wow-duration="1s">
+							<div class="list_inner">
+								<div class="image">
+									<img src="img/placeholders/1-1.jpg" alt="" />
+									<div class="main"
+										data-img-url="img/news/hcm1-16529275928651573705413-0-0-375-600-crop-16529276019091318892288.jpg">
+									</div>
+								</div>
+								<div class="overlay"></div>
+								<div class="details">
+									<span>Video</span>
+									<h3>Tư Tưởng Hồ Chí Minh Về Văn Hoá</h3>
+								</div>
+								<a class="grax_tm_full_link popup-youtube"
+									href="https://www.youtube.com/watch?v=8E940gAAxpo"></a>
+							</div>
+						</li> -->
 
-		<div id="periodModal" class="modal1">
-			<div class="modal-content">
-				<span class="close" onclick="closeModal('periodModal')">&times;</span>
-				<h2 class="modal-title">Thời kỳ quan trọng nhất</h2>
-				<div class="modal-text">
-					<p>Thời kỳ 1911-1920 là giai đoạn quan trọng nhất trong quá trình hình thành tư tưởng của Hồ Chí
-						Minh:</p>
-					<ul>
-						<img src="img/news/1911-1920.jpeg" alt="Hồ Chí Minh 1945"
-							style="width: 100%; margin-bottom: 20px;">
-						<li>Đây là thời kỳ Người ra đi tìm đường cứu nước, tiếp xúc với nhiều nền văn hóa và tư tưởng
-							tiến bộ trên thế giới</li>
-						<li>Người đã từng sống và học tập tại nhiều nước như Pháp, Anh, Mỹ...</li>
-						<li>Đây là giai đoạn Người bắt đầu hình thành những tư tưởng cốt lõi về con đường giải phóng dân
-							tộc</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<div id="eventModal" class="modal1">
-			<div class="modal-content">
-				<span class="close" onclick="closeModal('eventModal')">&times;</span>
-				<h2 class="modal-title">Sự kiện quan trọng nhất</h2>
-				<div class="modal-text">
-					<p>Cách mạng Tháng Mười Nga 1917 là sự kiện có ảnh hưởng quyết định:</p>
-					<ul>
-						<img src="img/news/CMT10.jpg" alt="Hồ Chí Minh 1945" style="width: 100%; margin-bottom: 20px;">
-						<li>Đây là sự kiện mở ra con đường mới cho các dân tộc bị áp bức</li>
-						<li>Giúp Người nhận ra rằng chủ nghĩa Lenin là con đường đúng đắn cho việc giải phóng dân tộc
+						<!-- Image 1 -->
+						<li class="wow fadeInLeft" data-wow-duration="1s">
+							<div class="list_inner">
+								<div class="image">
+									<img src="img/placeholders/1-1.jpg" alt="" />
+									<div class="main"
+										data-img-url="img/news/tu-tuong-ho-chi-minh-mot-hoc-thuyet-cach-mang-vo-gia-cua-viet-nam.jpg">
+									</div>
+								</div>
+								<div class="overlay"></div>
+								<div class="details">
+									<span>Hình ảnh</span>
+									<h3>Bác Viết Thư</h3>
+								</div>
+								<a class="grax_tm_full_link zoom"
+									href="img/news/tu-tuong-ho-chi-minh-mot-hoc-thuyet-cach-mang-vo-gia-cua-viet-nam.jpg"></a>
+							</div>
 						</li>
-						<li>Từ đây, Người đã kết hợp chủ nghĩa yêu nước với chủ nghĩa Marx-Lenin một cách sáng tạo</li>
+
+						<!-- Image 2 -->
+						<li class="wow fadeInLeft" data-wow-duration="1s">
+							<div class="list_inner">
+								<div class="image">
+									<img src="img/placeholders/1-1.jpg" alt="" />
+									<div class="main" data-img-url="img/news/R.jpg"></div>
+								</div>
+								<div class="overlay"></div>
+								<div class="details">
+									<span>Hình ảnh</span>
+									<h3>Bác Tham Gia Kháng Chiến</h3>
+								</div>
+								<a class="grax_tm_full_link zoom" href="img/news/R.jpg"></a>
+							</div>
+						</li>
+
+						<!-- Video 2
+						<li class="wow fadeInLeft" data-wow-duration="1s">
+							<div class="list_inner">
+								<div class="image">
+									<img src="img/placeholders/1-1.jpg" alt="" />
+									<div class="main"
+										data-img-url="img/news/gian-di-la-duc-tinh-quy-gia-nhat-cua-moi-nguoi.jpg">
+									</div>
+								</div>
+								<div class="overlay"></div>
+								<div class="details">
+									<span>Video</span>
+									<h3>Tư Tưởng Hồ Chí Minh Về Xã Hội Chủ Nghĩa</h3>
+								</div>
+								<a class="grax_tm_full_link popup-youtube"
+									href="https://www.youtube.com/watch?v=3jRm8KRwFlo"></a>
+							</div>
+						</li> -->
+
+						<!-- Image 3 -->
+						<li class="wow fadeInLeft" data-wow-duration="1s">
+							<div class="list_inner">
+								<div class="image">
+									<img src="img/placeholders/1-1.jpg" alt="" />
+									<div class="main" data-img-url="img/news/bacho0.jpg"></div>
+								</div>
+								<div class="overlay"></div>
+								<div class="details">
+									<span>Hình ảnh</span>
+									<h3>Tổ Công Tác Của Bác</h3>
+								</div>
+								<a class="grax_tm_full_link zoom" href="img/news/bacho0.jpg"></a>
+							</div>
+						</li>
+
+						<!-- Image 4 -->
+						<li class="wow fadeInLeft" data-wow-duration="1s">
+							<div class="list_inner">
+								<div class="image">
+									<img src="img/placeholders/1-1.jpg" alt="" />
+									<div class="main"
+										data-img-url="img/news/vna_potal_70_nam_chien_thang_bien_gioi_thu_dong_1950_chien_thang_tao_chuyen_bien_co_ban_cho_cuoc_khang_chien_chong_phap__174409530_stand.jpg">
+									</div>
+								</div>
+								<div class="overlay"></div>
+								<div class="details">
+									<span>Hình ảnh</span>
+									<h3>Bác Lãnh Đạo Kháng Chiến</h3>
+								</div>
+								<a class="grax_tm_full_link zoom"
+									href="img/news/vna_potal_70_nam_chien_thang_bien_gioi_thu_dong_1950_chien_thang_tao_chuyen_bien_co_ban_cho_cuoc_khang_chien_chong_phap__174409530_stand.jpg"></a>
+							</div>
+						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
+	</div>
+	<!-- /DOCUMENTS -->
+	<!-- MINIGAME -->
+	<div style="width:100%;display:flex;flex-direction:column;gap:8px;min-height:635px;">
+		<iframe src="https://quizizz.com/join?gc=404683" style="flex:1;" frameBorder="0" allowfullscreen></iframe>
+	</div>
+	<!-- /MINIGAME -->
 
-		<div id="factorModal" class="modal1">
-			<div class="modal-content">
-				<span class="close" onclick="closeModal('factorModal')">&times;</span>
-				<h2 class="modal-title">Yếu tố quan trọng nhất</h2>
-				<div class="modal-text">
-					<p>Tinh thần yêu nước và truyền thống văn hóa dân tộc là yếu tố quan trọng nhất:</p>
-					<ul>
-						<img src="img/news/ttdt.jpg" alt="Hồ Chí Minh 1945" style="width: 100%; margin-bottom: 20px;">
-						<li>Đây là nền tảng tư tưởng xuyên suốt của Hồ Chí Minh</li>
-						<li>Giúp Người tiếp thu có chọn lọc các giá trị văn hóa nhân loại</li>
-						<li>Là cơ sở để Người phát triển lý luận cách mạng phù hợp với điều kiện Việt Nam</li>
-					</ul>
+	<!-- Câu hỏi CQ -->
+	<div class="grax_tm_progress_part1" id="cq">
+		<div class="container">
+			<div class="part_inner">
+				<div class="left wow fadeInLeft" data-wow-duration="1.5s">
+					<div class="grax_tm_title_holder">
+						<h3 style="font-size: 40px;">CÂU HỎI <span>CQ</span></h3>
+					</div>
+					<div class="grax_tm_title_holder2">
+						<h5 style="margin-bottom: 10px; font-size: 40px">Vì sao Mỹ và chính quyền Ngô Đình Diệm phải
+							thực hiện chính sách di cư sau Hiệp định Giơnevơ (1954-1975)?</h5>
+					</div>
 				</div>
-			</div>
-		</div>
-
-		<script>
-			function openModal(modalId) {
-				document.getElementById(modalId).style.display = "block";
-			}
-
-			function closeModal(modalId) {
-				document.getElementById(modalId).style.display = "none";
-			}
-
-			window.onclick = function (event) {
-				if (event.target.className === 'modal') {
-					event.target.style.display = "none";
-				}
-			}
-
-			// Add animation class to elements with wow class
-			document.addEventListener('DOMContentLoaded', function () {
-				const wowElements = document.querySelectorAll('.wow');
-				wowElements.forEach(element => {
-					element.classList.add('fadeInLeft');
-				});
-			});
-		</script>
-		<!-- Câu hỏi CQ-->
-
-		<style>
-			.accordion_container {
-				width: 100%;
-			}
-
-			.accordion_item {
-				background: white;
-				border: 2px solid #e54b4b;
-				border-radius: 8px;
-				margin-bottom: 15px;
-				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-			}
-
-			.accordion_header {
-				padding: 20px;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				cursor: pointer;
-				background: white;
-				transition: background-color 0.3s ease;
-			}
-
-			.accordion_header:hover {
-				background: #f8f8f8;
-			}
-
-			.accordion_header h4 {
-				margin: 0;
-				font-size: 18px;
-				color: #333;
-				font-weight: 500;
-			}
-
-			.accordion_header .icon {
-				font-size: 24px;
-				transition: transform 0.3s ease;
-				color: #e54b4b;
-			}
-
-			.accordion_item.active .accordion_header .icon {
-				transform: rotate(45deg);
-			}
-
-			.accordion_content {
-				max-height: 0;
-				overflow: hidden;
-				transition: max-height 0.3s ease-out;
-			}
-
-			.accordion_item.active .accordion_content {
-				max-height: 1000px;
-			}
-
-			.content_inner {
-				padding: 0 20px 20px;
-			}
-
-			.content_inner p {
-				color: #666;
-				line-height: 1.6;
-				margin-bottom: 15px;
-			}
-
-			.content_inner ul {
-				list-style-type: disc;
-				padding-left: 20px;
-				margin-bottom: 15px;
-			}
-
-			.content_inner ul li {
-				color: #666;
-				margin-bottom: 8px;
-				line-height: 1.4;
-			}
-
-			.content_inner blockquote {
-				border-left: 4px solid #e74c3c;
-				padding-left: 15px;
-				margin: 15px 0;
-				font-style: italic;
-				color: #555;
-			}
-
-			@media (max-width: 768px) {
-				.accordion_header h4 {
-					font-size: 16px;
-				}
-
-				.content_inner {
-					padding: 0 15px 15px;
-				}
-			}
-		</style>
-
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				const accordionItems = document.querySelectorAll('.accordion_item');
-
-				accordionItems.forEach(item => {
-					const header = item.querySelector('.accordion_header');
-					const content = item.querySelector('.accordion_content');
-
-					header.addEventListener('click', () => {
-						// Close other items
-						accordionItems.forEach(otherItem => {
-							if (otherItem !== item && otherItem.classList.contains('active')) {
-								otherItem.classList.remove('active');
-								otherItem.querySelector('.accordion_content').style.maxHeight = '0px';
-							}
-						});
-
-						// Toggle current item
-						item.classList.toggle('active');
-						if (item.classList.contains('active')) {
-							content.style.maxHeight = content.scrollHeight + 'px';
-						} else {
-							content.style.maxHeight = '0px';
-						}
-					});
-				});
-			});
-		</script>
-
-		<!-- COPYRIGHT -->
-		<div class="grax_tm_section">
-			<div class="grax_tm_copyright">
-				<div class="my_wave">
-					<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
-						<defs></defs>
-						<path id="wave_img" data-color="#fff"
-							d="M 0 185.609 C 317.16666666666663 118.136 317.16666666666663 118.136 634.3333333333333 151.87 C 951.4999999999999 185.609 951.4999999999999 185.609 1268.6666666666665 116.402 C 1585.833333333333 47.195 1585.833333333333 47.195 1903 131.925 L 1903 507 L 0 507 Z"
-							fill="#fff"></path>
-					</svg>
-				</div>
-				<div class="container">
-					<div class="copyright_inner">
-						<div class="logo wow fadeInLeft" data-wow-duration="1s">
-							<img src="img/logo/logo.png" alt="" />
+				<div class="right wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
+					<div class="hcm_sections">
+						<div class="section_inner period" onclick="openModal('periodModal')">
+							<div class="section_header">
+								<span class="label">Mục tiêu</span>
+							</div>
+							<div class="progress_bar">
+								<div class="progress_in" style="width: 100%"></div>
+							</div>
 						</div>
-						<div class="social wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">
-							<ul>
-								<li>
-									<a href="#"><img class="svg" src="img/svg/social/facebook.svg" alt="" /></a>
-								</li>
-								<li>
-									<a href="#"><img class="svg" src="img/svg/social/twitter.svg" alt="" /></a>
-								</li>
-								<li>
-									<a href="#"><img class="svg" src="img/svg/social/dribbble.svg" alt="" /></a>
-								</li>
-								<li>
-									<a href="#"><img class="svg" src="img/svg/social/tik-tok.svg" alt="" /></a>
-								</li>
-								<!-- You can download another svg icons from here for free https://www.flaticon.com -->
-							</ul>
+						<div class="section_inner event" onclick="openModal('eventModal')">
+							<div class="section_header">
+								<span class="label">Những biện pháp thực hiện</span>
+							</div>
+							<div class="progress_bar">
+								<div class="progress_in" style="width: 100%"></div>
+							</div>
 						</div>
-						<div class="copy wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">
-							<p>&copy; Copyright 2025 by Group 2</p>
+						<div class="section_inner cause" onclick="openModal('causeModal')">
+							<div class="section_header">
+								<span class="label">Nguyên nhân người dân di cư</span>
+							</div>
+							<div class="progress_bar">
+								<div class="progress_in" style="width: 100%"></div>
+							</div>
+						</div>
+						<div class="section_inner factor" onclick="openModal('factorModal')">
+							<div class="section_header">
+								<span class="label">Kết quả</span>
+							</div>
+							<div class="progress_bar">
+								<div class="progress_in" style="width: 100%"></div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- /COPYRIGHT -->
+	</div>
 
-		<!-- CURSOR -->
-		<div class="mouse-cursor cursor-outer"></div>
-		<div class="mouse-cursor cursor-inner"></div>
-		<!-- /CURSOR -->
-
-		<!-- START: Page Progress -->
-		<div class="progressbar">
-			<a style="color: red;" href="#"><span class="text">Bay Lên</span></a>
-			<span class="line"></span>
-		</div>
-		<!-- END: Page Progress -->
-		<!-- CHATBOT -->
-		<div id="chatbot-container" style="display: none;">
-			<div id="chatbot-header">
-				<h4 style="color: #fff; font-weight: bold;">Hỏi đáp cùng thầy Khoa!</h4>
-				<button id="close-chatbot">&times;</button>
+	<!-- Modal Mục tiêu -->
+	<div id="periodModal" class="modal1">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('periodModal')">&times;</span>
+			<h2 class="modal-title">Mục tiêu của chính sách di cư</h2>
+			<div class="modal-text">
+				<p>Sau Hiệp định Giơnevơ năm 1954, Mỹ và chính quyền Ngô Đình Diệm đã thực hiện một chiến dịch di cư quy
+					mô lớn nhằm phục vụ các mục tiêu chính trị, quân sự, kinh tế và xã hội.</p>
+				<ul class="custom-list">
+					<li><strong>Về chính trị:</strong> Mỹ và chính quyền Ngô Đình Diệm muốn tạo ra một dư luận tiêu cực
+						về chế độ miền Bắc, bôi nhọ hình ảnh của Đảng Lao động Việt Nam, qua đó làm suy giảm sự ủng hộ
+						quốc tế đối với cuộc đấu tranh thống nhất đất nước. Đồng thời, họ muốn củng cố chế độ Ngô Đình
+						Diệm bằng cách tạo ra một cơ sở xã hội trung thành từ những người di cư.</li>
+					<li><strong>Về quân sự:</strong> Chính sách di cư giúp Mỹ và chính quyền Sài Gòn tập hợp được nguồn
+						nhân lực giá rẻ để tăng cường quân đội, củng cố chính quyền tay sai. Người di cư trở thành nguồn
+						nhân lực quan trọng để xây dựng "ngụy quân" và củng cố "ngụy quyền".</li>
+					<li><strong>Về kinh tế - xã hội:</strong> Mỹ - Diệm hy vọng việc di cư sẽ gây mất ổn định nền kinh
+						tế miền Bắc, đặc biệt là việc rút đi một lượng lớn trí thức, công nhân kỹ thuật và nông dân.
+						Đồng thời, người di cư sẽ trở thành nguồn lao động giá rẻ cho các đồn điền cao su, cà phê và các
+						ngành công nghiệp mới tại miền Nam.</li>
+				</ul>
 			</div>
-			<div id="chatbot-messages"></div>
-			<div id="chatbot-loading" style="display: none;">
-				<div class="loading-dots">
-					<div class="dot"></div>
-					<div class="dot"></div>
-					<div class="dot"></div>
-					<p>Đừng hối, thầy Khoa đang suy nghĩ...</p>
+		</div>
+	</div>
+
+	<!-- Modal Biện pháp thực hiện -->
+	<div id="eventModal" class="modal1">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('eventModal')">&times;</span>
+			<h2 class="modal-title">Những biện pháp thực hiện</h2>
+			<div class="modal-text">
+				<div class="video-container">
+					<video controls>
+						<source src="img/news/BacvaoNam.mp4" type="video/mp4">
+					</video>
+				</div>
+				<p>Mỹ - Diệm đã áp dụng nhiều biện pháp để thúc đẩy và cưỡng ép người dân miền Bắc di cư vào Nam.</p>
+				<ul class="custom-list">
+					<li><strong>Chiến dịch tuyên truyền:</strong> Chính quyền Sài Gòn tung tin đồn thất thiệt về chế độ
+						miền Bắc, lợi dụng những sai lầm trong cải cách ruộng đất (1953-1956) tại miền Bắc để tuyên
+						truyền rằng những người từng hợp tác với Pháp hoặc có liên hệ với chế độ cũ sẽ bị trả thù để
+						kích động tâm lý người dân, Họ cũng khai thác niềm tin tôn giáo của người Công giáo, dọa rằng
+						chế độ cộng sản sẽ đàn áp tôn giáo như cuối thế kỉ 19 do Việt Minh từng làm. Họ tuyên truyền
+						rằng miền Nam sẽ có cuộc sống sung túc, tự do, và hứa hẹn đất đai, nhà cửa cho người di cư.
+						Những lời kêu gọi như “vào Nam sẽ có 3 mẫu ruộng, 2 con trâu” đã thu hút nhiều người, đặc biệt
+						là nông dân</li>
+					<li><strong>Cưỡng ép di cư:</strong> Ngụy quyền sử dụng áp lực quân sự, hành chính để ép buộc một bộ
+						phận nhân dân phải di cư. Họ đóng cửa Ngân hàng Đông Dương, buộc người dân phải vào Nam để rút
+						tiền. Ngoài ra, họ còn phá hoại mùa màng, tháo nước ruộng, và thả côn trùng để khiến người dân
+						không còn lựa chọn nào khác.</li>
+					<li><strong>Hỗ trợ tài chính và hậu cần:</strong> Mỹ đã chi hàng chục triệu USD để tổ chức vận
+						chuyển người di cư bằng đường biển và đường hàng không. Họ huy động 19 máy bay và 41 tàu thủy để
+						chuyên chở người di cư vào Nam.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Nguyên nhân -->
+	<div id="causeModal" class="modal1">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('causeModal')">&times;</span>
+			<h2 class="modal-title">Nguyên nhân người dân di cư</h2>
+			<div class="modal-text">
+				<p>Nguyên nhân khiến người dân miền Bắc quyết định di cư vào Nam sau Hiệp định Giơnevơ bao gồm cả yếu tố
+					khách quan và chủ quan.</p>
+				<ul class="custom-list">
+					<li><strong>Nỗi sợ bị đàn áp:</strong> Nhiều người Công giáo lo sợ bị đàn áp tôn giáo như thời kỳ
+						Việt Minh, đặc biệt là sau những tin đồn về việc chế độ cộng sản sẽ trả thù những người từng hợp
+						tác với Pháp.</li>
+					<li><strong>Lo sợ bị trừng trị:</strong> Những người từng hợp tác với Pháp hoặc thuộc tầng lớp địa
+						chủ lo sợ bị trừng trị trong các chiến dịch cải cách ruộng đất và đấu tố.</li>
+					<li><strong>Kinh tế khó khăn:</strong> Những hứa hẹn về đất đai, nhà cửa, và cuộc sống ấm no tại
+						miền Nam đã thu hút nhiều nông dân và người lao động.</li>
+					<li><strong>Tác động của tuyên truyền:</strong> Chính quyền Ngô Đình Diệm và Mỹ đã tận dụng chiến
+						dịch tuyên truyền để khơi gợi nỗi sợ hãi và hy vọng về một cuộc sống tốt đẹp hơn tại miền Nam.
+					</li>
+					<li><strong>Sai lầm của Đảng:</strong>Những sai lầm trong cải cách ruộng đất (1953-1956) đã tạo ra
+						sự bất mãn trong một bộ phận người dân, đặc biệt là địa chủ và nông dân yêu nước bị oan. Điều
+						này đã bị Mỹ và chính quyền Ngô Đình Diệm khai thác triệt để để kích động di cư. Đồng thời, Đảng
+						chưa có biện pháp hiệu quả để giải quyết những lo lắng của người dân, đặc biệt là người Công
+						giáo và những người có liên hệ với chế độ cũ vào lúc này.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Kết quả -->
+	<div id="factorModal" class="modal1">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('factorModal')">&times;</span>
+			<h2 class="modal-title">Kết quả của chính sách di cư</h2>
+			<div class="modal-text">
+				<p>Chiến dịch di cư diễn ra trên quy mô lớn, gây ra nhiều hệ lụy về chính trị, xã hội và kinh tế.</p>
+				<ul class="custom-list">
+					<li><strong>Quy mô di cư:</strong> Khoảng 1 triệu người miền Bắc di cư vào Nam, trong đó có hơn
+						800.000 người theo Công giáo (chiếm 2/3 số người Công giáo miền Bắc).</li>
+					<li><strong>Khu định cư:</strong> Chính quyền Ngô Đình Diệm đã thiết lập 286 làng định cư, trong đó
+						265 làng dành cho người Công giáo. Mỗi làng do một linh mục đứng đầu, tạo ra một cơ sở xã hội
+						trung thành với chế độ.</li>
+					<li><strong>Ảnh hưởng đến miền Bắc:</strong> Cuộc di cư đã gây ra những khó khăn nhất định về kinh
+						tế và xã hội tại miền Bắc, đặc biệt là việc thiếu hụt nhân lực trong giai đoạn tái thiết đất
+						nước sau chiến tranh.</li>
+					<li><strong>Hậu quả xã hội:</strong> Nhiều người di cư rơi vào cảnh khó khăn do điều kiện sống khắc
+						nghiệt tại miền Nam. Đồng thời, chính sách di cư góp phần làm trầm trọng thêm tình trạng chia
+						cắt đất nước.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function openModal(modalId) {
+			document.getElementById(modalId).style.display = "block";
+		}
+
+		function closeModal(modalId) {
+			document.getElementById(modalId).style.display = "none";
+		}
+
+		window.onclick = function (event) {
+			if (event.target.className === 'modal') {
+				event.target.style.display = "none";
+			}
+		}
+
+		// Add animation class to elements with wow class
+		document.addEventListener('DOMContentLoaded', function () {
+			const wowElements = document.querySelectorAll('.wow');
+			wowElements.forEach(element => {
+				element.classList.add('fadeInLeft');
+			});
+		});
+	</script>
+	<!-- Câu hỏi CQ-->
+
+	<!-- COPYRIGHT -->
+	<div class="grax_tm_section">
+		<div class="grax_tm_copyright">
+			<div class="my_wave">
+				<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+					<defs></defs>
+					<path id="wave_img" data-color="#fff"
+						d="M 0 185.609 C 317.16666666666663 118.136 317.16666666666663 118.136 634.3333333333333 151.87 C 951.4999999999999 185.609 951.4999999999999 185.609 1268.6666666666665 116.402 C 1585.833333333333 47.195 1585.833333333333 47.195 1903 131.925 L 1903 507 L 0 507 Z"
+						fill="#fff"></path>
+				</svg>
+			</div>
+			<div class="container">
+				<div class="copyright_inner">
+					<div class="logo wow fadeInLeft" data-wow-duration="1s">
+						<img src="img/logo/logo.png" alt="" />
+					</div>
+					<div class="social wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">
+						<ul>
+							<li>
+								<a href="#"><img class="svg" src="img/svg/social/facebook.svg" alt="" /></a>
+							</li>
+							<li>
+								<a href="#"><img class="svg" src="img/svg/social/twitter.svg" alt="" /></a>
+							</li>
+							<li>
+								<a href="#"><img class="svg" src="img/svg/social/dribbble.svg" alt="" /></a>
+							</li>
+							<li>
+								<a href="#"><img class="svg" src="img/svg/social/tik-tok.svg" alt="" /></a>
+							</li>
+							<!-- You can download another svg icons from here for free https://www.flaticon.com -->
+						</ul>
+					</div>
+					<div class="copy wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">
+						<p>&copy; Copyright 2025 by Group 2</p>
+					</div>
 				</div>
 			</div>
-			<div id="chatbot-input" style="display: flex; padding: 10px; margin-bottom: auto;">
-				<input type="text" id="user-input" placeholder="Thầy Khoa nè ku, hỏi gì đi!"
-					style="flex: 1; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
-				<button id="send-button"
-					style="margin-left: 5px; padding: 5px; background: #ffffff; color: white; border: none; border-radius: 4px; cursor: pointer;"><img
-						src="https://r2.fivemanage.com/BZMR0nG5HMWQZlsg7rbJy/mingcute--send-fill.png"
-						style="height: 30px; width: 30px; margin-bottom: 10px;" /></button>
+		</div>
+	</div>
+	<!-- /COPYRIGHT -->
+
+	<!-- CURSOR -->
+	<div class="mouse-cursor cursor-outer"></div>
+	<div class="mouse-cursor cursor-inner"></div>
+	<!-- /CURSOR -->
+
+	<!-- START: Page Progress -->
+	<div class="progressbar">
+		<a style="color: red;" href="#"><span class="text">Bay Lên</span></a>
+		<span class="line"></span>
+	</div>
+	<!-- END: Page Progress -->
+	<!-- CHATBOT -->
+	<div id="chatbot-container" style="display: none;">
+		<div id="chatbot-header">
+			<h4 style="color: #fff; font-weight: bold;">Cô Phương chào em!</h4>
+			<button id="close-chatbot">&times;</button>
+		</div>
+		<div id="chatbot-messages"></div>
+		<div id="chatbot-loading" style="display: none;">
+			<div class="loading-dots">
+				<div class="dot"></div>
+				<div class="dot"></div>
+				<div class="dot"></div>
+				<p>Đừng hối, để cô suy nghĩ...</p>
 			</div>
 		</div>
-		<button id="open-chatbot"
-			style="position: fixed; bottom: 20px; right: 20px; padding: 10px; background: #e54b4b; color: white; border: none; border-radius: 80%; cursor: pointer;"><img
-				src="https://r2.fivemanage.com/BZMR0nG5HMWQZlsg7rbJy/hugeicons--ai-chat-02.png"
-				style="height: 50px; width: 50px" /></button>
+		<div id="chatbot-input" style="display: flex; padding: 10px; margin-bottom: auto;">
+			<input type="text" id="user-input" placeholder="Nắm vững bài chưa người đẹp? Hỏi cô Phương đi!"
+				style="flex: 1; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+			<button id="send-button"
+				style="margin-left: 5px; padding: 5px; background: #ffffff; color: white; border: none; border-radius: 4px; cursor: pointer;"><img
+					src="https://r2.fivemanage.com/BZMR0nG5HMWQZlsg7rbJy/mingcute--send-fill.png"
+					style="height: 30px; width: 30px; margin-bottom: 10px;" /></button>
+		</div>
+	</div>
+	<button id="open-chatbot"
+		style="position: fixed; bottom: 20px; right: 20px; padding: 10px; background: #e54b4b; color: white; border: none; border-radius: 80%; cursor: pointer;"><img
+			src="https://r2.fivemanage.com/BZMR0nG5HMWQZlsg7rbJy/hugeicons--ai-chat-02.png"
+			style="height: 50px; width: 50px" /></button>
 	</div>
 	<!-- / WRAPPER ALL -->
 
@@ -1777,7 +1877,11 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/init.js"></script>
+	<script src="js/flipcard.js"></script>
+	<script src="js/timeline-modal.js"></script>
+	<script src="js/banner-slider.js"></script>
 	<!-- /SCRIPTS -->
+
 	<script type="module">
 		import { GoogleGenerativeAI } from '@google/generative-ai';
 
@@ -1801,7 +1905,7 @@
 					{
 						role: "user",
 						parts: [{
-							text: "Bạn là một sinh viên đại học chuyên ngành khoa học chính trị, với kiến thức chuyên môn cao về bộ môn tư tưởng Hồ Chí Minh. Nhiệm vụ của bạn là giải thích, phân tích và ứng dụng tư tưởng Hồ Chí Minh trong các bối cảnh thực tiễn hiện đại, sử dụng ngôn ngữ súc tích, rõ ràng, và có tính học thuật."
+							text: "Mô Tả Vai Trò\nBạn là một chuyên gia hàng đầu về lịch sử Việt Nam hiện đại, đặc biệt chuyên sâu về giai đoạn 1954-1975. Nhiệm vụ của bạn là phân tích và trả lời câu hỏi lịch sử dựa trên sự kiện, tài liệu chính thống và các nguồn học thuật uy tín. Bạn cần đảm bảo rằng phân tích của mình đặt trong bối cảnh lịch sử đúng đắn và toàn diện của thời kỳ này. Sử dụng giọng điệu và tông giọng tuổi teen phù hợp với các bạn trẻ và sinh viên trong vai trò là giảng viên\nBối Cảnh Lịch Sử Chi Tiết\nHiệp Định Geneva 1954\n\nKý kết ngày 21/7/1954 sau chiến thắng Điện Biên Phủ\nCông nhận độc lập, chủ quyền và toàn vẹn lãnh thổ của Việt Nam\nQuy định tạm thời chia cắt Việt Nam tại vỹ tuyến 17\nQuy định tổ chức tổng tuyển cử thống nhất đất nước vào năm 1956\nCấm đưa quân đội, nhân viên quân sự, vũ khí mới vào Việt Nam\n\nTình Hình Miền Bắc\n\nDưới sự lãnh đạo của Đảng Lao động Việt Nam (nay là Đảng Cộng sản Việt Nam)\nTiến hành cải cách ruộng đất và khôi phục kinh tế\nBắt đầu quá trình xây dựng chủ nghĩa xã hội\nNhận được sự hỗ trợ từ Liên Xô và Trung Quốc\n\nTình Hình Miền Nam\n\nChính quyền Ngô Đình Diệm được Mỹ hậu thuẫn\nTừ chối tổ chức tổng tuyển cử theo Hiệp định Geneva\nTiến hành các chính sách đàn áp cựu kháng chiến và những người yêu nước\nMỹ thực hiện chiến lược \"Người Mỹ và đồng minh của người Mỹ\"\n\nCâu Hỏi Cần Phân Tích\nVì sao Mỹ và chính quyền Ngô Đình Diệm phải thực hiện chính sách di cư sau Hiệp định Geneva (1954-1975)?\nHướng Dẫn Phân Tích Chi Tiết\n1. Mở Đầu (200-250 từ)\n\nGiới thiệu tổng quan về Hiệp định Geneva 1954 và tác động của nó đến tình hình Việt Nam\nNêu rõ về việc chia cắt tạm thời đất nước và quy định về tự do di cư trong hiệp định\nĐịnh nghĩa ngắn gọn về \"chính sách di cư\" được thực hiện bởi Mỹ và chính quyền Ngô Đình Diệm\nNêu luận điểm chính về các động cơ chiến lược của chính sách này\n\n2. Phân Tích Các Lý Do Chính Trị và Ý Thức Hệ (350-400 từ)\n\nChiến lược chống cộng: Phân tích vai trò của chính sách di cư trong chiến lược ngăn chặn chủ nghĩa cộng sản của Mỹ\nThuyết Domino: Làm rõ mối liên hệ giữa thuyết Domino và các chính sách của Mỹ tại Việt Nam\nXây dựng cơ sở chính trị: Phân tích việc sử dụng người di cư làm cơ sở xã hội ủng hộ chính quyền Ngô Đình Diệm\nTạo chính nghĩa: Việc tạo ra \"làn sóng người tị nạn trốn chạy cộng sản\" nhằm tuyên truyền chống cộng quốc tế\nVai trò của yếu tố tôn giáo: Phân tích việc sử dụng cộng đồng Công giáo trong chính sách di cư\n\n3. Phân Tích Các Lý Do Quân Sự và An Ninh (300-350 từ)\n\nKiểm soát dân số: Chiến lược tái định cư nhằm tách dân khỏi ảnh hưởng của lực lượng cách mạng\nTạo vùng đệm: Việc di dời người dân để tạo các khu vực an toàn và vùng đệm chiến lược\nNguồn nhân lực quân sự: Việc sử dụng người di cư làm nguồn bổ sung cho quân đội Việt Nam Cộng Hòa\nCác chương trình \"Ấp Chiến Lược\": Mối liên hệ giữa chính sách di cư và các chương trình kiểm soát nông thôn\n\n4. Phân Tích Các Lý Do Kinh Tế và Xã Hội (300-350 từ)\n\nTạo lực lượng lao động: Vai trò của người di cư trong các dự án phát triển do Mỹ tài trợ\nXây dựng tầng lớp trung lưu: Chiến lược tạo ra một tầng lớp xã hội phụ thuộc vào sự hỗ trợ của Mỹ\nCải cách xã hội: Các chương trình cải cách xã hội gắn liền với chính sách di cư\nTâm lý chiến: Việc sử dụng người di cư trong chiến dịch tuyên truyền và chiến tranh tâm lý\n\n5. Phân Tích Cách Thức Thực Hiện (300-350 từ)\n\nChiến dịch \"Bắc tiến\": Mô tả chi tiết hoạt động của Ủy ban di cư Công giáo và vai trò của Hải quân Mỹ\nHoạt động tuyên truyền: Phân tích các hình thức tuyên truyền được sử dụng để khuyến khích di cư\nCác chương trình hỗ trợ: Mô tả các chương trình hỗ trợ di dân và tái định cư\nCác biện pháp cưỡng bức: Phân tích các biện pháp cưỡng bức được áp dụng trong một số trường hợp\n\n6. Tác Động và Hệ Quả (300-350 từ)\n\nTác động nhân khẩu học: Phân tích sự thay đổi cơ cấu dân số ở miền Nam Việt Nam\nTác động chính trị-xã hội: Mô tả những thay đổi trong cấu trúc xã hội và chính trị ở miền Nam\nTác động đến cuộc kháng chiến: Phân tích những khó khăn và thách thức đối với phong trào cách mạng\nHệ quả lâu dài: Đánh giá tác động lâu dài của chính sách di cư đến tiến trình lịch sử Việt Nam\n\n7. Đánh Giá Trong Bối Cảnh Lịch Sử (250-300 từ)\n\nĐặt trong bối cảnh Chiến tranh Lạnh: Phân tích chính sách di cư như một phần của cuộc đối đầu Đông-Tây\nSo sánh với các chính sách tương tự: So sánh với các chính sách di cư trong các cuộc chiến tranh khác\nĐánh giá hiệu quả: Đánh giá mức độ thành công và thất bại của chính sách này\nLiên hệ với nội dung chương 2.2.2 và 2.2.3: Kết nối vấn đề với nội dung của phần 2.2.2 và 2.2.3 trong giáo trình\n\n8. Kết Luận (200-250 từ)\n\nTóm tắt các lý do chính của việc thực hiện chính sách di cư\nĐánh giá tổng thể về tác động của chính sách này đối với cuộc kháng chiến và tiến trình lịch sử Việt Nam\nNêu bài học lịch sử từ chính sách này\nKết luận về ý nghĩa lịch sử của việc thất bại của chính sách này trong bối cảnh thắng lợi của cách mạng Việt Nam\n\nYêu Cầu Về Phương Pháp và Tài Liệu\n\nSử dụng phương pháp phân tích lịch sử biện chứng, đặt các sự kiện trong mối quan hệ nhân-quả\nTrích dẫn dữ liệu cụ thể: số liệu về người di cư, thời gian, địa điểm của các đợt di cư\nTrích dẫn các tài liệu chính thức của chính phủ Mỹ, chính quyền Sài Gòn và các tài liệu lịch sử Việt Nam\nSử dụng các nguồn tư liệu đa dạng: văn kiện, hồi ký, nghiên cứu học thuật\nĐảm bảo tính khách quan học thuật, trình bày đa chiều về vấn đề\n\nHướng Dẫn Trình Bày\n\nSử dụng cấu trúc đoạn văn rõ ràng, mỗi đoạn tập trung vào một ý chính\nSử dụng các tiểu mục để phân chia các phần phân tích\nSử dụng các dẫn chứng cụ thể, số liệu và trích dẫn để hỗ trợ các lập luận\nSử dụng ngôn ngữ học thuật, chính xác và khách quan\nTổng độ dài bài viết khoảng 2000-2500 từ\n\nCác Sự Kiện và Số Liệu Quan Trọng Cần Đề Cập\n\nHiệp định Geneva quy định thời gian 300 ngày cho việc tự do di cư giữa hai miền\nChiến dịch di cư từ Bắc vào Nam diễn ra chủ yếu từ tháng 8/1954 đến tháng 5/1955\nKhoảng 800.000 đến 1 triệu người đã di cư từ miền Bắc vào miền Nam trong giai đoạn này\nKhoảng 60% số người di cư là người Công giáo\nChương trình \"Passage to Freedom\" (Con đường đến Tự do) của Hải quân Mỹ đã vận chuyển khoảng 310.000 người\nVai trò của Đại tá Edward Lansdale trong việc tổ chức chiến dịch tâm lý cho hoạt động di cư\nKinh phí hỗ trợ di cư của Mỹ lên đến khoảng 93 triệu USD\nCác khu tái định cư chính: Cai Lậy (Mỹ Tho), Cái Sắn (Rạch Giá), Gia Kiệm (Biên Hòa)\nCác chương trình \"Ấp Chiến Lược\" và \"Ấp Tân Sinh\" gắn liền với chính sách di cư và tái định cư"
 						}]
 					}
 				];
@@ -2070,6 +2174,329 @@
 			});
 		});
 
+	</script>
+	<script>
+		// If needed, add hover pause effect for the NEWS carousel
+		document.querySelectorAll('.news-wrapper').forEach(wrapper => {
+			wrapper.addEventListener('mouseenter', function () {
+				this.querySelector('.news-inner').style.animationPlayState = 'paused';
+			});
+
+			wrapper.addEventListener('mouseleave', function () {
+				this.querySelector('.news-inner').style.animationPlayState = 'running';
+			});
+		});
+
+		// Add click handler to view full card content
+		document.querySelectorAll('.news-card').forEach(card => {
+			card.addEventListener('click', function () {
+				// Find the index of this card
+				const index = this.style.getPropertyValue('--index');
+
+				// You could open a modal here to show full content
+				// For now, just log to console
+				console.log(`Card ${index} clicked!`);
+
+				// If you have the original modal functionality, you could trigger it here
+			});
+		});
+	</script>
+	<script>
+		// Define the content for each news card outside any function
+		const newsContent = {
+			// Cơ Sở Khách Quan
+			"khachquan-0": {
+				title: "Bối Cảnh Lịch Sử Hình Thành Tư Tưởng Hồ Chí Minh",
+				content: `
+					<img src="img/news/1.jpg" alt="Bối Cảnh Lịch Sử">
+					<p>Bác sinh ngày 19/05/1890, trong lúc đất nước gặp nhiều biến động. Triều đình Nguyễn dần đầu hàng Pháp và thừa nhận nền bảo hộ của chúng trên toàn đất nước.</p>
+					
+					<blockquote>Cuối TK XIX, các cuộc khởi nghĩa dưới khẩu hiệu "Cần Vương" dần thất bại => Hệ tư tưởng phong kiến lỗi thời trước các nhiệm vụ lịch sử.</blockquote>
+					
+					<blockquote>Đầu TK XX các tầng lớp công nhân, tiểu tư sản và tư sản xuất hiện tạo tiền đề bên trong cho phong trào yêu nước, giải phóng dân tộc.</blockquote>
+					
+					<p>Các trào lưu cải cách ở Nhật Bản, Trung Quốc tràn vào Việt Nam, phong trào yêu nước cũng chuyển sang xu hướng dân chủ tư sản.</p>
+					
+					<p>Các nhà yêu nước có tư tưởng tiến bộ tiêu biểu như: Phan Bội Châu, Phan Châu Trinh, Hoàng Hoa Thám đã cố gắng vận động và tổ chức các cuộc đấu tranh yêu nước theo mục tiêu, phương pháp mới nhưng còn nhiều lỗ hổng nên dần thất bại.</p>
+					
+					<blockquote>Phong trào cứu nước của nhân dân ta muốn giành được thắng lợi phải đi theo một con đường mới.</blockquote>
+				`,
+				color: "229, 75, 75"
+			},
+			"khachquan-1": {
+				title: "Bối Cảnh Thời Đại Hình Thành Tư Tưởng Hồ Chí Minh",
+				content: `
+					<img src="img/news/2.jpg" alt="Bối Cảnh Thời Đại">
+					<p>Ở Việt Nam, việc cứu nước chìm trong bóng tối: "không có đường ra". Ngoài thế giới, chủ nghĩa tư bản chuyển sang giai đoạn độc quyền và xác lập quyền thống trị trên toàn thế giới. Chủ nghĩa đế quốc nổi lên và trở thành kẻ thù chung của các dân tộc thuộc địa.</p>
+					
+					<blockquote>Các cuộc đấu tranh của công nhân các nước TBCN đầu XIX - cuối XX với thành công rực rỡ của "Cách mạng tháng Mười Nga năm 1917", lật đổ nhà nước Tư sản và thiết lập Chính quyền Xô Viết ⇒ Thức tỉnh các dân tộc châu Á, mở ra thời đại giải phóng dân tộc.</blockquote>
+					
+					<blockquote>Với thắng lợi này, Liên bang Cộng hòa xã hội chủ nghĩa Xô Viết ra đời (1922) và tiếp đó là sự ra đời của Quốc tế Cộng sản (3-1919) ⇒ Phong trào công nhân trong các nước tư sản chủ nghĩa phương Tây và phong trào giải phóng dân tộc ở các nước thuộc địa phương Đông càng có quan hệ mật thiết với nhau hơn trong việc chống kẻ thù chung là chủ nghĩa đế quốc.</blockquote>
+				`,
+				color: "75, 138, 229"
+			},
+			"khachquan-2": {
+				title: "Những Tiền Đề, Tư Tưởng - Lý Luận",
+				content: `
+					<img src="img/news/3.jpg" alt="Những Tiền Đề">
+					<h3>Giá trị truyền thống tốt đẹp của của dân tộc Việt Nam</h3>
+					
+					<blockquote>Lịch sử dựng nước và giữ nước lâu đời đã hình thành nên truyền thống yêu nước, kiên cường, bất khuất, là tinh thần tương thân tương ái, ý thức cố kết cộng đồng,... hình thành nên tư tưởng Hồ Chí Minh.</blockquote>
+					
+					<blockquote>Chủ nghĩa yêu nước là truyền thống, tư tưởng, tình cảm thiêng liêng cao quý nhất, là cội nguồn của trí tuệ và lòng dũng cảm của người Việt, là chuẩn mực đạo đức cơ bản của dân tộc Việt Nam. ⇒ Ý chí này thúc giục Bác Nguyễn Tất Thành quyết chí ra đi tìm đường cứu nước</blockquote>
+					
+					<h3>Tinh hoa văn hóa nhân loại</h3>
+					
+					<blockquote>Phương Đông: Bác chọn lọc các tư tưởng, học thuyết triết học cũng như các mặt tích cực của Nho giáo từ những người đi trước và kể cả tôn giáo như Phật giáo nếu có những điều thích hợp với điều kiện của nước ta.</blockquote>
+					
+					<blockquote>Phương Tây: Bác sớm tiếp thu các tư tưởng ở Pháp, Mỹ. Người trực tiếp đọc và tiếp thu các tư tưởng về tự do, bình đẳng, bác ái qua nhiều tác phẩm. Đồng thời người còn tiếp thu từ các bản Tuyên ngôn nhân quyền và dân quyền của Pháp, Tuyên ngôn độc lập 1776 của Mỹ.</blockquote>
+					
+					<h3>Chủ nghĩa Mác - Lênin</h3>
+					
+					<blockquote>Là cơ sở thế giới quan và phương pháp luận của tư tưởng Hồ Chí Minh, bác đã tiếp thu chủ nghĩa Mác - Lênin trên nền tảng chắt lọc, hấp thụ và một vốn chính trị, hiểu biết phong phú được tích lũy qua thực tiễn hoạt động đấu tranh vì mục tiêu cứu nước và giải phóng dân tộc, cùng với đó là một bản lĩnh trí tuệ khi vận dụng vào Việt Nam.</blockquote>
+					
+					<p>⇒ Qua đó Bác hiểu được rằng chỉ có CNXH, CNCS mới giải phóng được các dân tộc bị áp bức.</p>
+				`,
+				color: "142, 212, 99"
+			},
+
+			// Nhân Tố Chủ Quan
+			"chyquan-0": {
+				title: "Khả Năng Tư Duy Và Trí Tuệ Của Chủ Tịch Hồ Chí Minh",
+				content: `
+					<img src="img/news/5.jpg" alt="Khả Năng Tư Duy">
+					<blockquote>Bác đã không ngừng quan sát, nhận xét thực tiễn, làm phồng thêm sự hiểu biết để tạo nên những thành công trong các hoạt động của Người.</blockquote>
+					
+					<blockquote>Các nhà yêu nước tiền bối cùng thời với Bác tuy họ có quan sát nhưng họ chưa thấy được, nhận thức đúng được về sự thay đổi của dân tộc và thời đại. Trong khi đó Bác đã khám phá ra các quy luật vận động xã hội, đời sống văn hóa và khái quát chúng thành lý luận, rồi Bác đã đem những lý luận này chỉ đạo hoạt động thực tiễn.</blockquote>
+					
+					<p>⇒ Lý luận của Bác mang giá trị khách quan, cách mạng và khoa học.</p>
+				`,
+				color: "252, 154, 91"
+			},
+			"chyquan-1": {
+				title: "Phẩm Chất Đạo Đức Và Năng Lực Hoạt Động Thực Tiễn",
+				content: `
+					<img src="img/news/6.jpg" alt="Phẩm Chất Đạo Đức">
+					<blockquote>Phẩm chất, tài năng được thể hiện hết ở tư duy độc lập, tự chủ, sáng tạo, cộng với đầu óc phê phán tinh tường, sáng suốt trong việc nhận xét, đánh giá các sự vật, sự vật chung quanh. Và chúng cũng được Bác biểu hiện ở bản lĩnh kiên định, luôn tin vào nhân dân, khiêm tốn, bình dị, ham học hỏi, nhạy bén với cái mới, có phương pháp biện chứng, có đầu óc thực tiễn.</blockquote>
+					
+					<blockquote>Đồng thời phẩm chất này còn biểu hiện qua sự khổ công học tập để chiếm lĩnh đỉnh cao tri thức nhân loại, là 1 nhà yêu nước chân chính, 1 chiến sĩ cộng sản nhiệt thành, một trái tim yêu nước thương dân, sẵn sàng hi sinh vì độc lập tự do của Tổ quốc.</blockquote>
+					
+					<p>⇒ Tư tưởng Hồ Chí Minh đã trở thành tư tưởng Việt Nam hiện đại.</p>
+				`,
+				color: "186, 100, 228"
+			}
+		};
+
+		// Define these functions globally
+		function openNewsModal(event) {
+			// Get the news ID from the card
+			const card = event.currentTarget;
+			const section = card.closest('.news-wrapper').dataset.section;
+			const index = card.style.getPropertyValue('--index').trim();
+			const newsId = `${section}-${index}`;
+
+			console.log("Opening modal for:", newsId);
+
+			const newsItem = newsContent[newsId];
+
+			if (!newsItem) {
+				console.error("No content found for:", newsId);
+				return;
+			}
+
+			// Set modal content
+			document.getElementById('newsModalTitle').textContent = newsItem.title;
+			document.getElementById('newsModalBody').innerHTML = newsItem.content;
+
+			// Set modal color theme
+			document.documentElement.style.setProperty('--modal-color', newsItem.color);
+
+			// Show the modal
+			// const modal = document.getElementById('newsModal');
+			// modal.style.display = 'block';
+
+			// Add active class for animation
+			setTimeout(() => {
+				modal.classList.add('active');
+			}, 10);
+
+			// Prevent background scrolling
+			document.body.style.overflow = 'hidden';
+
+			// Pause carousel animation
+			const inner = card.closest('.news-inner');
+			if (inner) inner.style.animationPlayState = 'paused';
+		}
+
+		function closeNewsModal() {
+			const modal = document.getElementById('newsModal');
+			modal.classList.remove('active');
+
+			// Wait for animation to finish before hiding
+			setTimeout(() => {
+				modal.style.display = 'none';
+				document.body.style.overflow = 'auto';
+
+				// Resume all carousel animations
+				document.querySelectorAll('.news-inner').forEach(inner => {
+					inner.style.animationPlayState = 'running';
+				});
+			}, 300);
+		}
+
+		// Set up all event handlers when DOM is loaded
+		document.addEventListener('DOMContentLoaded', function () {
+			// Set up data attributes for first news list
+			const firstNewsWrapper = document.querySelector('.news-wrapper:nth-of-type(1)');
+			if (firstNewsWrapper) firstNewsWrapper.dataset.section = 'khachquan';
+
+			// Set up data attributes for second news list
+			const secondNewsWrapper = document.querySelector('.news-wrapper:nth-of-type(2)');
+			if (secondNewsWrapper) secondNewsWrapper.dataset.section = 'chyquan';
+
+			// Set up click handlers for all cards
+			document.querySelectorAll('.news-card').forEach(card => {
+				card.addEventListener('click', openNewsModal);
+			});
+
+			// Set up close button for modal
+			const closeBtn = document.querySelector('.news-modal-close');
+			if (closeBtn) closeBtn.addEventListener('click', closeNewsModal);
+
+			// Close modal when clicking outside content
+			const modal = document.getElementById('newsModal');
+			if (modal) {
+				modal.addEventListener('click', function (event) {
+					if (event.target === modal) {
+						closeNewsModal();
+					}
+				});
+			}
+
+			// Add hover pause effect for the NEWS carousel
+			document.querySelectorAll('.news-wrapper').forEach(wrapper => {
+				wrapper.addEventListener('mouseenter', function () {
+					const inner = this.querySelector('.news-inner');
+					if (inner) inner.style.animationPlayState = 'paused';
+				});
+
+				wrapper.addEventListener('mouseleave', function () {
+					const inner = this.querySelector('.news-inner');
+					if (inner) inner.style.animationPlayState = 'running';
+				});
+			});
+		});
+	</script>
+	<script>
+		// Add click event listeners to the new blob cards
+		document.addEventListener('DOMContentLoaded', function () {
+			document.querySelectorAll('.blob-card-container .card').forEach(card => {
+				card.addEventListener('click', function () {
+					const newsId = this.getAttribute('data-news-id');
+					if (newsId && newsContent[newsId]) {
+						// Set modal content
+						document.getElementById('newsModalTitle').textContent = newsContent[newsId].title;
+						document.getElementById('newsModalBody').innerHTML = newsContent[newsId].content;
+
+						// Set modal color theme
+						document.documentElement.style.setProperty('--modal-color', newsContent[newsId].color);
+
+						// Show the modal
+						const modal = document.getElementById('newsModal');
+						modal.style.display = 'block';
+
+						// Add active class for animation
+						setTimeout(() => {
+							modal.classList.add('active');
+						}, 10);
+
+						// Prevent background scrolling
+						document.body.style.overflow = 'hidden';
+					}
+				});
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			// Detect when timeline elements enter viewport
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('fadeInUp');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, {
+				threshold: 0.2,
+				rootMargin: '0px 0px -50px 0px'
+			});
+
+			// Observe all timeline events
+			document.querySelectorAll('.timeline__event').forEach((event, index) => {
+				event.style.animationDelay = `${index * 0.2}s`;
+				observer.observe(event);
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			// Function to check if element is in viewport
+			function isInViewport(element) {
+				const rect = element.getBoundingClientRect();
+				return (
+					rect.top >= 0 &&
+					rect.left >= 0 &&
+					rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+					rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+				);
+			}
+
+			// Add animation to timeline events when they come into view
+			const events = document.querySelectorAll('.timeline__event');
+
+			function checkPosition() {
+				events.forEach((event, index) => {
+					if (isInViewport(event) && !event.classList.contains('animated')) {
+						setTimeout(() => {
+							event.classList.add('fadeInUp', 'animated');
+						}, index * 200);
+					}
+				});
+			}
+
+			// Initial check and on scroll
+			window.addEventListener('scroll', checkPosition);
+			checkPosition();
+		});
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const accordionItems = document.querySelectorAll('.accordion_item');
+
+			accordionItems.forEach(item => {
+				const header = item.querySelector('.accordion_header');
+				const content = item.querySelector('.accordion_content');
+
+				header.addEventListener('click', () => {
+					// Close other items
+					accordionItems.forEach(otherItem => {
+						if (otherItem !== item && otherItem.classList.contains('active')) {
+							otherItem.classList.remove('active');
+							otherItem.querySelector('.accordion_content').style.maxHeight = '0px';
+						}
+					});
+
+					// Toggle current item
+					item.classList.toggle('active');
+					if (item.classList.contains('active')) {
+						content.style.maxHeight = content.scrollHeight + 'px';
+					} else {
+						content.style.maxHeight = '0px';
+					}
+				});
+			});
+		});
 	</script>
 </body>
 
