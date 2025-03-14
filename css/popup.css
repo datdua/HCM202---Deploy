@@ -415,6 +415,14 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
     animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    
+    scrollbar-width: none;
+    
+    -ms-overflow-style: none;
 }
 
 .modal-content {

@@ -18,6 +18,7 @@ const timelineContent = {
             </div>
             
             <img src="https://d4.violet.vn/uploads/blogs/447/chien_tranh_cuc_bo_500.jpg" alt="Bản đồ chiến tranh cục bộ">
+            <figcaption class="image-caption">Bản đồ chiến tranh cục bộ ở miền Nam Việt Nam</figcaption>
             
             <p>Đây là một bước leo thang nghiêm trọng của Mỹ trong chiến tranh xâm lược Việt Nam, khi họ trực tiếp đưa quân vào tham chiến với quy mô lớn thay vì chỉ đóng vai trò cố vấn như trước đây.</p>
         `
@@ -35,6 +36,7 @@ const timelineContent = {
             </ul>
             
             <img src="https://www.dinhnghia.com.vn/wp-content/uploads/2022/09/chien-thang-van-tuong-1965-dien-bien-ket-qua-va-y-nghia-3.jpg" alt="Chiến thắng Vạn Tường">
+            <figcaption class="image-caption">Chiến thắng Vạn Tường, tháng 8-1965</figcaption>
             
             <div class="highlight">
                 <p>Những thắng lợi này đã làm thất bại kế hoạch "tìm diệt" và "bình định" của Mỹ. Miền Bắc cũng bước đầu đánh thắng chiến tranh phá hoại, đảm bảo chi viện hiệu quả cho miền Nam.</p>
@@ -60,6 +62,7 @@ const timelineContent = {
             </ul>
             
             <img src="https://th.bing.com/th/id/R.62ea7aeb6dd70566e667f3cd1cdb4382?rik=V0Y7vBF1hO%2baEA&riu=http%3a%2f%2fnghiencuuquocte.org%2fwp-content%2fuploads%2f2020%2f03%2f08.jpg&ehk=0UG06HgOQnhNR95CwI6XXqj%2btOJ0NExIs7u4w%2bbj8Hs%3d&risl=&pid=ImgRaw&r=0" alt="Quân Mỹ tại Việt Nam">
+            <figcaption class="image-caption">Quân Mỹ đổ bộ vào bờ biển Đà Nẵng</figcaption>
             
             <div class="highlight">
                 <p>Tuy nhiên, tất cả các cuộc hành quân của địch đều bị quân ta đánh bại, gây tổn thất nặng nề.</p>
@@ -79,6 +82,7 @@ const timelineContent = {
             <p>Cuối năm 1967, Mỹ đẩy cuộc "Chiến tranh cục bộ" lên đỉnh cao với 480.000 quân viễn chinh, nhưng vẫn không đạt được mục tiêu chính trị và quân sự. Thất bại ở Việt Nam khiến tình hình nước Mỹ bất ổn, người dân biểu tình phản đối chiến tranh.</p>
             
             <img src="https://th.bing.com/th/id/R.fabb48d69795dd2aef16cd25324e0ccb?rik=MGqlRz1JeJ8HTQ&riu=http%3a%2f%2fnghiencuuquocte.org%2fwp-content%2fuploads%2f2019%2f10%2fVietnam_War_protestors.jpg&ehk=n6MvdEh8pyfFvv1UlIiCIhyQFkbW3l4Nh5d%2b%2fiNryDM%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt="Biểu tình phản chiến tại Mỹ">
+            <figcaption class="image-caption">Biểu tình phản chiến tại Mỹ</figcaption>
             
             <div class="highlight">
                 <p>Ngày 28-1-1967, Hội nghị lần thứ 13 Ban Chấp hành Trung ương Đảng quyết định mở mặt trận ngoại giao, tranh thủ sự ủng hộ quốc tế, tạo cục diện "vừa đánh, vừa đàm".</p>
@@ -93,19 +97,20 @@ const timelineContent = {
         title: "Tổng tiến công Tết Mậu Thân",
         date: "1968",
         content: `
-            <p>Từ 24-1 đến 15-7-1968, Quân giải phóng mở <span class = "highlight-text" data-keyword ="Chiến dịch đường 0 Khe Sanh"> chiến dịch đường 0 Khe Sanh </span>. Đêm 30 rạng ngày 21-1-1968, đúng dịp giao thừa Tết Mậu Thân, thừa lúc địch sơ hở, cuộc tổng tiến công và nổi dậy đợt I đã được phát động trên toàn miền Nam.</p>
+            <p>Từ 24-1 đến 15-7-1968, Quân giải phóng mở <span class = "highlight-text" data-keyword ="Chiến dịch đường 9 Khe Sanh"> chiến dịch đường 9 Khe Sanh </span>. Đêm 30 rạng ngày 21-1-1968, đúng dịp giao thừa Tết Mậu Thân, thừa lúc địch sơ hở, cuộc tổng tiến công và nổi dậy đợt I đã được phát động trên toàn miền Nam.</p>
             
             <div class="highlight">
                 <p>Quân ta đồng loạt tiến công địch từ Đường 9 - Khe Sanh đến ĐBSCL, đặc biệt mạnh mẽ tại Sài Gòn - Gia Định, Huế.</p>
             </div>
             
-            <p>Lực lượng biệt động Sài Gòn đóng vai trò quan trọng với anh hùng biệt động Sài Gòn Trần Văn Lai với 3 ngôi nhà giấu vũ khí ở nội đô Sài Gòn. Quân giải phóng làm chủ thành phố Huế 25 ngày, gây tổn thất nặng nề cho địch.</p>
+            <p>Lực lượng biệt động Sài Gòn đóng vai trò quan trọng với <span class = "hightlight-text" data-keyword = "Anh hùng biệt động Sài Gòn Trần Văn Lai với 3 ngôi nhà giấu vũ khí ở nội đô Sài Gòn "> anh hùng biệt động Sài Gòn Trần Văn Lai với 3 ngôi nhà giấu vũ khí ở nội đô Sài Gòn </span>. Quân giải phóng làm chủ thành phố Huế 25 ngày, gây tổn thất nặng nề cho địch.</p>
             
             <div class="image-row">
                 <img src="https://image.baophapluat.vn/w840/Uploaded/2025/athlraqhpghat/2018_07_29/ong_lai_AASS.jpg" alt="Anh hùng Trần Văn Lai">
                 
                 <img src="https://nqs.1cdn.vn/thumbs/1200x630/2024/03/12/t.ex-cdn.com-chatluongvacuocsong.vn-resize-534x280-files-content-2024-03-12-_ben-trong-can-ham-chua-2-tan-vu-khi-nam-giua-long-tp-hcm-tung-la-dia-chi-do-bi-mat-cua-biet-dong-sai-gon-1555.jpeg" alt="Căn hầm vũ khí">
             </div>
+            <figcaption class="image-caption">Anh hùng Trần Văn Lai (trái), Căn hầm vũ khí ở Sài Gòn (phải)</figcaption>
             
             <p>Cuộc tấn công tháng 5 và tháng 8-1968, quân dân ta tiêu diệt chục vạn kẻ địch, phá hủy nhiều phương tiện, giải phóng hàng triệu đồng bào. Hàng triệu quần chúng nổi dậy giành quyền làm chủ ở những mức độ khác nhau.</p>
             
@@ -116,10 +121,11 @@ const timelineContent = {
         title: "Hội nghị Paris và kết quả",
         date: "1968-1969",
         content: `
-            <p>Mỹ buộc phải đàm phán với Việt Nam tại <span class = "highlight-text" data-keyword = "Hội nghị Paris (Pháp)> Hội nghị Paris (Pháp) từ 13-5-1968</span>. Phái đoàn do <span class = "highlight-text" data-keyword = "Bộ trưởng Xuân Thuỷ"> Bộ trưởng Xuân Thủy </span> làm Trưởng đoàn và <span class = "highlight-text" data-keyword = "Đồng chí Lê Đức Thọ"> đồng chí Lê Đức Thọ ủy viên Bộ Chính trị </span> làm cố vấn.</p>
+            <p>Mỹ buộc phải đàm phán với Việt Nam tại <span class = "highlight-text" data-keyword = "Hội nghị Paris (Pháp)"> Hội nghị Paris (Pháp) từ 13-5-1968</span>. Phái đoàn do <span class = "highlight-text" data-keyword = "Bộ trưởng Xuân Thuỷ"> Bộ trưởng Xuân Thủy </span> làm Trưởng đoàn và <span class = "highlight-text" data-keyword = "Đồng chí Lê Đức Thọ"> đồng chí Lê Đức Thọ ủy viên Bộ Chính trị </span> làm cố vấn.</p>
             
             <img src="https://file3.qdnd.vn/data/images/0/2022/04/24/tvtuongvy/hoi%20nghi%20paris%201.jpeg?dpi=150&quality=100&w=870" alt="Hội nghị Paris">
-            
+            <figcaption class="image-caption">Hội nghị Paris - Đàm phán giữa các đại diện Việt Nam và Mỹ, 1968</figcaption>
+
             <p>Tháng 1-1969, Mỹ phải chấp nhận cuộc đàm phán với Chính phủ nước Việt Nam dân chủ Cộng hòa tại Paris, có sự tham gia của đoàn đại biểu Mặt trận dân tộc giải phóng miền Nam Việt Nam.</p>
             
             <div class="highlight">
@@ -129,8 +135,11 @@ const timelineContent = {
             <div class="image-row">
                 <img src="https://cdn2.tuoitre.vn/zoom/700_390/471584752817336320/2023/1/19/paris-5-1674095397328427869330-88-19-1125-2000-crop-1674096844825265632067.jpg" alt="Lê Đức Thọ và Henry Kissinger">
                 
+                
                 <img src="https://baotanglichsu.vn/DataFiles/Uploaded/image/Kienthuc-Madam-Binh-06.jpg" alt="Bộ trưởng Nguyễn Thị Bình">
+                
             </div>
+            <figcaption class="image-caption">Đồng chí Lê Đức Thọ và Henry Kissinger tại Hội nghị Paris (trái), Bộ trưởng Bộ Ngoại giao Nguyễn Thị Bình (phải)</figcaption>
             
             <p>Mặc dù Tết Mậu Thân đánh bại ý chí xâm lược của Mỹ, tạo bước ngoặt chiến lược, nhưng sau đó, ta đã mắc sai lầm trong chỉ đạo chiến lược. Việc tiếp tục mở các đợt tiến công vào đô thị khi không còn yếu tố bất ngờ đã dẫn đến tổn thất lớn về lực lượng và thế trận.</p>
             
