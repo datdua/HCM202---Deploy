@@ -163,8 +163,8 @@ function Sidenav({ color }) {
   return (
     <>
       <div className="brand">
-        <img src={logo} alt="" />
-        <span>Muse Dashboard</span>
+        <img style={{ height: "70px", width: "70px" }} src={logo} alt="logo" />
+        <span>Dashboard - KNMU</span>
       </div>
       <hr />
       <Menu theme="light" mode="inline">
@@ -259,11 +259,12 @@ function Sidenav({ color }) {
           <span className="icon" style={{ color }}>
             {dashboard}
           </span>
-          <h6>Need Help?</h6>
-          <p>Please check our docs</p>
-          <Button type="primary" className="ant-btn-sm ant-btn-block">
-            DOCUMENTATION
-          </Button>
+          <h6>Website Offical</h6>
+          <a href="https://khoi-nguon-mer-uoc.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <Button type="primary" className="ant-btn-sm ant-btn-block">
+              KHOI NGUON MER UOC
+            </Button>
+          </a>
         </div>
       </div>
     </>

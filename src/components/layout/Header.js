@@ -219,6 +219,24 @@ const profile = [
   </svg>,
 ];
 
+const logout = [
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    key={0}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M3 3h7v2H5v10h5v2H3V3zm12.586 5l-3.293-3.293 1.414-1.414L18.414 10l-4.707 4.707-1.414-1.414L15.586 11H9V9h6.586z"
+      fill="#fff"
+    />
+  </svg>,
+];
+
 const toggler = [
   <svg
     width="20"
@@ -268,6 +286,13 @@ function Header({
   const showDrawer = () => setVisible(true);
   const hideDrawer = () => setVisible(false);
 
+  const handleLogout = () => {
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("user");
+
+    window.location.href = "/login";
+  };
+    
   return (
     <>
       {/* <div className="setting-drwer" onClick={showDrawer}>
@@ -421,10 +446,13 @@ function Header({
               </div>
             </div>
           </Drawer> */}
-          <Link to="/sign-in" className="btn-sign-in">
-            {profile}
-            <span>Sign in</span>
-          </Link>
+          <Button type="primary" onClick={handleLogout}>
+            {logout}
+          </Button>
+          {/* <Link to="/sign-in" className="btn-sign-in">
+            {logout}
+            <span>Logout</span>
+          </Link> */}
           <Input
             className="header-search"
             placeholder="Type here..."

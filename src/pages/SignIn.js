@@ -10,7 +10,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import {
   Layout,
   Menu,
@@ -21,19 +21,23 @@ import {
   Form,
   Input,
   Switch,
+  message,
 } from "antd";
-import signinbg from "../assets/images/img-signin.jpg";
+import signinbg from "../assets/images/img-signin1.png";
 import {
   DribbbleOutlined,
   TwitterOutlined,
   InstagramOutlined,
   GithubOutlined,
 } from "@ant-design/icons";
+
 function onChange(checked) {
   console.log(`switch to ${checked}`);
 }
+
 const { Title } = Typography;
 const { Header, Footer, Content } = Layout;
+
 const template = [
   <svg
     data-v-4ebdc598=""
@@ -63,6 +67,7 @@ const template = [
     ></path>
   </svg>,
 ];
+
 const profile = [
   <svg
     data-v-4ebdc598=""
@@ -82,6 +87,7 @@ const profile = [
     ></path>
   </svg>,
 ];
+
 const signup = [
   <svg
     data-v-4ebdc598=""
@@ -101,6 +107,7 @@ const signup = [
     ></path>
   </svg>,
 ];
+
 const signin = [
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -114,55 +121,50 @@ const signin = [
     />
   </svg>,
 ];
-export default class SignIn extends Component {
+
+class SignIn extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+    };
+  }
+
   render() {
+    const { history } = this.props;
+
     const onFinish = (values) => {
-      console.log("Success:", values);
+      this.setState({ loading: true });
+      
+      // Check login credentials
+      if (values.username === "admin" && values.password === "admin") {
+        // Save login info to localStorage for session persistence
+        localStorage.setItem("user", JSON.stringify({ username: values.username }));
+        localStorage.setItem("isAuthenticated", "true");
+        
+        // Show success message
+        message.success("Login successfuly!");
+        
+        // Redirect to main page after login
+        setTimeout(() => {
+          history.push("/dashboard"); // Make sure you have this route in your system
+        });
+      } else {
+        // Show error message if credentials are incorrect
+        message.error("Invalid username or password!");
+        this.setState({ loading: false });
+      }
     };
 
     const onFinishFailed = (errorInfo) => {
       console.log("Failed:", errorInfo);
+      message.error("Please fill in all login information!");
     };
+
     return (
       <>
         <Layout className="layout-default layout-signin">
-          <Header>
-            <div className="header-col header-brand">
-              <h5>Muse Dashboard</h5>
-            </div>
-            <div className="header-col header-nav">
-              <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-                <Menu.Item key="1">
-                  <Link to="/dashboard">
-                    {template}
-                    <span> Dashboard</span>
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="2">
-                  <Link to="/profile">
-                    {profile}
-                    <span>Profile</span>
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="3">
-                  <Link to="/sign-up">
-                    {signup}
-                    <span> Sign Up</span>
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="4">
-                  <Link to="/sign-in">
-                    {signin}
-                    <span> Sign In</span>
-                  </Link>
-                </Menu.Item>
-              </Menu>
-            </div>
-            <div className="header-col header-btn">
-              <Button type="primary">FREE DOWNLOAD</Button>
-            </div>
-          </Header>
-          <Content className="signin">
+          <Content style={{ marginTop: "40px"}} className="signin">
             <Row gutter={[24, 0]} justify="space-around">
               <Col
                 xs={{ span: 24, offset: 0 }}
@@ -171,7 +173,7 @@ export default class SignIn extends Component {
               >
                 <Title className="mb-15">Sign In</Title>
                 <Title className="font-regular text-muted" level={5}>
-                  Enter your email and password to sign in
+                  Enter your username and password to sign in
                 </Title>
                 <Form
                   onFinish={onFinish}
@@ -181,16 +183,16 @@ export default class SignIn extends Component {
                 >
                   <Form.Item
                     className="username"
-                    label="Email"
-                    name="email"
+                    label="Username"
+                    name="username"
                     rules={[
                       {
                         required: true,
-                        message: "Please input your email!",
+                        message: "Please input your username!",
                       },
                     ]}
                   >
-                    <Input placeholder="Email" />
+                    <Input placeholder="Username" />
                   </Form.Item>
 
                   <Form.Item
@@ -204,7 +206,7 @@ export default class SignIn extends Component {
                       },
                     ]}
                   >
-                    <Input placeholder="Password" />
+                    <Input.Password placeholder="Password" />
                   </Form.Item>
 
                   <Form.Item
@@ -221,16 +223,11 @@ export default class SignIn extends Component {
                       type="primary"
                       htmlType="submit"
                       style={{ width: "100%" }}
+                      loading={this.state.loading}
                     >
                       SIGN IN
                     </Button>
                   </Form.Item>
-                  <p className="font-semibold text-muted">
-                    Don't have an account?{" "}
-                    <Link to="/sign-up" className="text-dark font-bold">
-                      Sign Up
-                    </Link>
-                  </p>
                 </Form>
               </Col>
               <Col
@@ -246,12 +243,7 @@ export default class SignIn extends Component {
           </Content>
           <Footer>
             <Menu mode="horizontal">
-              <Menu.Item>Company</Menu.Item>
-              <Menu.Item>About Us</Menu.Item>
-              <Menu.Item>Teams</Menu.Item>
-              <Menu.Item>Products</Menu.Item>
-              <Menu.Item>Blogs</Menu.Item>
-              <Menu.Item>Pricing</Menu.Item>
+              <Menu.Item>Website for data management of the project Khoi Nguon Mer Uoc.</Menu.Item>
             </Menu>
             <Menu mode="horizontal" className="menu-nav-social">
               <Menu.Item>
@@ -281,7 +273,7 @@ export default class SignIn extends Component {
             </Menu>
             <p className="copyright">
               {" "}
-              Copyright © 2021 Muse by <a href="#pablo">Creative Tim</a>.{" "}
+              Copyright © 2025 by <a href="#pablo">Tan Dat</a>.{" "}
             </p>
           </Footer>
         </Layout>
@@ -289,3 +281,5 @@ export default class SignIn extends Component {
     );
   }
 }
+
+export default withRouter(SignIn);
